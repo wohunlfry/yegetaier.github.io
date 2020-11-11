@@ -6,15 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>随机漫步的丸子</title>
+  <title>JAVA实现连接CentOS虚拟机的Telnet-Server | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/index.html">
+  <meta name="description" content="准备工程依赖包依赖包：commons-net-2.0.jar下载地址：https:&#x2F;&#x2F;repo1.maven.org&#x2F;maven2&#x2F;commons-net&#x2F;commons-net&#x2F;2.0&#x2F;选择commans-net-2.0.jar下载">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA实现连接CentOS虚拟机的Telnet-Server">
+<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="准备工程依赖包依赖包：commons-net-2.0.jar下载地址：https:&#x2F;&#x2F;repo1.maven.org&#x2F;maven2&#x2F;commons-net&#x2F;commons-net&#x2F;2.0&#x2F;选择commans-net-2.0.jar下载">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-11-11T11:27:29.000Z">
+<meta property="article:modified_time" content="2020-11-11T11:46:38.900Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -147,16 +149,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-JAVA实现连接CentOS虚拟机的Telnet-Server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-JAVA实现连接CentOS虚拟机的Telnet-Server" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/">JAVA实现连接CentOS虚拟机的Telnet-Server</a>
+    <h1 class="article-title" itemprop="name">
+      JAVA实现连接CentOS虚拟机的Telnet-Server
     </h1>
   
 
@@ -170,9 +170,13 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="准备工程依赖包"><a href="#准备工程依赖包" class="headerlink" title="准备工程依赖包"></a>准备工程依赖包</h2><p>依赖包：commons-net-2.0.jar<br>下载地址：<a target="_blank" rel="noopener" href="https://repo1.maven.org/maven2/commons-net/commons-net/2.0/">https://repo1.maven.org/maven2/commons-net/commons-net/2.0/</a><br>选择commans-net-2.0.jar下载</p>
-        
-          <a class="article-more-a" href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/#more">more >></a>
-        
+<a id="more"></a>
+
+<h2 id="初始化JAVA项目"><a href="#初始化JAVA项目" class="headerlink" title="初始化JAVA项目"></a>初始化JAVA项目</h2><p>IDEA新建JAVA项目<br>在src目录新建NetTelnet类文件<br>项目下新建libs文件夹存放.jar文件<br>将commans-net-2.0.jar文件移动到libs目录<br>ctrl + shift + alt + s 添加依赖包</p>
+<h2 id="NetTelnet-java代码"><a href="#NetTelnet-java代码" class="headerlink" title="NetTelnet.java代码"></a>NetTelnet.java代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;**  * commons-net-2.0.jar是工程依赖包   *&#x2F;</span><br><span class="line"></span><br><span class="line">import org.apache.commons.net.telnet.TelnetClient;</span><br><span class="line">import java.io.InputStream;</span><br><span class="line">import java.io.PrintStream;</span><br><span class="line">import java.util.Scanner;</span><br><span class="line"></span><br><span class="line">public class NetTelnet &#123;</span><br><span class="line">    private TelnetClient telnet &#x3D; new TelnetClient();</span><br><span class="line">    private InputStream in;</span><br><span class="line">    private PrintStream out;</span><br><span class="line">    private char prompt &#x3D; &#39;$&#39;;</span><br><span class="line"></span><br><span class="line">    &#x2F;** 构造函数：初始化Telnet *&#x2F;</span><br><span class="line">    public NetTelnet(String ip, int port, String user, String password) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            telnet.connect(ip, port);</span><br><span class="line">            in &#x3D; telnet.getInputStream();</span><br><span class="line">            out &#x3D; new PrintStream(telnet.getOutputStream());</span><br><span class="line">            &#x2F;&#x2F; 根据root用户设置结束符</span><br><span class="line">            this.prompt &#x3D; user.equals(&quot;root&quot;) ? &#39;#&#39; : &#39;$&#39;;</span><br><span class="line">            login(user, password);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;** * 登录 * * @param user * @param password *&#x2F;</span><br><span class="line">    public void login(String user, String password) &#123;</span><br><span class="line">        readUntil(&quot;login:&quot;);</span><br><span class="line">        write(user);</span><br><span class="line">        readUntil(&quot;Password:&quot;);</span><br><span class="line">        write(password);</span><br><span class="line">        readUntil(prompt + &quot; &quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;** * 读取分析结果 * * @param pattern * @return *&#x2F;</span><br><span class="line">    public String readUntil(String pattern) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            char lastChar &#x3D; pattern.charAt(pattern.length() - 1);</span><br><span class="line">            StringBuffer sb &#x3D; new StringBuffer();</span><br><span class="line">            char ch &#x3D; (char) in.read();</span><br><span class="line">            while (true) &#123;</span><br><span class="line">                sb.append(ch);</span><br><span class="line">                if (ch &#x3D;&#x3D; lastChar) &#123;</span><br><span class="line">                    if (sb.toString().endsWith(pattern)) &#123;</span><br><span class="line">                        return sb.toString();</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                ch &#x3D; (char) in.read();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;** * 写操作 * * @param value *&#x2F;</span><br><span class="line">    public void write(String value) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            out.println(value);</span><br><span class="line">            out.flush();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;** * 向目标发送命令字符串 * * @param command * @return *&#x2F;</span><br><span class="line">    public String sendCommand(String command) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            write(command);</span><br><span class="line">            return readUntil(prompt + &quot; &quot;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;** * 关闭连接 *&#x2F;</span><br><span class="line">    public void disconnect() &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            telnet.disconnect();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(&quot;启动Telnet...&quot;);</span><br><span class="line">            String ip &#x3D; &quot;172.16.1.190&quot;;</span><br><span class="line">            int port &#x3D; 23;</span><br><span class="line">            String user &#x3D; &quot;calos&quot;;</span><br><span class="line">            String password &#x3D; &quot;yegetaier570&quot;;</span><br><span class="line">            NetTelnet telnet &#x3D; new NetTelnet(ip, port, user, password);</span><br><span class="line"></span><br><span class="line">            Scanner s &#x3D; new Scanner(System.in);</span><br><span class="line">            String input &#x3D; s.nextLine();</span><br><span class="line">            while (!input.equals(&quot;quit&quot;))&#123;</span><br><span class="line">                String r &#x3D; telnet.sendCommand(input);</span><br><span class="line">                System.out.println(r);</span><br><span class="line"></span><br><span class="line">                input &#x3D; s.nextLine();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            telnet.disconnect();</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="run项目"><a href="#run项目" class="headerlink" title="run项目"></a>run项目</h2><p>IDEA运行测试项目<br>······<br>输入 <strong>quit</strong> 结束telnet连接</p>
+
       
 
       
@@ -183,16 +187,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">搭建CentOS虚拟机的telnet服务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -207,166 +219,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-搭建CentOS虚拟机的telnet服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/">搭建CentOS虚拟机的telnet服务</a>
-    </h1>
-  
-
-        
-        <a href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-11-11T01:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><ul>
-<li>安装虚拟机VMware</li>
-<li>安装CentOS系统</li>
-<li>配置虚拟机静态IP</li>
-<li>安装telnet服务</li>
-<li>安装xinetd服务</li>
-<li>配置telnet、xinetd服务</li>
-<li>防火墙开telnet端口</li>
-<li>cmd命令行测试</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E7%A8%8B%E4%BE%9D%E8%B5%96%E5%8C%85"><span class="toc-number">1.</span> <span class="toc-text">准备工程依赖包</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96JAVA%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">初始化JAVA项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NetTelnet-java%E4%BB%A3%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">NetTelnet.java代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#run%E9%A1%B9%E7%9B%AE"><span class="toc-number">4.</span> <span class="toc-text">run项目</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
   
-    <article id="post-Hexo+GitHub-Pages搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages搭建博客</a>
-    </h1>
   
 
-        
-        <a href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-11-10T08:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><ul>
-<li>安装Node.js</li>
-<li>安装Git</li>
-<li>安装Hexo</li>
-<li>初始化本地项目</li>
-<li>GitHub创建个人仓库</li>
-<li>配置站点_config.yml</li>
-<li>推送网站</li>
-<li>不绑定个人域名</li>
-<li>绑定个人域名</li>
-<li>更换主题</li>
-<li>初始化个人基本信息</li>
-<li>初识MarkDown语法</li>
-<li>发布文章</li>
-</ul>
-        
-          <a class="article-more-a" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
+  
 
   
+
   
 
 
@@ -389,8 +267,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
