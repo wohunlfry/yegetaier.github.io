@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.loli.net/2020/11/11/gYCoOqVTRDeJk21.png">
 <meta property="og:image" content="https://i.loli.net/2020/11/11/NerFbLCo5UH4zht.png">
 <meta property="article:published_time" content="2020-11-11T01:12:16.000Z">
-<meta property="article:modified_time" content="2020-11-11T04:57:25.139Z">
+<meta property="article:modified_time" content="2020-11-11T08:40:07.569Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -229,17 +229,14 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># systemctl enable xinetd.service</span><br><span class="line"># systemctl enable telnet.socket</span><br></pre></td></tr></table></figure>
 
 <h2 id="防火墙开telnet端口"><a href="#防火墙开telnet端口" class="headerlink" title="防火墙开telnet端口"></a>防火墙开telnet端口</h2><p>查看开放端口</p>
-<blockquote>
-<p>firewall-cmd –list-ports</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --list-ports</span><br></pre></td></tr></table></figure>
+
 <p>永久添加例外端口</p>
-<blockquote>
-<p>firewall-cmd –permanent –add-port=23/tcp<br>firewall-cmd –permanent –add-port=23/udp  </p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-port&#x3D;23&#x2F;tcp  </span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;23&#x2F;udp</span><br></pre></td></tr></table></figure>
+
 <p>重启防火墙</p>
-<blockquote>
-<p>sudo firewall-cmd –reload</p>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
 <h2 id="cmd命令行测试"><a href="#cmd命令行测试" class="headerlink" title="cmd命令行测试"></a>cmd命令行测试</h2><p>Window开启telnet服务客户端<br>控制面板\程序，启用或关闭Window功能，勾选Telnet Client，确定<br>测试：cmd命令行输入telnet  </p>
 <p>进入cmd窗口</p>
 <blockquote>
