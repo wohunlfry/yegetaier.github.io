@@ -149,19 +149,93 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-hexo博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-于CentOS虚拟机搭建telnet服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/11/10/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo + GitHub Pages搭建博客</a>
+      <a class="article-title" href="/2020/11/11/%E4%BA%8ECentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BAtelnet%E6%9C%8D%E5%8A%A1/">于CentOS虚拟机搭建telnet服务</a>
     </h1>
   
 
         
-        <a href="/2020/11/10/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+        <a href="/2020/11/11/%E4%BA%8ECentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BAtelnet%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2020-11-11T01:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h2><ul>
+<li>安装虚拟机VMware</li>
+<li>安装CentOS系统</li>
+<li>配置虚拟机静态IP</li>
+<li>安装telnet服务端</li>
+<li>安装xinetd服务</li>
+<li>配置telnet、xinetd服务</li>
+<li>防火墙开telnet端口</li>
+<li>cmd命令行测试</li>
+</ul>
+        
+          <a class="article-more-a" href="/2020/11/11/%E4%BA%8ECentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BAtelnet%E6%9C%8D%E5%8A%A1/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/11/%E4%BA%8ECentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%90%AD%E5%BB%BAtelnet%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-hexo+GitHub-Pages博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/10/hexo+GitHub-Pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo + GitHub Pages搭建博客</a>
+    </h1>
+  
+
+        
+        <a href="/2020/11/10/hexo+GitHub-Pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
   	<time datetime="2020-11-10T08:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
 </a>
         
@@ -185,7 +259,7 @@
 <li>发布文章</li>
 </ul>
         
-          <a class="article-more-a" href="/2020/11/10/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#more">more >></a>
+          <a class="article-more-a" href="/2020/11/10/hexo+GitHub-Pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#more">more >></a>
         
       
 
@@ -198,7 +272,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/11/10/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/11/10/hexo+GitHub-Pages%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
         </p>
       
 
