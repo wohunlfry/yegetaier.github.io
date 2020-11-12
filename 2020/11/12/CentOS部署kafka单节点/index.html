@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>CentOS7通过yum安装MySQL | 随机漫步的丸子</title>
+  <title>CentOS部署kafka单节点 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="步骤 更新yum 添加MySQL的yum仓库源 查看MySQL版本 启用指定版本MySQL 安装MySQL MySQL初始化设置 设置远程连接 开MySQL防火墙端口">
+  <meta name="description" content="步骤 安装配置JDK 安装配置zookeeper 安装配置kafka kafka消息队列测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7通过yum安装MySQL">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/index.html">
+<meta property="og:title" content="CentOS部署kafka单节点">
+<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="步骤 更新yum 添加MySQL的yum仓库源 查看MySQL版本 启用指定版本MySQL 安装MySQL MySQL初始化设置 设置远程连接 开MySQL防火墙端口">
+<meta property="og:description" content="步骤 安装配置JDK 安装配置zookeeper 安装配置kafka kafka消息队列测试">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-12T04:27:40.000Z">
-<meta property="article:modified_time" content="2020-11-12T11:34:19.159Z">
+<meta property="article:published_time" content="2020-11-12T09:44:48.000Z">
+<meta property="article:modified_time" content="2020-11-12T13:07:50.907Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -141,20 +141,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CentOS7通过yum安装MySQL" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CentOS部署kafka单节点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CentOS7通过yum安装MySQL
+      CentOS部署kafka单节点
     </h1>
   
 
         
-        <a href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2020-11-12T04:27:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-12</time>
+        <a href="/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/" class="archive-article-date">
+  	<time datetime="2020-11-12T09:44:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-12</time>
 </a>
         
       </header>
@@ -162,24 +162,84 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>更新yum</li>
-<li>添加MySQL的yum仓库源</li>
-<li>查看MySQL版本</li>
-<li>启用指定版本MySQL</li>
-<li>安装MySQL</li>
-<li>MySQL初始化设置</li>
-<li>设置远程连接</li>
-<li>开MySQL防火墙端口</li>
+<li>安装配置JDK</li>
+<li>安装配置zookeeper</li>
+<li>安装配置kafka</li>
+<li>kafka消息队列测试  </li>
 </ul>
-<a id="more"></a>
+<a id="more"></a>  
 
 
-<h2 id="详细过程见"><a href="#详细过程见" class="headerlink" title="详细过程见"></a>详细过程见</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mrqiang9001/article/details/101377149">https://blog.csdn.net/Mrqiang9001/article/details/101377149</a>  </p>
-<h2 id="开MySQL防火墙端口-补充"><a href="#开MySQL防火墙端口-补充" class="headerlink" title="开MySQL防火墙端口 (补充)"></a>开MySQL防火墙端口 (<strong><em>补充</em></strong>)</h2><p>永久添加例外端口  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-port&#x3D;3306&#x2F;tcp  </span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;3306&#x2F;udp</span><br></pre></td></tr></table></figure>
+<h2 id="安装配置JDK"><a href="#安装配置JDK" class="headerlink" title="安装配置JDK"></a>安装配置JDK</h2><p>详见文章：<a href="https://jz.wohunlfry.top/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/">https://jz.wohunlfry.top/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/</a>  </p>
+<h2 id="安装配置zookeeper"><a href="#安装配置zookeeper" class="headerlink" title="安装配置zookeeper"></a>安装配置zookeeper</h2><h3 id="下载安装包"><a href="#下载安装包" class="headerlink" title="下载安装包"></a>下载安装包</h3><p>地址：<a target="_blank" rel="noopener" href="https://archive.apache.org/dist/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz">https://archive.apache.org/dist/zookeeper/zookeeper-3.6.1/apache-zookeeper-3.6.1-bin.tar.gz</a></p>
+<h3 id="安装配置"><a href="#安装配置" class="headerlink" title="安装配置"></a>安装配置</h3><p><strong>新建zookeeper安装目录</strong></p>
+<blockquote>
+<p>cd /opt<br>mkdir zookeeper<br>cd zookeeper<br>mkdir zkdata //存放快照日志<br>mkdir zkdatalog //存放事务日志  </p>
+</blockquote>
+<p><strong>传送安装包到CentOS虚拟机</strong><br>通过xftp传送文件到CentOS虚拟机/opt/zookeeper目录  </p>
+<p><strong>解压安装</strong>  </p>
+<blockquote>
+<p>cd /opt/zookeeper<br>tar -zxvf apache-zookeeper-3.6.1-bin.tar.gz  </p>
+</blockquote>
+<p><strong>修改配置文件</strong>  </p>
+<blockquote>
+<p>cd /opt/zookeeper/apache-zookeeper-3.6.1-bin/conf<br>cp zoo_sample.cfg zoo.cfg<br>vi zoo.cfg<br>修改dataDir和dataLogDir如下：<br>dataDir=/opt/zookeeper/zkdata<br>dataLogDir=/opt/zookeeper/zkdataLog<br>:wq保存退出</p>
+</blockquote>
+<p>另外，在/opt/zookeeper/zkdata下新建myid文件  </p>
+<blockquote>
+<p>cd /opt/zookeeper/zkdata<br>vi myid<br>输入1，:wq保存退出  </p>
+</blockquote>
+<p><strong>添加环境变量</strong>  </p>
+<blockquote>
+<p>vim /etc/profile<br>文件末尾新增<br>## zookeeper env<br>export ZOOKEEPER_HOME=/opt/zookeeper/apache-zookeeper-3.6.1-bin<br>export PATH=$ZOOKEEPER_HOME/bin:$PATH<br>:wq保存文件退出<br>source /etc/profile  </p>
+</blockquote>
+<p><strong>开防火墙端口</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-port&#x3D;2181&#x2F;tcp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;2181&#x2F;udp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;2888&#x2F;tcp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;2888&#x2F;udp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;3888&#x2F;tcp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;3888&#x2F;udp</span><br><span class="line"># sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
 
-<p>重启防火墙  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<p><strong>启动测试</strong>  </p>
+<blockquote>
+<p>zkServer.sh start<br>jps //QuorumPeerMain是zookeeper进程，表示正常启动<br>zkServer.sh stop //停止</p>
+</blockquote>
+<h2 id="安装配置kafka"><a href="#安装配置kafka" class="headerlink" title="安装配置kafka"></a>安装配置kafka</h2><h3 id="下载安装包-1"><a href="#下载安装包-1" class="headerlink" title="下载安装包"></a>下载安装包</h3><p>地址：<a target="_blank" rel="noopener" href="https://apache.website-solution.net/kafka/2.5.0/kafka_2.12-2.5.0.tgz">https://apache.website-solution.net/kafka/2.5.0/kafka_2.12-2.5.0.tgz</a></p>
+<h3 id="安装配置-1"><a href="#安装配置-1" class="headerlink" title="安装配置"></a>安装配置</h3><p><strong>新建kafka安装目录</strong></p>
+<blockquote>
+<p>cd /opt<br>mkdir kafka<br>cd kafka<br>mkdir kafkalogs //存放事务日志  </p>
+</blockquote>
+<p><strong>传送安装包到CentOS虚拟机</strong><br>通过xftp传送文件到CentOS虚拟机/opt/kafka目录  </p>
+<p><strong>解压安装</strong>  </p>
+<blockquote>
+<p>cd /opt/kafka<br>tar -zxvf kafka_2.12-2.5.0.tgz  </p>
+</blockquote>
+<p><strong>修改配置文件</strong>  </p>
+<blockquote>
+<p>cd /opt/kafka/kafka_2.12-2.5.0/config<br>vi server.properties<br>修改log.dirs如下：<br>log.dirs=/opt/kafka/kafkalogs<br>:wq保存退出  </p>
+</blockquote>
+<p><strong>添加环境变量</strong>  </p>
+<blockquote>
+<p>vim /etc/profile<br>文件末尾新增<br>## kafka env<br>export $KAFKA_HOME=/opt/kafka/kafka_2.12-2.5.0<br>export PATH=$KAFKA_HOME/bin:$PATH<br>:wq保存文件退出<br>source /etc/profile  </p>
+</blockquote>
+<p><strong>开防火墙端口</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-port&#x3D;9092&#x2F;tcp</span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;9092&#x2F;udp</span><br><span class="line"># sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动测试</strong>  </p>
+<blockquote>
+<p>kafka-server-start.sh $KAFKA_HOME/config/server.properties<br>jps //出现kafka，表示正常启动<br>kafka-server-stop.sh $KAFKA_HOME/config/server.properties //停止</p>
+</blockquote>
+<h2 id="kafka消息队列测试"><a href="#kafka消息队列测试" class="headerlink" title="kafka消息队列测试"></a>kafka消息队列测试</h2><p>开启zookeeper<br>开启kafka<br><strong>开启至少两个终端窗口，一个用于生产者环境，一个用于消费者环境。生产者终端输入数据，消费者终端打印生产者输入的数据。</strong><br><strong>开启多个CentOS终端的方式：CentOS虚拟机本地终端，xshell，cmd之telnet</strong></p>
+<h3 id="（单Broker）"><a href="#（单Broker）" class="headerlink" title="（单Broker）"></a>（单Broker）</h3><p><strong>新建topic</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test</span><br></pre></td></tr></table></figure>
+
+<p><strong>查看所有topic信息</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动生产者</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br></pre></td></tr></table></figure>
+
+<p><strong>启动消费者</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test</span><br><span class="line"># 通过以上命令，可以看到消费者可以接收生产者发送的消息</span><br><span class="line"> </span><br><span class="line"># 如果需要从头开始接收数据，需要添加--from-beginning参数</span><br><span class="line">kafka-console-consumer.sh --bootstrap-server localhost:9092 --from-beginning --topic test</span><br></pre></td></tr></table></figure>
+
+<p><strong>删除topic</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --delete --zookeeper localhost:2181 --topic test</span><br></pre></td></tr></table></figure>
 
       
 
@@ -201,18 +261,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CentOS部署kafka单节点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CentOS使用yum安装jdk1.8</div>
+    <a href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CentOS7通过yum安装MySQL</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -239,7 +290,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%E8%A7%81"><span class="toc-number">2.</span> <span class="toc-text">详细过程见</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80MySQL%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3-%E8%A1%A5%E5%85%85"><span class="toc-number">3.</span> <span class="toc-text">开MySQL防火墙端口 (补充)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEJDK"><span class="toc-number">2.</span> <span class="toc-text">安装配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEzookeeper"><span class="toc-number">3.</span> <span class="toc-text">安装配置zookeeper</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">3.1.</span> <span class="toc-text">下载安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">安装配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AEkafka"><span class="toc-number">4.</span> <span class="toc-text">安装配置kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E5%8C%85-1"><span class="toc-number">4.1.</span> <span class="toc-text">下载安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE-1"><span class="toc-number">4.2.</span> <span class="toc-text">安装配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%B5%8B%E8%AF%95"><span class="toc-number">5.</span> <span class="toc-text">kafka消息队列测试</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EF%BC%88%E5%8D%95Broker%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">（单Broker）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
