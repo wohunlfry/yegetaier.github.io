@@ -16,7 +16,7 @@
 <meta property="og:description" content="步骤 安装配置JDK 安装配置zookeeper 安装配置kafka kafka消息队列测试">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-11-12T09:44:48.000Z">
-<meta property="article:modified_time" content="2020-11-12T13:07:50.907Z">
+<meta property="article:modified_time" content="2020-11-13T11:42:48.775Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -223,7 +223,7 @@
 
 <p><strong>启动测试</strong>  </p>
 <blockquote>
-<p>kafka-server-start.sh $KAFKA_HOME/config/server.properties<br>jps //出现kafka，表示正常启动<br>kafka-server-stop.sh $KAFKA_HOME/config/server.properties //停止</p>
+<p>kafka-server-start.sh $KAFKA_HOME/config/server.properties（前台启动）<br>kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties（后台启动）<br>jps //出现kafka，表示正常启动<br>kafka-server-stop.sh $KAFKA_HOME/config/server.properties //停止</p>
 </blockquote>
 <h2 id="kafka消息队列测试"><a href="#kafka消息队列测试" class="headerlink" title="kafka消息队列测试"></a>kafka消息队列测试</h2><p>开启zookeeper<br>开启kafka<br><strong>开启至少两个终端窗口，一个用于生产者环境，一个用于消费者环境。生产者终端输入数据，消费者终端打印生产者输入的数据。</strong><br><strong>开启多个CentOS终端的方式：CentOS虚拟机本地终端，xshell，cmd之telnet</strong></p>
 <h3 id="（单Broker）"><a href="#（单Broker）" class="headerlink" title="（单Broker）"></a>（单Broker）</h3><p><strong>新建topic</strong>  </p>
