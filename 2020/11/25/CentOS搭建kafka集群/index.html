@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Anaconda的安装及使用 | 随机漫步的丸子</title>
+  <title>CentOS搭建kafka集群 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="步骤 Anaconda安装及配置 虚拟环境应用 基本命令">
+  <meta name="description" content="搭建步骤 kafka单节点虚拟机克隆两台 配置zookeeper和kafka 启动测试">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Anaconda的安装及使用">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/15/Anaconda%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="CentOS搭建kafka集群">
+<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/25/CentOS%E6%90%AD%E5%BB%BAkafka%E9%9B%86%E7%BE%A4/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="步骤 Anaconda安装及配置 虚拟环境应用 基本命令">
+<meta property="og:description" content="搭建步骤 kafka单节点虚拟机克隆两台 配置zookeeper和kafka 启动测试">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-15T15:08:02.000Z">
-<meta property="article:modified_time" content="2020-11-15T15:12:37.180Z">
+<meta property="article:published_time" content="2020-11-25T10:32:28.000Z">
+<meta property="article:modified_time" content="2020-11-25T10:48:32.127Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -147,35 +147,59 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Anaconda的安装及使用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-CentOS搭建kafka集群" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Anaconda的安装及使用
+      CentOS搭建kafka集群
     </h1>
   
 
         
-        <a href="/2020/11/15/Anaconda%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  	<time datetime="2020-11-15T15:08:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-15</time>
+        <a href="/2020/11/25/CentOS%E6%90%AD%E5%BB%BAkafka%E9%9B%86%E7%BE%A4/" class="archive-article-date">
+  	<time datetime="2020-11-25T10:32:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>Anaconda安装及配置</li>
-<li>虚拟环境应用</li>
-<li>基本命令</li>
+        <h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><ul>
+<li>kafka单节点虚拟机克隆两台</li>
+<li>配置zookeeper和kafka</li>
+<li>启动测试</li>
 </ul>
 <a id="more"></a>
 
 
-<h2 id="详细参见下文"><a href="#详细参见下文" class="headerlink" title="详细参见下文"></a>详细参见下文</h2><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/eaee1fadc1e9">https://www.jianshu.com/p/eaee1fadc1e9</a>  </p>
+<h2 id="kafka单节点虚拟机克隆两台"><a href="#kafka单节点虚拟机克隆两台" class="headerlink" title="kafka单节点虚拟机克隆两台"></a>kafka单节点虚拟机克隆两台</h2><p>克隆kafka单节点虚拟机两台，<br>得到三台已部署kafka单节点的虚拟机。<br>CentOS部署kafka单节点，详见此文章：<a href="https://jz.wohunlfry.top/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/">https://jz.wohunlfry.top/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/</a>  </p>
+<p>准备的三台虚拟机的IP：</p>
+<blockquote>
+<p>172.16.1.190<br>172.16.1.191<br>172.16.1.192  </p>
+</blockquote>
+<h2 id="配置zookeeper和kafka"><a href="#配置zookeeper和kafka" class="headerlink" title="配置zookeeper和kafka"></a>配置zookeeper和kafka</h2><p><strong>配置zookeeper</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">进入zookeeper的conf目录</span><br><span class="line">cd &#x2F;opt&#x2F;zookeeper&#x2F;apache-zookeeper-3.6.1-bin&#x2F;conf</span><br><span class="line">修改zoo.cfg文件</span><br><span class="line">vi zoo.cfg</span><br><span class="line">clientPort&#x3D;2181</span><br><span class="line">server.1&#x3D;172.16.1.190:2888:3888</span><br><span class="line">server.2&#x3D;172.16.1.191:2888:3888</span><br><span class="line">server.3&#x3D;172.16.1.192:2888:3888</span><br><span class="line">三台虚拟机相同</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.190虚拟机</span><br><span class="line">在zkdata的myid文件写入1</span><br><span class="line">vi &#x2F;opt&#x2F;zookeeper&#x2F;zkdata&#x2F;myid</span><br><span class="line">1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.191虚拟机</span><br><span class="line">在zkdata的myid文件写入2</span><br><span class="line">vi &#x2F;opt&#x2F;zookeeper&#x2F;zkdata&#x2F;myid</span><br><span class="line">2</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">172.16.1.192虚拟机</span><br><span class="line">在zkdata的myid文件写入3</span><br><span class="line">vi &#x2F;opt&#x2F;zookeeper&#x2F;zkdata&#x2F;myid</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>测试(三台)  </p>
+<blockquote>
+<p>zkServer.sh start<br>zkServer.sh status  </p>
+</blockquote>
+<p><strong>配置kafka</strong>  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">进入kafka的config目录</span><br><span class="line">cd &#x2F;opt&#x2F;kafka&#x2F;kafka_2.12-2.5.0&#x2F;config</span><br><span class="line">修改server.properties文件</span><br><span class="line">vi server.properties</span><br><span class="line"></span><br><span class="line">172.16.1.190修改：</span><br><span class="line">broker.id&#x3D;1</span><br><span class="line">listeners&#x3D;PLAINTEXT:&#x2F;&#x2F;172.16.1.190:9092</span><br><span class="line">log.retention.hours&#x3D;168</span><br><span class="line">message.max.byte&#x3D;5242880</span><br><span class="line">default.replication.factor&#x3D;2</span><br><span class="line">replica.fetch.max.bytes&#x3D;5242880</span><br><span class="line">zookeeper.connect&#x3D;172.16.1.190:2181,172.16.1.191:2181,172.16.1.192:2181</span><br><span class="line"></span><br><span class="line">172.16.1.191修改：</span><br><span class="line">broker.id&#x3D;2</span><br><span class="line">listeners&#x3D;PLAINTEXT:&#x2F;&#x2F;172.16.1.191:9092</span><br><span class="line">log.retention.hours&#x3D;168</span><br><span class="line">message.max.byte&#x3D;5242880</span><br><span class="line">default.replication.factor&#x3D;2</span><br><span class="line">replica.fetch.max.bytes&#x3D;5242880</span><br><span class="line">zookeeper.connect&#x3D;172.16.1.190:2181,172.16.1.191:2181,172.16.1.192:2181</span><br><span class="line"></span><br><span class="line">172.16.1.192修改：</span><br><span class="line">broker.id&#x3D;3</span><br><span class="line">listeners&#x3D;PLAINTEXT:&#x2F;&#x2F;172.16.1.192:9092</span><br><span class="line">log.retention.hours&#x3D;168</span><br><span class="line">message.max.byte&#x3D;5242880</span><br><span class="line">default.replication.factor&#x3D;2</span><br><span class="line">replica.fetch.max.bytes&#x3D;5242880</span><br><span class="line">zookeeper.connect&#x3D;172.16.1.190:2181,172.16.1.191:2181,172.16.1.192:2181</span><br></pre></td></tr></table></figure>
+
+<p>测试(在leader节点测试)  </p>
+<blockquote>
+<p>kafka-server-start.sh -daemon $KAFKA_HOME/config/server.properties<br>jps -m</p>
+</blockquote>
+<h2 id="启动测试"><a href="#启动测试" class="headerlink" title="启动测试"></a>启动测试</h2><p>启动三台虚拟机的zookeeper<br>启动leader节点虚拟机的kafka<br>创建话题topic验证  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">kafka-topics.sh --create --zookeeper 172.16.1.190:2181 --replication-factor 1 --partitions 1 --topic my-topic  </span><br><span class="line">kafka-console-producer.sh --broker-list 172.16.1.190:9092 --topic my-topic  </span><br><span class="line">kafka-console-consumer.sh --bootstrap-server 172.16.1.190:9092 --topic my-topic  </span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -197,18 +221,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/25/CentOS%E6%90%AD%E5%BB%BAkafka%E9%9B%86%E7%BE%A4/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CentOS搭建kafka集群
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/11/12/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8BGhelper%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">谷歌上网助手Ghelper插件安装</div>
+    <a href="/2020/11/15/Anaconda%E7%9A%84%E5%AE%89%E8%A3%85%E5%8F%8A%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Anaconda的安装及使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -235,7 +250,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%8F%82%E8%A7%81%E4%B8%8B%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">详细参见下文</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">搭建步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#kafka%E5%8D%95%E8%8A%82%E7%82%B9%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%8B%E9%9A%86%E4%B8%A4%E5%8F%B0"><span class="toc-number">2.</span> <span class="toc-text">kafka单节点虚拟机克隆两台</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEzookeeper%E5%92%8Ckafka"><span class="toc-number">3.</span> <span class="toc-text">配置zookeeper和kafka</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%B5%8B%E8%AF%95"><span class="toc-number">4.</span> <span class="toc-text">启动测试</span></a></li></ol>
                     </div>
                 </span>
             </div>
