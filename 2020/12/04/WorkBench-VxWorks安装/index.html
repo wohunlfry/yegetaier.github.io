@@ -16,7 +16,7 @@
 <meta property="og:description" content="步骤 下载安装资源 Window10虚拟机安装 WorkBench3.2安装（在Window10虚拟机） VxWorks虚拟机安装">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-04T11:09:37.000Z">
-<meta property="article:modified_time" content="2020-12-04T11:11:12.638Z">
+<meta property="article:modified_time" content="2020-12-06T05:12:45.437Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
@@ -176,6 +176,10 @@
 <a id="more"></a>
 
 
+<h2 id="WorkBench-VxWorks介绍"><a href="#WorkBench-VxWorks介绍" class="headerlink" title="WorkBench-VxWorks介绍"></a>WorkBench-VxWorks介绍</h2><p>嵌入式软件开发有别于桌面软件系统开发的一个显著特点，是它一般需要一个交叉编译和调试环境，即编辑和编译软件在宿主机上进行(如在PC机的Windows操作系统下)，编译好的软件需要下载到目标机上运行(如在一个PPC的目标机上的VxWorks操作系统下)，主机和目标机建立起通讯连接，并传输调试命令和数据。  </p>
+<p>虽然许多集成开发环境附带模拟软件，但仅限于指令集的模拟，均无法模拟物理的目标机硬件平台，因而在其上只能进行应用程序的象征性模拟开发。但是，并非所有人都能拥有一块物理的电路板。在这种情况下，我们就需要构造一个模拟硬件环境的虚拟机，达到电路板的效果。  </p>
+<p>Workbench集成开发环境是对Tornado集成开发环境的一次脱胎换骨的升级，但目前并不能说Workbench就可以完全取代Tornado。这是因为Workbench只对VxWorks6.0以上的版本(具有“进程”的概念)进行支持，如果用户想使用VxWorks6.0以下的版本(扁平地址空间，应用程序均在内核中运行)，那只能用Tornado进行开发。  </p>
+<p>VxWorks用户程序通过串口和超级终端软件下载到目标板。</p>
 <h2 id="详细安装过程参照以下文章"><a href="#详细安装过程参照以下文章" class="headerlink" title="详细安装过程参照以下文章"></a>详细安装过程参照以下文章</h2><p>安装基本过程：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35192280/article/details/85268313">https://blog.csdn.net/qq_35192280/article/details/85268313</a><br>（如果WorkBench3.2启动失败，建议解压安装，不使用虚拟光驱安装）<br>WorkBench启动错误(Invalid host)解决：<a target="_blank" rel="noopener" href="https://my.oschina.net/u/4330242/blog/3312665">https://my.oschina.net/u/4330242/blog/3312665</a>  </p>
 
       
@@ -236,7 +240,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E5%8F%82%E7%85%A7%E4%BB%A5%E4%B8%8B%E6%96%87%E7%AB%A0"><span class="toc-number">2.</span> <span class="toc-text">详细安装过程参照以下文章</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WorkBench-VxWorks%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.</span> <span class="toc-text">WorkBench-VxWorks介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B%E5%8F%82%E7%85%A7%E4%BB%A5%E4%B8%8B%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">详细安装过程参照以下文章</span></a></li></ol>
                     </div>
                 </span>
             </div>
