@@ -6,18 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Archives | 随机漫步的丸子</title>
+  <title>WorkBench在目标机调试程序 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/archives/page/2/index.html">
+  <meta name="description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的license需从bctbak服务器获取，本地主机需要联网，同时本地主机要连接目标机调试，所以需要双网卡。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WorkBench在目标机调试程序">
+<meta property="og:url" content="https://jz.wohunlfry.top/2020/12/07/WorkBench%E5%9C%A8%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的license需从bctbak服务器获取，本地主机需要联网，同时本地主机要连接目标机调试，所以需要双网卡。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207123959.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124221.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124430.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124735.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125015.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125333.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125501.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125647.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125800.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125841.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130007.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130126.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130347.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130441.png">
+<meta property="article:published_time" content="2020-12-07T03:45:53.000Z">
+<meta property="article:modified_time" content="2020-12-07T05:23:37.095Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207123959.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -145,160 +162,109 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-WorkBench在目标机调试程序" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      WorkBench在目标机调试程序
+    </h1>
+  
+
+        
+        <a href="/2020/12/07/WorkBench%E5%9C%A8%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2020-12-07T03:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-07</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道。<br>在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。  </p>
+<p>目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的license需从bctbak服务器获取，本地主机需要联网，同时本地主机要连接目标机调试，所以需要双网卡。  </p>
+<a id="more"></a>
+
+
+<p>前提：已搭建好WorkBench+VxWorks开发环境<br>（具体搭建过程可参考此文章：<a href="https://jz.wohunlfry.top/2020/12/04/WorkBench-VxWorks%E5%AE%89%E8%A3%85/">https://jz.wohunlfry.top/2020/12/04/WorkBench-VxWorks%E5%AE%89%E8%A3%85/</a>）  </p>
+<h2 id="目标机运行程序（VxWorks-Downloader-Kernal-Module-Project，单盘应用工程）"><a href="#目标机运行程序（VxWorks-Downloader-Kernal-Module-Project，单盘应用工程）" class="headerlink" title="目标机运行程序（VxWorks Downloader Kernal Module Project，单盘应用工程）"></a>目标机运行程序（VxWorks Downloader Kernal Module Project，单盘应用工程）</h2><p><strong>导入Example工程</strong><br>file&gt;&gt;new&gt;&gt;Example<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207123959.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124221.png"><br>完成工程的导入  </p>
+<p><strong>设置编译环境</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124430.png"><br>查看目标机CPU型号<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124735.png"><br>设置Tools<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125015.png">  </p>
+<p><strong>编译工程</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125333.png">  </p>
+<p><strong>新建目标板连接</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125501.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125647.png">  </p>
+<p><strong>下载程序</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125800.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207125841.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130007.png">  </p>
+<p><strong>运行程序</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130126.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130347.png"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130441.png"><br>Run  </p>
+<p>Debug调试程序同理  </p>
+<p>附参考文章：<a target="_blank" rel="noopener" href="https://wenku.baidu.com/view/89146e40524de518974b7d75.html">https://wenku.baidu.com/view/89146e40524de518974b7d75.html</a>  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2020-11-12T04:27:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/">CentOS7通过yum安装MySQL</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/" class="archive-article-date">
-  	<time datetime="2020-11-11T12:28:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/12/05/PicGo-GitHub%E5%9B%BE%E5%BA%8A%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PicGo-GitHub图床搭建</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/">CentOS使用yum安装jdk1.8</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8F%EF%BC%88VxWorks-Downloader-Kernal-Module-Project%EF%BC%8C%E5%8D%95%E7%9B%98%E5%BA%94%E7%94%A8%E5%B7%A5%E7%A8%8B%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">目标机运行程序（VxWorks Downloader Kernal Module Project，单盘应用工程）</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/" class="archive-article-date">
-  	<time datetime="2020-11-11T11:27:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/">JAVA实现连接CentOS虚拟机的Telnet-Server</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-11-11T01:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/11/%E6%90%AD%E5%BB%BACentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84telnet%E6%9C%8D%E5%8A%A1/">搭建CentOS虚拟机的telnet服务</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2020-11-10T08:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages搭建博客</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="page-number current">2</span>
-    </nav>
   
 
 
@@ -322,8 +288,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
