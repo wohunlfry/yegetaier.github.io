@@ -8,12 +8,12 @@
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
   <title>WorkBench在目标机调试程序 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，进行编译后程序的装载。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的">
+  <meta name="description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，完成编译后程序的download过程。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为Wo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="WorkBench在目标机调试程序">
 <meta property="og:url" content="https://jz.wohunlfry.top/2020/12/07/WorkBench%E5%9C%A8%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，进行编译后程序的装载。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的">
+<meta property="og:description" content="WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，完成编译后程序的download过程。在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。   目前使用WorkBench调试时，需要双网卡支持。因为Wo">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207123959.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207124221.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130347.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20201207130441.png">
 <meta property="article:published_time" content="2020-12-07T03:45:53.000Z">
-<meta property="article:modified_time" content="2020-12-16T08:58:43.238Z">
+<meta property="article:modified_time" content="2020-12-30T04:24:21.441Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="VxWorks  WorkBench">
 <meta name="twitter:card" content="summary">
@@ -184,7 +184,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，进行编译后程序的装载。<br>在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。  </p>
+        <p>WorkBench在宿主机，VxWorks在目标机，通过IP+FTP建立宿主机与目标机之间的连接通道装载VxWorks系统，通过WorkBench与VxWorks的串口下载程序到目标机，完成编译后程序的download过程。<br>在集成开发环境WorkBench进行程序开发，编译后，通过连接通道传输指令和数据到目标机，进行程序的调试和运行。  </p>
 <p>目前使用WorkBench调试时，需要双网卡支持。因为WorkBench的license需从bctbak服务器获取，本地主机需要联网，同时本地主机要连接目标机调试，所以需要双网卡。  </p>
 <a id="more"></a>
 
@@ -417,6 +417,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">TCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">UDP python</a>
               </li>
              
@@ -426,6 +430,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">VMware  Window</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">VxWorks</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VxWorks select</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">VxWorks  taskSpawn</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -457,15 +473,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">校招</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">伏羲PDF</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Ghelper</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VxWorks  taskSpawn</a>
               </li>
             
             <div class="clearfix"></div>
