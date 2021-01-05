@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Tag: Ghelper | 随机漫步的丸子</title>
+  <title>VS调试QT项目-环境搭建 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/tags/Ghelper/index.html">
+  <meta name="description" content="VS搭建QT程序调试的环境">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS调试QT项目-环境搭建">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/01/05/VS%E8%B0%83%E8%AF%95QT%E9%A1%B9%E7%9B%AE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="VS搭建QT程序调试的环境">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-05T05:49:47.000Z">
+<meta property="article:modified_time" content="2021-01-05T06:04:15.168Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="VS QT">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -145,60 +147,124 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-VS调试QT项目-环境搭建" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/12/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8BGhelper%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2020-11-12T13:40:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/12/%E8%B0%B7%E6%AD%8C%E4%B8%8A%E7%BD%91%E5%8A%A9%E6%89%8BGhelper%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/">谷歌上网助手Ghelper插件安装</a>
+    <h1 class="article-title" itemprop="name">
+      VS调试QT项目-环境搭建
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/01/05/VS%E8%B0%83%E8%AF%95QT%E9%A1%B9%E7%9B%AE-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2021-01-05T05:49:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>VS搭建QT程序调试的环境  </p>
+<a id="more"></a>
+
+
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="VS安装"><a href="#VS安装" class="headerlink" title="VS安装"></a>VS安装</h3><p>官网：<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/vs/">https://visualstudio.microsoft.com/zh-hans/vs/</a>  </p>
+<h3 id="QT安装（勾选上msvc2017-64扩展）"><a href="#QT安装（勾选上msvc2017-64扩展）" class="headerlink" title="QT安装（勾选上msvc2017_64扩展）"></a>QT安装（勾选上msvc2017_64扩展）</h3><p>官网：<a target="_blank" rel="noopener" href="https://www.qt.io/cn">https://www.qt.io/cn</a>  </p>
+<h3 id="Qt-VS-Tools安装"><a href="#Qt-VS-Tools安装" class="headerlink" title="Qt VS Tools安装"></a>Qt VS Tools安装</h3><p>官网：<a target="_blank" rel="noopener" href="https://download.qt.io/development_releases/vsaddin/">https://download.qt.io/development_releases/vsaddin/</a>  </p>
+<h3 id="通过Qt-VS-Tools工具添加msvc到VS"><a href="#通过Qt-VS-Tools工具添加msvc到VS" class="headerlink" title="通过Qt VS Tools工具添加msvc到VS"></a>通过Qt VS Tools工具添加msvc到VS</h3><p>参考：<a target="_blank" rel="noopener" href="http://c.biancheng.net/view/1818.html">http://c.biancheng.net/view/1818.html</a>  </p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Ghelper</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">VS QT</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2021/01/05/Git%E4%B9%8B%E5%85%8B%E9%9A%86%E6%8F%90%E4%BA%A4%E6%8E%A8%E9%80%81%E8%8E%B7%E5%8F%96%E6%8B%89%E5%8F%96%E5%9B%9E%E9%80%80%E6%A3%80%E5%87%BA%E6%A0%87%E7%AD%BE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Git之克隆提交推送获取拉取回退检出标签
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2021/01/04/TCP%E4%B9%8BKeepAlive%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">TCP之KeepAlive实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#VS%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">VS安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QT%E5%AE%89%E8%A3%85%EF%BC%88%E5%8B%BE%E9%80%89%E4%B8%8Amsvc2017-64%E6%89%A9%E5%B1%95%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">QT安装（勾选上msvc2017_64扩展）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Qt-VS-Tools%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.</span> <span class="toc-text">Qt VS Tools安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Qt-VS-Tools%E5%B7%A5%E5%85%B7%E6%B7%BB%E5%8A%A0msvc%E5%88%B0VS"><span class="toc-number">1.4.</span> <span class="toc-text">通过Qt VS Tools工具添加msvc到VS</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +287,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
