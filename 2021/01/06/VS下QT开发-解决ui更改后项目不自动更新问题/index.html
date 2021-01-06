@@ -6,20 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>CentOS7通过yum安装MySQL | 随机漫步的丸子</title>
+  <title>VS下QT开发-解决ui更改后项目不自动更新问题 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="步骤 更新yum 添加MySQL的yum仓库源 查看MySQL版本 启用指定版本MySQL 安装MySQL MySQL初始化设置 设置远程连接 开MySQL防火墙端口">
+  <meta name="description" content="VS下开发QT项目，通过Qt Designer设计窗体界面，然后在VS中进行窗体头文件和源程序文件的开发。但是，针对xxx.ui文件更改，VS并不会自动更新项目文件，即在编程时，会找不到窗体组件的变量。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CentOS7通过yum安装MySQL">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/index.html">
+<meta property="og:title" content="VS下QT开发-解决ui更改后项目不自动更新问题">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="步骤 更新yum 添加MySQL的yum仓库源 查看MySQL版本 启用指定版本MySQL 安装MySQL MySQL初始化设置 设置远程连接 开MySQL防火墙端口">
+<meta property="og:description" content="VS下开发QT项目，通过Qt Designer设计窗体界面，然后在VS中进行窗体头文件和源程序文件的开发。但是，针对xxx.ui文件更改，VS并不会自动更新项目文件，即在编程时，会找不到窗体组件的变量。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-12T04:27:40.000Z">
-<meta property="article:modified_time" content="2020-12-16T08:54:40.166Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210106140440.png">
+<meta property="article:published_time" content="2021-01-06T05:39:50.000Z">
+<meta property="article:modified_time" content="2021-01-06T06:05:05.346Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="CentOS  MySQL">
+<meta property="article:tag" content="VS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210106140440.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -147,45 +149,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CentOS7通过yum安装MySQL" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VS下QT开发-解决ui更改后项目不自动更新问题" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      CentOS7通过yum安装MySQL
+      VS下QT开发-解决ui更改后项目不自动更新问题
     </h1>
   
 
         
-        <a href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2020-11-12T04:27:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-12</time>
+        <a href="/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-01-06T05:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
-<li>更新yum</li>
-<li>添加MySQL的yum仓库源</li>
-<li>查看MySQL版本</li>
-<li>启用指定版本MySQL</li>
-<li>安装MySQL</li>
-<li>MySQL初始化设置</li>
-<li>设置远程连接</li>
-<li>开MySQL防火墙端口</li>
-</ul>
+        <p>VS下开发QT项目，<br>通过Qt Designer设计窗体界面，然后在VS中进行窗体头文件和源程序文件的开发。<br>但是，针对xxx.ui文件更改，VS并不会自动更新项目文件，<br>即在编程时，会找不到窗体组件的变量。  </p>
 <a id="more"></a>
 
 
-<h2 id="详细过程见"><a href="#详细过程见" class="headerlink" title="详细过程见"></a>详细过程见</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Mrqiang9001/article/details/101377149">https://blog.csdn.net/Mrqiang9001/article/details/101377149</a>  </p>
-<h2 id="开MySQL防火墙端口-补充"><a href="#开MySQL防火墙端口-补充" class="headerlink" title="开MySQL防火墙端口 (补充)"></a>开MySQL防火墙端口 (<strong><em>补充</em></strong>)</h2><p>永久添加例外端口  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># firewall-cmd --permanent --add-port&#x3D;3306&#x2F;tcp  </span><br><span class="line"># firewall-cmd --permanent --add-port&#x3D;3306&#x2F;udp</span><br></pre></td></tr></table></figure>
-
-<p>重启防火墙  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># sudo firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h2 id="解决方案：手动刷新项目文件"><a href="#解决方案：手动刷新项目文件" class="headerlink" title="解决方案：手动刷新项目文件"></a>解决方案：手动刷新项目文件</h2><p>Qt项目文件除了xxx.ui通过外部Qt Designer工具进行更改，其他文件全部在VS做更改。<br>VS下做文件的更改，只要保存，就实时更新到项目。  </p>
+<p>而xxx.ui文件通过编译实现内容的更新。<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210106140440.png" alt="image">  </p>
 
       
 
@@ -199,7 +188,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CentOS  MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VS</a>
         		</li>
       		
 		</ul>
@@ -218,18 +207,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/11/12/CentOS%E9%83%A8%E7%BD%B2kafka%E5%8D%95%E8%8A%82%E7%82%B9/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CentOS部署kafka单节点
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CentOS使用yum安装jdk1.8</div>
+    <a href="/2021/01/06/VS%E4%B8%8BQT%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VS下QT项目文件结构</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -256,7 +236,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%A6%E7%BB%86%E8%BF%87%E7%A8%8B%E8%A7%81"><span class="toc-number">2.</span> <span class="toc-text">详细过程见</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80MySQL%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3-%E8%A1%A5%E5%85%85"><span class="toc-number">3.</span> <span class="toc-text">开MySQL防火墙端口 (补充)</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88%EF%BC%9A%E6%89%8B%E5%8A%A8%E5%88%B7%E6%96%B0%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">解决方案：手动刷新项目文件</span></a></li></ol>
                     </div>
                 </span>
             </div>
