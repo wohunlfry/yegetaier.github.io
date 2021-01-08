@@ -6,20 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>VxWorks之Page-Fault解决 | 随机漫步的丸子</title>
+  <title>VxWorks-WorkBench新建C++项目 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="执行VxWorks程序时，遇到Page Fault错误解决。">
+  <meta name="description" content="WorkBench新建C++项目，包含头文件和源文件。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VxWorks之Page-Fault解决">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/12/30/VxWorks%E4%B9%8BPage-Fault%E8%A7%A3%E5%86%B3/index.html">
+<meta property="og:title" content="VxWorks-WorkBench新建C++项目">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="执行VxWorks程序时，遇到Page Fault错误解决。">
+<meta property="og:description" content="WorkBench新建C++项目，包含头文件和源文件。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-30T05:37:28.000Z">
-<meta property="article:modified_time" content="2020-12-30T07:19:56.762Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210108130603.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210108131207.png">
+<meta property="article:published_time" content="2021-01-08T04:57:31.000Z">
+<meta property="article:modified_time" content="2021-01-08T05:20:44.200Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="VxWorks">
+<meta property="article:tag" content="WorkBench VxWorks">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210108130603.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -147,32 +150,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VxWorks之Page-Fault解决" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-VxWorks-WorkBench新建C-项目" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      VxWorks之Page-Fault解决
+      VxWorks-WorkBench新建C++项目
     </h1>
   
 
         
-        <a href="/2020/12/30/VxWorks%E4%B9%8BPage-Fault%E8%A7%A3%E5%86%B3/" class="archive-article-date">
-  	<time datetime="2020-12-30T05:37:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-30</time>
+        <a href="/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
+  	<time datetime="2021-01-08T04:57:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>执行VxWorks程序时，遇到Page Fault错误解决。  </p>
+        <p>WorkBench新建C++项目，包含头文件和源文件。  </p>
 <a id="more"></a>
 
 
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>访问存储器的指令发生页异常。<br>多由地址错误引起，主要地址错误为栈越界，还有数组越界、指针越界等。  </p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>根据实际情况，增加相应的地址空间大小。如：<br>增加数组的初始化空间大小；<br>避免数组操作越界；<br>避免指针操作越界；<br>为任务分配更大的任务空间；<br>增加VxWorks虚拟机的内存空间；</p>
+<h2 id="新建VxWorks项目"><a href="#新建VxWorks项目" class="headerlink" title="新建VxWorks项目"></a>新建VxWorks项目</h2><p>参考：<a href="https://jz.wohunlfry.top/2020/12/07/WorkBench%E5%9C%A8%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/">https://jz.wohunlfry.top/2020/12/07/WorkBench%E5%9C%A8%E7%9B%AE%E6%A0%87%E6%9C%BA%E8%B0%83%E8%AF%95%E7%A8%8B%E5%BA%8F/</a>  </p>
+<h2 id="新建头文件和源文件的文件夹"><a href="#新建头文件和源文件的文件夹" class="headerlink" title="新建头文件和源文件的文件夹"></a>新建头文件和源文件的文件夹</h2><p>在VxWorks工程项目下新建Header Files文件夹和Source Files文件夹<br>Header Files：存放C++项目的头文件<br>Source Files：存放C++项目的源文件<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210108130603.png" alt="image">  </p>
+<h2 id="设置项目的Build-Tools"><a href="#设置项目的Build-Tools" class="headerlink" title="设置项目的Build Tools"></a>设置项目的Build Tools</h2><p>右键项目 -&gt; Properties -&gt; Build Properties -&gt; Build Tools<br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210108131207.png" alt="image">  </p>
+<h2 id="右键new头文件和源文件"><a href="#右键new头文件和源文件" class="headerlink" title="右键new头文件和源文件"></a>右键new头文件和源文件</h2><p>函数建议在头文件中实现<br>注意源文件的引用路径：  </p>
+<blockquote>
+<p>#include “../Header Files/xxx.h”  </p>
+</blockquote>
+<h2 id="编译装载运行项目"><a href="#编译装载运行项目" class="headerlink" title="编译装载运行项目"></a>编译装载运行项目</h2><p>右键编译项目，Download项目，Run项目，或者Debug项目等。  </p>
 
       
 
@@ -186,7 +195,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VxWorks</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WorkBench VxWorks</a>
         		</li>
       		
 		</ul>
@@ -205,18 +214,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2020/12/30/TCP%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%A3%80%E6%B5%8B%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          TCP长连接检测机制
-        
-      </div>
-    </a>
   
-  
-    <a href="/2020/12/30/%E6%A0%A1%E6%8B%9B%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">校招经验总结</div>
+    <a href="/2021/01/07/Git%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Git远程分支到本地</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -243,7 +243,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">解决办法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BAVxWorks%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.</span> <span class="toc-text">新建VxWorks项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C%E6%BA%90%E6%96%87%E4%BB%B6%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.</span> <span class="toc-text">新建头文件和源文件的文件夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E9%A1%B9%E7%9B%AE%E7%9A%84Build-Tools"><span class="toc-number">3.</span> <span class="toc-text">设置项目的Build Tools</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%B3%E9%94%AEnew%E5%A4%B4%E6%96%87%E4%BB%B6%E5%92%8C%E6%BA%90%E6%96%87%E4%BB%B6"><span class="toc-number">4.</span> <span class="toc-text">右键new头文件和源文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91%E8%A3%85%E8%BD%BD%E8%BF%90%E8%A1%8C%E9%A1%B9%E7%9B%AE"><span class="toc-number">5.</span> <span class="toc-text">编译装载运行项目</span></a></li></ol>
                     </div>
                 </span>
             </div>
