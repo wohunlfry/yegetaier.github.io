@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>随机漫步的丸子</title>
+  <title>TCP报文解析 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/index.html">
+  <meta name="description" content="TCP报文解析的实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="TCP报文解析">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/01/13/TCP%E6%8A%A5%E6%96%87%E8%A7%A3%E6%9E%90/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="TCP报文解析的实现">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-01-13T04:44:15.000Z">
+<meta property="article:modified_time" content="2021-01-13T04:52:29.380Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="TCP">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -145,16 +147,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-TCP报文解析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-TCP报文解析" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/13/TCP%E6%8A%A5%E6%96%87%E8%A7%A3%E6%9E%90/">TCP报文解析</a>
+    <h1 class="article-title" itemprop="name">
+      TCP报文解析
     </h1>
   
 
@@ -168,9 +168,14 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>TCP报文解析的实现  </p>
-        
-          <a class="article-more-a" href="/2021/01/13/TCP%E6%8A%A5%E6%96%87%E8%A7%A3%E6%9E%90/#more">more >></a>
-        
+<a id="more"></a>
+
+
+<h2 id="原始套接字"><a href="#原始套接字" class="headerlink" title="原始套接字"></a>原始套接字</h2><p>原始套接字的特点：<br>原始套接字（SOCK_RAW）可以用来自行组装IP数据包，然后将数据包发送到其他终端。也就是说原始套接字是基于IP数据包的编程（SOCK_PACKET是基于数据链路层的编程）。另外，必须在管理员权限下才能使用原始套接字。  </p>
+<p>原始套接口提供了普通TCP和UDP socket不能提供的3个能力：<br>1、进程使用raw socket 可以读写ICMP、IGMP等分组。这个能力还使得使用ICMP或IGMP构造的应用程序能够完全作为用户进程处理，而不必往内核中添加额外代码。<br>2、大多数内核只处理IPv4数据报中一个名为协议的8位字段的值为1（ICMP）、2（IGMP）、6（TCP）、17（UDP）四种情况。然而该字段的值还有许多其他值。进程使用raw socket 就可以读写那些内核不处理的IPv4数据报了。因此，可以使用原始套接字定义用户自己的协议格式。<br>3、通过使用raw socket ，进程可以使用IP_HDRINCL套接口选项自行构造IP头部。这个能力可用于构造特定类型的TCP或UDP分组等。  </p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/cyx-b/p/12638007.html">https://www.cnblogs.com/cyx-b/p/12638007.html</a>  </p>
+<h2 id="python实现code"><a href="#python实现code" class="headerlink" title="python实现code"></a>python实现code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">import socket</span><br><span class="line">import struct</span><br><span class="line">from struct import *</span><br><span class="line">from time import ctime, sleep</span><br><span class="line">from os import system</span><br><span class="line"></span><br><span class="line"># the public network interface</span><br><span class="line">HOST &#x3D; socket.gethostbyname(socket.gethostname())</span><br><span class="line"></span><br><span class="line"># create a raw socket and bind it to the public interface</span><br><span class="line">s &#x3D; socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_IP)</span><br><span class="line">s.bind((HOST, 9999))</span><br><span class="line"></span><br><span class="line"># Include IP headers</span><br><span class="line">s.setsockopt(socket.IPPROTO_IP, socket.IP_HDRINCL, 1)</span><br><span class="line"></span><br><span class="line"># receive all packages</span><br><span class="line"># s.ioctl(socket.SIO_RCVALL, socket.RCVALL_ON)</span><br><span class="line"></span><br><span class="line">def parse_tcp_header(tcp_header):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    TCP报文格式</span><br><span class="line">    1. 16位源端口号 16位目的端口号</span><br><span class="line">    2. 32位序列号</span><br><span class="line">    3. 32位确认号</span><br><span class="line">    4. 4位数据偏移 6位保留字段 6位TCP标记 16位窗口</span><br><span class="line">    5. 16位校验和 16位紧急指针</span><br><span class="line">    :param tcp_header:</span><br><span class="line">    :return:</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    line1 &#x3D; struct.unpack(&#39;&gt;HH&#39;, tcp_header[:4])</span><br><span class="line">    src_port &#x3D; line1[0]</span><br><span class="line">    dst_port &#x3D; line1[1]</span><br><span class="line">    line2 &#x3D; struct.unpack(&#39;&gt;L&#39;, tcp_header[4:8])</span><br><span class="line">    seq_num &#x3D; line2[0]</span><br><span class="line">    line3 &#x3D; struct.unpack(&#39;&gt;L&#39;, tcp_header[8:12])</span><br><span class="line">    ack_num &#x3D; line3[0]</span><br><span class="line">    line4 &#x3D; struct.unpack(&#39;&gt;BBH&#39;, tcp_header[12:16])  # 先按照8位、8位、16位解析</span><br><span class="line">    data_offset &#x3D; line4[0] &gt;&gt; 4  # 第一个8位右移四位获取高四位</span><br><span class="line">    flags &#x3D; line4[1] &amp; int(b&#39;00111111&#39;, 2)  # 第二个八位与00111111进行与运算获取低六位</span><br><span class="line">    FIN &#x3D; flags &amp; 1</span><br><span class="line">    SYN &#x3D; (flags &gt;&gt; 1) &amp; 1</span><br><span class="line">    RST &#x3D; (flags &gt;&gt; 2) &amp; 1</span><br><span class="line">    PSH &#x3D; (flags &gt;&gt; 3) &amp; 1</span><br><span class="line">    ACK &#x3D; (flags &gt;&gt; 4) &amp; 1</span><br><span class="line">    URG &#x3D; (flags &gt;&gt; 5) &amp; 1</span><br><span class="line">    win_size &#x3D; line4[2]</span><br><span class="line">    line5 &#x3D; struct.unpack(&#39;&gt;HH&#39;, tcp_header[16:20])</span><br><span class="line">    tcp_checksum &#x3D; line5[0]</span><br><span class="line">    urg_pointer &#x3D; line5[1]</span><br><span class="line"></span><br><span class="line">    # 返回结果</span><br><span class="line">    # src_port 源端口</span><br><span class="line">    # dst_port 目的端口</span><br><span class="line">    # seq_num 序列号</span><br><span class="line">    # ack_num 确认号</span><br><span class="line">    # data_offset 数据偏移量</span><br><span class="line">    # flags 标志位</span><br><span class="line">    #     FIN 结束位</span><br><span class="line">    #     SYN 同步位</span><br><span class="line">    #     RST 重启位</span><br><span class="line">    #     PSH 推送位</span><br><span class="line">    #     ACK 确认位</span><br><span class="line">    #     URG 紧急位</span><br><span class="line">    # win_size 窗口大小</span><br><span class="line">    # tcp_checksum TCP校验和</span><br><span class="line">    # urg_pointer 紧急指针</span><br><span class="line">    return &#123;</span><br><span class="line">        &#39;src_port&#39;: src_port,</span><br><span class="line">        &#39;dst_port&#39;: dst_port,</span><br><span class="line">        &#39;seq_num&#39;: seq_num,</span><br><span class="line">        &#39;ack_num&#39;: ack_num,</span><br><span class="line">        &#39;data_offset&#39;: data_offset,</span><br><span class="line">        &#39;flags&#39;: &#123;</span><br><span class="line">            &#39;FIN&#39;: FIN,</span><br><span class="line">            &#39;SYN&#39;: SYN,</span><br><span class="line">            &#39;RST&#39;: RST,</span><br><span class="line">            &#39;PSH&#39;: PSH,</span><br><span class="line">            &#39;ACK&#39;: ACK,</span><br><span class="line">            &#39;URG&#39;: URG</span><br><span class="line">        &#125;,</span><br><span class="line">        &#39;win_size&#39;: win_size,</span><br><span class="line">        &#39;tcp_checksum&#39;: tcp_checksum,</span><br><span class="line">        &#39;urg_pointer&#39;: urg_pointer</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"># receive a package</span><br><span class="line">while True:</span><br><span class="line">    packet &#x3D; s.recvfrom(65565)</span><br><span class="line">    packet &#x3D; packet[0]</span><br><span class="line"></span><br><span class="line">    ip_header &#x3D; packet[0:20]</span><br><span class="line">    iph &#x3D; unpack(&#39;!BBHHHBBH4s4s&#39;, ip_header)</span><br><span class="line">    # version &#x3D; iph[0] &gt;&gt; 4 #Version</span><br><span class="line">    # ihl &#x3D; iph[0] * 0xF    #IHL</span><br><span class="line">    # iph_length &#x3D; ihl * 4  #Total Length</span><br><span class="line">    # ttl &#x3D; iph[5]</span><br><span class="line">    protocol &#x3D; iph[6]</span><br><span class="line">    # s_addr &#x3D; socket.inet_ntoa(iph[8])</span><br><span class="line">    # d_addr &#x3D; socket.inet_ntoa(iph[9])</span><br><span class="line">    # print(ctime())</span><br><span class="line">    # print(&#39;Version : &#39; + str(version) + &#39; IHL : &#39; + str(ihl) + &#39; Total Length: &#39;+str(iph_length) + &#39; TTL : &#39; +str(ttl) + &#39; Protocol : &#39; + str(protocol) + &#39; Source Address : &#39; + str(s_addr) + &#39; Destination Address : &#39; + str(d_addr))</span><br><span class="line">    #</span><br><span class="line">    if protocol &#x3D;&#x3D; 6:</span><br><span class="line">        tcp_header &#x3D; packet[20:40]</span><br><span class="line">        print(parse_tcp_header(tcp_header))</span><br><span class="line">    #     tcph &#x3D; unpack(&#39;!HHLLBBHHH&#39; , tcp_header)</span><br><span class="line">    #     source_port &#x3D; tcph[0]</span><br><span class="line">    #     dest_port &#x3D; tcph[1]</span><br><span class="line">    #     sequence &#x3D; tcph[2]</span><br><span class="line">    #     acknowledgement &#x3D; tcph[3]</span><br><span class="line">    #     doff_reserved &#x3D; tcph[4]</span><br><span class="line">    #     tcph_length &#x3D; doff_reserved &gt;&gt; 4</span><br><span class="line">    #     print(&#39;Source Port : &#39; + str(source_port) + &#39; Dest Port : &#39; + str(dest_port) + &#39; Sequence Number : &#39; + str(sequence) + &#39; Acknowledgement : &#39; + str(acknowledgement) + &#39; TCP header length : &#39; + str(tcph_length))</span><br><span class="line">    #</span><br><span class="line">    #     data &#x3D; str(packet[40:len(packet)])</span><br><span class="line">    #     print(&#39;Data : &#39; + data)</span><br><span class="line"></span><br><span class="line"># disabled promiscuous mode</span><br><span class="line">s.ioctl(socket.SIO_RCVALL, socket.RCVALL_OFF)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
       
 
       
@@ -192,16 +197,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/13/TCP%E6%8A%A5%E6%96%87%E8%A7%A3%E6%9E%90/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/12/Qt%E7%BB%91%E5%AE%9A%E6%8C%89%E9%92%AE%E4%B8%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Qt绑定按钮与点击事件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -216,698 +229,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Qt绑定按钮与点击事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/Qt%E7%BB%91%E5%AE%9A%E6%8C%89%E9%92%AE%E4%B8%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/">Qt绑定按钮与点击事件</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/12/Qt%E7%BB%91%E5%AE%9A%E6%8C%89%E9%92%AE%E4%B8%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-12T06:54:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Qt下，按钮绑定点击事件  </p>
-        
-          <a class="article-more-a" href="/2021/01/12/Qt%E7%BB%91%E5%AE%9A%E6%8C%89%E9%92%AE%E4%B8%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/12/Qt%E7%BB%91%E5%AE%9A%E6%8C%89%E9%92%AE%E4%B8%8E%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%A7%8B%E5%A5%97%E6%8E%A5%E5%AD%97"><span class="toc-number">1.</span> <span class="toc-text">原始套接字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#python%E5%AE%9E%E7%8E%B0code"><span class="toc-number">2.</span> <span class="toc-text">python实现code</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Socket与TCP-IP协议的关系" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/12/Socket%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%B3%E7%B3%BB/">Socket与TCP/IP协议的关系</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/12/Socket%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%B3%E7%B3%BB/" class="archive-article-date">
-  	<time datetime="2021-01-12T01:44:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Socket与TCP/IP协议的关系  </p>
-        
-          <a class="article-more-a" href="/2021/01/12/Socket%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%B3%E7%B3%BB/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Socket</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/12/Socket%E4%B8%8ETCP-IP%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%85%B3%E7%B3%BB/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VxWorks-WorkBench新建C-项目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/">VxWorks-WorkBench新建C++项目</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2021-01-08T04:57:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>WorkBench新建C++项目，包含头文件和源文件、实现文件。  </p>
-        
-          <a class="article-more-a" href="/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">WorkBench VxWorks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/08/VxWorks-WorkBench%E6%96%B0%E5%BB%BAC-%E9%A1%B9%E7%9B%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Git远程分支到本地" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/07/Git%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/">Git远程分支到本地</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/07/Git%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/" class="archive-article-date">
-  	<time datetime="2021-01-07T05:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Git远程分支到本地  </p>
-        
-          <a class="article-more-a" href="/2021/01/07/Git%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/07/Git%E8%BF%9C%E7%A8%8B%E5%88%86%E6%94%AF%E5%88%B0%E6%9C%AC%E5%9C%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C语言队列的链表实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/07/C%E8%AF%AD%E8%A8%80%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/">C语言队列的链表实现</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/07/C%E8%AF%AD%E8%A8%80%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2021-01-07T03:34:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>队列是一种特殊的线性表，特殊之处在于它只允许在表的前端（front）进行删除操作，而在表的后端（rear）进行插入操作。进行插入操作的端称为队尾，进行删除操作的端称为队头。<br>因为队列只允许在一端插入，在另一端删除，所以只有最早进入队列的元素才能最先从队列中删除，故队列又称为先进先出（FIFO—first in first out）线性表。  </p>
-        
-          <a class="article-more-a" href="/2021/01/07/C%E8%AF%AD%E8%A8%80%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">queue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/07/C%E8%AF%AD%E8%A8%80%E9%98%9F%E5%88%97%E7%9A%84%E9%93%BE%E8%A1%A8%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Qt开发教程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/07/Qt%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/">Qt开发教程</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/07/Qt%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/" class="archive-article-date">
-  	<time datetime="2021-01-07T02:35:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>开发教程参考地址：<br><a target="_blank" rel="noopener" href="https://qtguide.ustclug.org/">https://qtguide.ustclug.org/</a><br><a target="_blank" rel="noopener" href="http://c.biancheng.net/qt/">http://c.biancheng.net/qt/</a><br><a target="_blank" rel="noopener" href="https://wizardforcel.gitbooks.io/qt-beginning/content/">https://wizardforcel.gitbooks.io/qt-beginning/content/</a>  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/07/Qt%E5%BC%80%E5%8F%91%E6%95%99%E7%A8%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VxWorks官方Lib库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/07/VxWorks%E5%AE%98%E6%96%B9Lib%E5%BA%93/">VxWorks官方Lib库</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/07/VxWorks%E5%AE%98%E6%96%B9Lib%E5%BA%93/" class="archive-article-date">
-  	<time datetime="2021-01-07T02:22:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>VxWorks官方Lib库地址：<br>Application API Reference: CORE Libraries -&gt; <a target="_blank" rel="noopener" href="https://docs.windriver.com/bundle/vxworks_7_application_core_os_sr0630-enus/page/CORE/aioPxLib.html">https://docs.windriver.com/bundle/vxworks_7_application_core_os_sr0630-enus/page/CORE/aioPxLib.html</a>  </p>
-<p>VxWorks Reference Manual : Libraries -&gt; <a target="_blank" rel="noopener" href="https://www.ee.ryerson.ca/~courses/ee8205/Data-Sheets/Tornado-VxWorks/vxworks/ref/libIndex.html">https://www.ee.ryerson.ca/~courses/ee8205/Data-Sheets/Tornado-VxWorks/vxworks/ref/libIndex.html</a>  </p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VxWorks</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/07/VxWorks%E5%AE%98%E6%96%B9Lib%E5%BA%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VS下QT开发-解决ui更改后项目不自动更新问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/">VS下QT开发-解决ui更改后项目不自动更新问题</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-01-06T05:39:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>VS下开发QT项目，<br>通过Qt Designer设计窗体界面，然后在VS中进行窗体头文件和源程序文件的开发。<br>但是，针对xxx.ui文件更改，VS并不会自动更新项目文件，<br>即在编程时，会找不到窗体组件的变量。  </p>
-        
-          <a class="article-more-a" href="/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/06/VS%E4%B8%8BQT%E5%BC%80%E5%8F%91-%E8%A7%A3%E5%86%B3ui%E6%9B%B4%E6%94%B9%E5%90%8E%E9%A1%B9%E7%9B%AE%E4%B8%8D%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E9%97%AE%E9%A2%98/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VS下QT项目文件结构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/06/VS%E4%B8%8BQT%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">VS下QT项目文件结构</a>
-    </h1>
-  
-
-        
-        <a href="/2021/01/06/VS%E4%B8%8BQT%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/" class="archive-article-date">
-  	<time datetime="2021-01-06T03:41:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>C++中，任何窗体或界面组件都是用类封装的。<br>QT是纯C++开发的。<br>QT项目中，一个窗体界面文件xxx.ui，对应一个窗体类的头文件xxx.h和源程序文件xxx.cpp。  </p>
-        
-          <a class="article-more-a" href="/2021/01/06/VS%E4%B8%8BQT%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">QT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/06/VS%E4%B8%8BQT%E9%A1%B9%E7%9B%AE%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -930,8 +277,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
