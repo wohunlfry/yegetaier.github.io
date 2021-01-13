@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>CentOS使用yum安装jdk1.8 | 随机漫步的丸子</title>
+  <title>Tag: Navicat | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="查看yum包含的jdk版本 yum search javaoryum list java*">
-<meta property="og:type" content="article">
-<meta property="og:title" content="CentOS使用yum安装jdk1.8">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/index.html">
+  <meta name="description" content="将更好的自己呈现给世界">
+<meta property="og:type" content="website">
+<meta property="og:title" content="随机漫步的丸子">
+<meta property="og:url" content="https://jz.wohunlfry.top/tags/Navicat/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="查看yum包含的jdk版本 yum search javaoryum list java*">
+<meta property="og:description" content="将更好的自己呈现给世界">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-11-11T12:28:55.000Z">
-<meta property="article:modified_time" content="2020-12-16T08:54:19.062Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="CentOS  jdk">
+<meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -147,138 +145,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-CentOS使用yum安装jdk" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      CentOS使用yum安装jdk1.8
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2021" class="archive-year">2021</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2021/01/13/Navicat-Premium15%E6%B0%B8%E4%B9%85%E6%BF%80%E6%B4%BB%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2021-01-13T07:29:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-13</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2021/01/13/Navicat-Premium15%E6%B0%B8%E4%B9%85%E6%BF%80%E6%B4%BB%E7%89%88%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Navicat-Premium15永久激活版安装教程</a>
     </h1>
   
 
-        
-        <a href="/2020/11/11/CentOS%E4%BD%BF%E7%94%A8yum%E5%AE%89%E8%A3%85jdk/" class="archive-article-date">
-  	<time datetime="2020-11-11T12:28:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="查看yum包含的jdk版本"><a href="#查看yum包含的jdk版本" class="headerlink" title="查看yum包含的jdk版本"></a>查看yum包含的jdk版本</h2><blockquote>
-<p>yum search java<br>or<br>yum list java*</p>
-</blockquote>
-<a id="more"></a>
-
-<h2 id="yum安装jdk1-8"><a href="#yum安装jdk1-8" class="headerlink" title="yum安装jdk1.8"></a>yum安装jdk1.8</h2><p>选择java-1.8.0-openjdk-devel.x86_64 : OpenJDK Development Environment  </p>
-<blockquote>
-<p>yum install java-1.8.0-openjdk-devel.x86_64</p>
-</blockquote>
-<h2 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h2><p>进入配置文件  </p>
-<blockquote>
-<p>vi /etc/profile  </p>
-</blockquote>
-<p>添加环境变量到文件，保存文件<br>(JAVA_HOME为jdk的实际安装目录)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;lib&#x2F;jvm&#x2F;java-1.8.0-openjdk-1.8.0.171-8.b10.el6_9.x86_64</span><br><span class="line">export CLASSPATH&#x3D;.:$JAVA_HOME&#x2F;jre&#x2F;lib&#x2F;rt.jar:$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib&#x2F;tools.jar</span><br><span class="line">export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin</span><br></pre></td></tr></table></figure>
-<p>环境变量生效</p>
-<blockquote>
-<p>source /etc/profile</p>
-</blockquote>
-<h2 id="测试是否安装成功"><a href="#测试是否安装成功" class="headerlink" title="测试是否安装成功"></a>测试是否安装成功</h2><blockquote>
-<p>java -version</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">CentOS  jdk</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Navicat</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
+        </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          CentOS7通过yum安装MySQL
-        
-      </div>
-    </a>
   
   
-    <a href="/2020/11/11/JAVA%E5%AE%9E%E7%8E%B0%E8%BF%9E%E6%8E%A5CentOS%E8%99%9A%E6%8B%9F%E6%9C%BA%E7%9A%84Telnet-Server/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA实现连接CentOS虚拟机的Telnet-Server</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8Byum%E5%8C%85%E5%90%AB%E7%9A%84jdk%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">查看yum包含的jdk版本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#yum%E5%AE%89%E8%A3%85jdk1-8"><span class="toc-number">2.</span> <span class="toc-text">yum安装jdk1.8</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">3.</span> <span class="toc-text">配置环境变量</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">4.</span> <span class="toc-text">测试是否安装成功</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -301,9 +221,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
