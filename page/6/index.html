@@ -6,19 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>VxWorks本地UDP-server-C语言开发 | 随机漫步的丸子</title>
+  <title>随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="UDP为应用程序提供了一种无需建立连接就可以发送封装的IP数据包的方法。UDP是OSI参考模型中一种无连接的传输层协议，它主要用于不要求分组顺序到达的传输中，分组传输顺序的检查与排序由应用层完成，提供面向事务的简单不可靠信息传送服务。UDP协议基本上是IP协议与上层协议的接口。UDP协议适用端口分别运行在同一台设备上的多个应用程序。UDP提供了无连接通信，且不对传送数据包进行可靠性保证，适合于一次">
-<meta property="og:type" content="article">
-<meta property="og:title" content="VxWorks本地UDP-server-C语言开发">
-<meta property="og:url" content="https://jz.wohunlfry.top/2020/12/16/VxWorks%E6%9C%AC%E5%9C%B0UDP-server-C%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/index.html">
+  <meta name="description" content="将更好的自己呈现给世界">
+<meta property="og:type" content="website">
+<meta property="og:title" content="随机漫步的丸子">
+<meta property="og:url" content="https://jz.wohunlfry.top/page/6/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="UDP为应用程序提供了一种无需建立连接就可以发送封装的IP数据包的方法。UDP是OSI参考模型中一种无连接的传输层协议，它主要用于不要求分组顺序到达的传输中，分组传输顺序的检查与排序由应用层完成，提供面向事务的简单不可靠信息传送服务。UDP协议基本上是IP协议与上层协议的接口。UDP协议适用端口分别运行在同一台设备上的多个应用程序。UDP提供了无连接通信，且不对传送数据包进行可靠性保证，适合于一次">
+<meta property="og:description" content="将更好的自己呈现给世界">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-12-16T07:06:36.000Z">
-<meta property="article:modified_time" content="2020-12-16T09:03:41.534Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="VxWorks  UDP  C语言">
+<meta property="article:tag" content="程序猿,产品,运营">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -147,39 +145,46 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-VxWorks本地UDP-server-C语言开发" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-Hexo+GitHub-Pages搭建博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      VxWorks本地UDP-server-C语言开发
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">Hexo + GitHub Pages搭建博客</a>
     </h1>
   
 
         
-        <a href="/2020/12/16/VxWorks%E6%9C%AC%E5%9C%B0UDP-server-C%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2020-12-16T07:06:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-16</time>
+        <a href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
+  	<time datetime="2020-11-10T08:57:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>UDP为应用程序提供了一种无需建立连接就可以发送封装的IP数据包的方法。UDP是OSI参考模型中一种无连接的传输层协议，它主要用于不要求分组顺序到达的传输中，分组传输顺序的检查与排序由应用层完成，提供面向事务的简单不可靠信息传送服务。UDP协议基本上是IP协议与上层协议的接口。UDP协议适用端口分别运行在同一台设备上的多个应用程序。<br>UDP提供了无连接通信，且不对传送数据包进行可靠性保证，适合于一次传输少量数据，UDP传输的可靠性由应用层负责。  </p>
-<h2 id="UDP-socket通信过程："><a href="#UDP-socket通信过程：" class="headerlink" title="UDP socket通信过程："></a>UDP socket通信过程：</h2><ul>
-<li>创建套接字</li>
-<li>绑定套接字</li>
-<li>收发数据</li>
-<li>关闭套接字</li>
+        <h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><ul>
+<li>安装Node.js</li>
+<li>安装Git</li>
+<li>安装Hexo</li>
+<li>初始化本地项目</li>
+<li>GitHub创建个人仓库</li>
+<li>配置站点_config.yml</li>
+<li>推送网站</li>
+<li>不绑定个人域名</li>
+<li>绑定个人域名</li>
+<li>更换主题</li>
+<li>初始化个人基本信息</li>
+<li>初识MarkDown语法</li>
+<li>发布文章</li>
 </ul>
-<a id="more"></a>
-
-
-<h2 id="UDP-server"><a href="#UDP-server" class="headerlink" title="UDP server"></a>UDP server</h2><p>直接收发数据，不需要连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br></pre></td><td class="code"><pre><span class="line">#include &quot;string.h&quot;</span><br><span class="line">#include &quot;stdio.h&quot;</span><br><span class="line">#include &quot;vxWorks.h&quot;</span><br><span class="line">#include &quot;sockLib.h&quot;</span><br><span class="line">&#x2F;&#x2F;#include &quot;telnetLib.h&quot;</span><br><span class="line">#include &quot;inetLib.h&quot;</span><br><span class="line">#include &quot;stdioLib.h&quot;</span><br><span class="line">#include &quot;strLib.h&quot;</span><br><span class="line">#include &quot;hostLib.h&quot;</span><br><span class="line">#include &quot;ioLib.h&quot;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 本地UDP server端口</span><br><span class="line">#define LOCAL_SERVER_PORT 6666</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 缓冲buffer长度，最大message长度</span><br><span class="line">#define BUFFER_SIZE 20480</span><br><span class="line">#define MAX_MSG_LENGTH 20480</span><br><span class="line">#define STRING_MAX_SIZE 20480</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 全局变量</span><br><span class="line">char buffer[STRING_MAX_SIZE];</span><br><span class="line">&#x2F;&#x2F; UDP的网络通信对象</span><br><span class="line">struct sockaddr_in local_udp_server_addr;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; UDP server 初始化</span><br><span class="line">int udp_server_init(int port)</span><br><span class="line">&#123;</span><br><span class="line">    int server_socket;</span><br><span class="line"></span><br><span class="line">    &#x2F;*创建套接字*&#x2F;</span><br><span class="line">    server_socket &#x3D; socket(AF_INET, SOCK_DGRAM, 0);</span><br><span class="line">    if (server_socket &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;Create Socket Failed! \n&quot;);</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 填充server地址信息</span><br><span class="line">    bzero((char *)&amp;local_udp_server_addr, sizeof(local_udp_server_addr));</span><br><span class="line">    local_udp_server_addr.sin_family &#x3D; AF_INET;</span><br><span class="line">    local_udp_server_addr.sin_addr.s_addr &#x3D; htons(INADDR_ANY);</span><br><span class="line">    local_udp_server_addr.sin_port &#x3D; htons(port);</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 绑定地址空间</span><br><span class="line">    if (bind(server_socket, (struct sockaddr *)&amp;local_udp_server_addr, sizeof(local_udp_server_addr)))</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;Server Bind Port: %d Failed! \n&quot;, port);</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return server_socket;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; UDP server 接收数据</span><br><span class="line">void udp_server_receive_data(int server_socket)</span><br><span class="line">&#123;</span><br><span class="line">    char receive_buffer[BUFFER_SIZE];</span><br><span class="line">    int length;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 接受服务器返回的状态信息</span><br><span class="line">    bzero(receive_buffer, BUFFER_SIZE);</span><br><span class="line">    int len &#x3D; sizeof(local_udp_server_addr);</span><br><span class="line">    if ((length &#x3D; recvfrom(server_socket, receive_buffer, MAX_MSG_LENGTH, 0, (struct sockaddr *)&amp;local_udp_server_addr, &amp;len)) &#x3D;&#x3D; ERROR)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;Client Recieve Data Failed! \n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    bzero(buffer, STRING_MAX_SIZE);</span><br><span class="line">    strncpy(buffer, receive_buffer, (strlen(receive_buffer) &gt; STRING_MAX_SIZE ? STRING_MAX_SIZE : strlen(receive_buffer)));</span><br><span class="line"></span><br><span class="line">    printf(&quot;receive data from client: %s \n&quot;, buffer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; UDP server 发送数据</span><br><span class="line">void udp_server_send_data(int server_socket)</span><br><span class="line">&#123;</span><br><span class="line">    char send_buffer[BUFFER_SIZE];</span><br><span class="line"></span><br><span class="line">    &#x2F;* send request to server *&#x2F;</span><br><span class="line">    bzero(send_buffer, BUFFER_SIZE);</span><br><span class="line">    strncpy(send_buffer, buffer, strlen(buffer));</span><br><span class="line">    int ret &#x3D; sendto(server_socket, send_buffer, (strlen(send_buffer) + 1), 0, (struct sockaddr *)&amp;local_udp_server_addr, sizeof(local_udp_server_addr));</span><br><span class="line">    if (ret &#x3D;&#x3D; ERROR)</span><br><span class="line">    &#123;</span><br><span class="line">        printf(&quot;Send Data to Server Error! \n&quot;);</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printf(&quot;send data to client: %s \n&quot;, send_buffer);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 当前TCP通道结束条件：接收到OVER，关闭当前TCP通道</span><br><span class="line">int finish_operation(int sock)</span><br><span class="line">&#123;</span><br><span class="line">    char temp[BUFFER_SIZE];</span><br><span class="line">    bzero(temp, BUFFER_SIZE);</span><br><span class="line">    strncpy(temp, buffer, (strlen(buffer) &gt; BUFFER_SIZE ? BUFFER_SIZE : strlen(buffer)));</span><br><span class="line"></span><br><span class="line">    if (strcmp(temp, &quot;END&quot;) &#x3D;&#x3D; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        close(sock);</span><br><span class="line">        return 1;</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main(void)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;&#x2F; 初始化UDP server</span><br><span class="line">    int udp_server_socket &#x3D; udp_server_init(LOCAL_SERVER_PORT);</span><br><span class="line">    if (udp_server_socket &lt; 0)</span><br><span class="line">    &#123;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    while (1)</span><br><span class="line">    &#123;</span><br><span class="line">        udp_server_receive_data(udp_server_socket);</span><br><span class="line">        udp_server_send_data(udp_server_socket);</span><br><span class="line"></span><br><span class="line">        if (finish_operation(udp_server_socket))</span><br><span class="line">        &#123;</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 异常结束，关闭socket</span><br><span class="line">    close(udp_server_socket);</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
+        
+          <a class="article-more-a" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/#more">more >></a>
+        
       
 
       
@@ -192,7 +197,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">VxWorks  UDP  C语言</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Hexo GitHub-Pages</a>
         		</li>
       		
 		</ul>
@@ -201,33 +206,16 @@
       
 
       
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/11/10/Hexo+GitHub-Pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
+        </p>
+      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2020/12/16/VxWorks%E6%9C%AC%E5%9C%B0UDP-client-C%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          VxWorks本地UDP-client-C语言开发
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2020/12/16/VxWorks%E6%9C%AC%E5%9C%B0TCP-client-C%E8%AF%AD%E8%A8%80%E5%BC%80%E5%8F%91/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">VxWorks本地TCP-client-C语言开发</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -242,32 +230,17 @@
         </div>
         
         
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-socket%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">UDP socket通信过程：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP-server"><span class="toc-number">2.</span> <span class="toc-text">UDP server</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
     </div>
 </aside>
 
 
 
-  
-  
-  
 
   
-
   
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/5/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    </nav>
   
 
 
@@ -290,8 +263,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
