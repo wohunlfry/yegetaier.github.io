@@ -16,7 +16,7 @@
 <meta property="og:description" content="Blender导出three.js模型.GLB或.GLTF数据，three.js引入其模型.GLB或.GLTF数据。建议使用glTF（GL传输格式）">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-18T08:04:29.000Z">
-<meta property="article:modified_time" content="2021-01-19T07:17:32.299Z">
+<meta property="article:modified_time" content="2021-01-19T09:10:26.208Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Blender  three.js">
 <meta name="twitter:card" content="summary">
@@ -194,6 +194,7 @@
 <blockquote>
 <p>import { OrbitControls } from ‘three/examples/jsm/controls/OrbitControls’  </p>
 </blockquote>
+<p><strong>若程序找不到GLTFLoader、OrbitControls，则删除webpack.base.conf.js的相应配置，只要实现文件的直接引入即可</strong>  </p>
 <h3 id="导入外部模型"><a href="#导入外部模型" class="headerlink" title="导入外部模型"></a>导入外部模型</h3><p>引入OrbitControls使用，直接new  </p>
 <blockquote>
 <p>this.controls = new OrbitControls(this.camera, this.renderer.domElement)  </p>
