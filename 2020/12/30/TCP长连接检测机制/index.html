@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
   <title>TCP长连接检测机制 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="探测方式    UDP心跳机制 TCP握手消息 TCP保活机制">
+  <meta name="description" content="探测方式    UDP心跳机制 TCP握手消息 TCP保活机制 select机制">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TCP长连接检测机制">
 <meta property="og:url" content="https://jz.wohunlfry.top/2020/12/30/TCP%E9%95%BF%E8%BF%9E%E6%8E%A5%E6%A3%80%E6%B5%8B%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="探测方式    UDP心跳机制 TCP握手消息 TCP保活机制">
+<meta property="og:description" content="探测方式    UDP心跳机制 TCP握手消息 TCP保活机制 select机制">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-12-30T06:07:39.000Z">
-<meta property="article:modified_time" content="2020-12-30T07:25:42.145Z">
+<meta property="article:modified_time" content="2021-02-01T06:05:12.756Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="TCP">
 <meta name="twitter:card" content="summary">
@@ -172,6 +172,7 @@
 <li>UDP心跳机制</li>
 <li>TCP握手消息</li>
 <li>TCP保活机制</li>
+<li>select机制</li>
 </ul>
 <a id="more"></a>
 
@@ -196,6 +197,7 @@
 <p>在工作但不响应<br>对方TCP因其他原因（网络），未响应ACK。<br>超过保活探测数后，请求端认为对方不在线，关闭连接。  </p>
 </blockquote>
 <p><strong>TCP KeepAlive开启</strong><br>在TCP协议机制，SO_KEEPALIVE默认是2小时的心跳频率，且KeepAlive默认关闭。<br>用setsockopt将SOL_SOCKET.SO_KEEPALIVE设置为1打开TCP保活机制。<br>再根据现场情况设置三个参数tcp_keepalive_time、tcp_keepalive_probes、tcp_keepalive_intvl。<br>tcp_keepalive_time：连接闲置后，发KeepAlive的ACK包的等待时间；<br>tcp_keepalive_probes：发送未响应ACk包的最大次数，超过则认为对方不在线；<br>tcp_keepalive_intvl：两个ACK包之间的时间间隔；  </p>
+<h2 id="select机制"><a href="#select机制" class="headerlink" title="select机制"></a>select机制</h2><p>TCP建立连接后，通过select并recv数据 检测TCP的连接状态。<br>前提：发送方不能发送长度为0的数据；<br>开启select检测，一旦TCP断连，接收方select中的socket将被激活，并执行recv收到空数据，由此说明TCP已断连。</p>
 
       
 
@@ -266,7 +268,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">UDP心跳机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E6%8F%A1%E6%89%8B%E6%B6%88%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">TCP握手消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E4%BF%9D%E6%B4%BB%E6%9C%BA%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">TCP保活机制</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#UDP%E5%BF%83%E8%B7%B3%E6%9C%BA%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">UDP心跳机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E6%8F%A1%E6%89%8B%E6%B6%88%E6%81%AF"><span class="toc-number">2.</span> <span class="toc-text">TCP握手消息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TCP%E4%BF%9D%E6%B4%BB%E6%9C%BA%E5%88%B6"><span class="toc-number">3.</span> <span class="toc-text">TCP保活机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#select%E6%9C%BA%E5%88%B6"><span class="toc-number">4.</span> <span class="toc-text">select机制</span></a></li></ol>
                     </div>
                 </span>
             </div>
