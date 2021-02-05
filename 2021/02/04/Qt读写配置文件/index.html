@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
   <title>Qt读写配置文件 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Qt读写配置文件system.ini   头文件的实现config.h   12345678910111213141516171819202122#ifndef CONFIG_H#define CONFIG_H#include &lt;QVariant&gt;#include &lt;QSettings&gt;class Config&amp;#123;public:	Config(QString qst">
+  <meta name="description" content="Qt读写配置文件system.ini">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Qt读写配置文件">
 <meta property="og:url" content="https://jz.wohunlfry.top/2021/02/04/Qt%E8%AF%BB%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="Qt读写配置文件system.ini   头文件的实现config.h   12345678910111213141516171819202122#ifndef CONFIG_H#define CONFIG_H#include &lt;QVariant&gt;#include &lt;QSettings&gt;class Config&amp;#123;public:	Config(QString qst">
+<meta property="og:description" content="Qt读写配置文件system.ini">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-04T05:03:13.000Z">
-<meta property="article:modified_time" content="2021-02-04T05:19:07.748Z">
+<meta property="article:modified_time" content="2021-02-05T02:35:20.168Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Qt">
 <meta name="twitter:card" content="summary">
@@ -168,6 +168,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>Qt读写配置文件system.ini  </p>
+<a id="more"></a>
+
 <h2 id="头文件的实现"><a href="#头文件的实现" class="headerlink" title="头文件的实现"></a>头文件的实现</h2><p>config.h  </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">#ifndef CONFIG_H</span><br><span class="line">#define CONFIG_H</span><br><span class="line"></span><br><span class="line">#include &lt;QVariant&gt;</span><br><span class="line">#include &lt;QSettings&gt;</span><br><span class="line"></span><br><span class="line">class Config</span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">	Config(QString qstrfilename &#x3D; &quot;&quot;);</span><br><span class="line">	virtual ~Config(void);</span><br><span class="line">	void Set(QString, QString, QVariant);</span><br><span class="line">	QVariant Get(QString, QString);</span><br><span class="line"></span><br><span class="line">private:</span><br><span class="line">	QString m_qstrFileName;</span><br><span class="line">	QSettings *m_psetting;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -211,6 +213,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/02/04/Deepin%E4%B8%8BVScode%E8%B0%83%E8%AF%95C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Deepin下VScode调试C语言项目
+        
+      </div>
+    </a>
   
   
     <a href="/2021/02/03/Deepin%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/" id="article-nav-older" class="article-nav-link-wrap">
