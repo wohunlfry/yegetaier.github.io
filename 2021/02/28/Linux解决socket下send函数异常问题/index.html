@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Tag: VMware | 随机漫步的丸子</title>
+  <title>Linux解决socket下send函数异常问题 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/tags/VMware/index.html">
+  <meta name="description" content="Linux下socket编程，若远端的socket异常中断，调用send函数会导致异常，并退出程序。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux解决socket下send函数异常问题">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/02/28/Linux%E8%A7%A3%E5%86%B3socket%E4%B8%8Bsend%E5%87%BD%E6%95%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="Linux下socket编程，若远端的socket异常中断，调用send函数会导致异常，并退出程序。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-28T02:28:52.000Z">
+<meta property="article:modified_time" content="2021-02-28T09:26:42.737Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="socket">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -145,136 +147,113 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Linux解决socket下send函数异常问题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux解决socket下send函数异常问题
+    </h1>
+  
+
+        
+        <a href="/2021/02/28/Linux%E8%A7%A3%E5%86%B3socket%E4%B8%8Bsend%E5%87%BD%E6%95%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="archive-article-date">
+  	<time datetime="2021-02-28T02:28:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Linux下socket编程，若远端的socket异常中断，调用send函数会导致异常，并退出程序。  </p>
+<a id="more"></a>
+
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>Linux下socket编程，<br>若网络异常，系统会触发一个底层信号SIGPIPE，<br>如果没有函数接口处理这个信号的话，就会导致程序异常并退出。  </p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>禁用此信号，调用send的时候，使用MSG_NOSIGNAL标志。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">if (send(conn_socket, send_buffer, (strlen(send_buffer) + 1), MSG_NOSIGNAL) &lt; 1)</span><br><span class="line">&#123;</span><br><span class="line">    printf(&quot;send failed! \n&quot;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/04/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%B8%8B%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP/" class="archive-article-date">
-  	<time datetime="2020-12-04T11:26:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/04/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%9C%A8%E4%B8%8D%E5%90%8C%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E4%B8%8B%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP/">VMware虚拟机在不同网络配置下设置静态IP</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">socket</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/04/Window10%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP-NAT%E6%A8%A1%E5%BC%8F/" class="archive-article-date">
-  	<time datetime="2020-12-04T11:10:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-04</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/02/04/Deepin%E4%B8%8BVScode%E8%B0%83%E8%AF%95C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Deepin下VScode调试C语言项目</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/04/Window10%E8%99%9A%E6%8B%9F%E6%9C%BA%E8%AE%BE%E7%BD%AE%E9%9D%99%E6%80%81IP-NAT%E6%A8%A1%E5%BC%8F/">Window10虚拟机设置静态IP-NAT模式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E5%9B%A0"><span class="toc-number">1.</span> <span class="toc-text">原因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">解决办法</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/11/26/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85windows10%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2020-11-26T12:12:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-11-26</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/11/26/VMware%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85windows10%E7%B3%BB%E7%BB%9F/">VMware虚拟机安装windows10系统</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -297,9 +276,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
