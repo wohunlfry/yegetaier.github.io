@@ -6,18 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Tag: taskSpawn | 随机漫步的丸子</title>
+  <title>Linux搭建sonarqube+sonarScanner | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/tags/taskSpawn/index.html">
+  <meta name="description" content="SonarQube是市场上很受欢迎的代码质量和安全性分析工具。它在开源社区的支持下，目前可以分析超过25种编程语言的程序。它具有免费的社区版本和其他付费版本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux搭建sonarqube+sonarScanner">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/03/02/Linux%E6%90%AD%E5%BB%BAsonarqube-sonarScanner/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="SonarQube是市场上很受欢迎的代码质量和安全性分析工具。它在开源社区的支持下，目前可以分析超过25种编程语言的程序。它具有免费的社区版本和其他付费版本。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093208.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093310.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093456.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093546.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093621.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093722.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093738.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093812.png">
+<meta property="article:published_time" content="2021-03-02T08:29:32.000Z">
+<meta property="article:modified_time" content="2021-03-03T03:47:10.030Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="SonarQube">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093208.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -145,60 +156,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Linux搭建sonarqube-sonarScanner" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/12/18/VxWorks%E5%90%AF%E5%8A%A8%E5%A4%9A%E4%BB%BB%E5%8A%A1taskSpawn/" class="archive-article-date">
-  	<time datetime="2020-12-18T09:23:30.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-12-18</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/12/18/VxWorks%E5%90%AF%E5%8A%A8%E5%A4%9A%E4%BB%BB%E5%8A%A1taskSpawn/">VxWorks启动多任务taskSpawn</a>
+    <h1 class="article-title" itemprop="name">
+      Linux搭建sonarqube+sonarScanner
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/03/02/Linux%E6%90%AD%E5%BB%BAsonarqube-sonarScanner/" class="archive-article-date">
+  	<time datetime="2021-03-02T08:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>SonarQube是市场上很受欢迎的代码质量和安全性分析工具。<br>它在开源社区的支持下，目前可以分析超过25种编程语言的程序。<br>它具有免费的社区版本和其他付费版本。  </p>
+<a id="more"></a>
+
+<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><ul>
+<li>安装JDK</li>
+<li>安装SonarQube</li>
+<li>安装MySQL</li>
+<li>连接SonarQube与MySQL</li>
+<li>安装Sonar-Scanner</li>
+<li>SonarQube添加离线插件</li>
+<li>运行Scanner</li>
+</ul>
+<h2 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h2><p>Java JDK在linux系统有两个版本，一个是开源版本Openjdk，还有一个是oracle官方版本jdk。  </p>
+<h3 id="更新软件包列表"><a href="#更新软件包列表" class="headerlink" title="更新软件包列表"></a>更新软件包列表</h3><blockquote>
+<p>sudo apt-get update  </p>
+</blockquote>
+<h3 id="安装openJDK-8"><a href="#安装openJDK-8" class="headerlink" title="安装openJDK-8"></a>安装openJDK-8</h3><blockquote>
+<p>sudo apt-get install openjdk-8-jdk  </p>
+</blockquote>
+<h3 id="检查java是否安装成功"><a href="#检查java是否安装成功" class="headerlink" title="检查java是否安装成功"></a>检查java是否安装成功</h3><blockquote>
+<p>java -version  </p>
+</blockquote>
+<h2 id="安装SonarQube"><a href="#安装SonarQube" class="headerlink" title="安装SonarQube"></a>安装SonarQube</h2><h3 id="下载SonarQube安装包"><a href="#下载SonarQube安装包" class="headerlink" title="下载SonarQube安装包"></a>下载SonarQube安装包</h3><p>地址：<a target="_blank" rel="noopener" href="https://www.sonarqube.org/downloads/">https://www.sonarqube.org/downloads/</a>  </p>
+<h3 id="解压安装包"><a href="#解压安装包" class="headerlink" title="解压安装包"></a>解压安装包</h3><p>安装包放合适位置，并解压。  </p>
+<blockquote>
+<p>unzip sonarqube-7.6.zip  </p>
+</blockquote>
+<h3 id="启动Sonar"><a href="#启动Sonar" class="headerlink" title="启动Sonar"></a>启动Sonar</h3><p>进入目录：sonaqube-7.6/bin/{os}，os为系统类型。<br>可通过命令行查看系统类型。  </p>
+<p>启动Sonar</p>
+<blockquote>
+<p>./sonar.sh start  </p>
+</blockquote>
+<p>如果在启动过程中出现如下错误：<br>Starting SonarQube…  Failed to start SonarQube.<br>请在 sonarqube-5.6.6/bin/{os} 目录下新建文件 SonarQube.pid ，然后重新启动。  </p>
+<h3 id="检查启动结果"><a href="#检查启动结果" class="headerlink" title="检查启动结果"></a>检查启动结果</h3><p>启动浏览器，访问：<a target="_blank" rel="noopener" href="http://localhost:9000/">http://localhost:9000</a>，出现SonarQube界面则表示安装成功。  </p>
+<h3 id="安装中文插件"><a href="#安装中文插件" class="headerlink" title="安装中文插件"></a>安装中文插件</h3><p><strong>中文插件下载地址</strong><br><a target="_blank" rel="noopener" href="https://github.com/xuhuisheng/sonar-l10n-zh/releases/tag/sonar-l10n-zh-plugin-1.16">https://github.com/xuhuisheng/sonar-l10n-zh/releases/tag/sonar-l10n-zh-plugin-1.16</a>  </p>
+<p><strong>将下载的插件放到 sonarqube-7.6/extensions/plugins/ 下</strong>  </p>
+<p><strong>进入SonarQube的bin目录，重启SonarQube</strong>  </p>
+<blockquote>
+<p>./sonar.sh restart  </p>
+</blockquote>
+<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><h3 id="查看SonarQube支持的MySQL版本"><a href="#查看SonarQube支持的MySQL版本" class="headerlink" title="查看SonarQube支持的MySQL版本"></a>查看SonarQube支持的MySQL版本</h3><p>查看文件：sonarqube-7.6/conf/sonar.properties，获取支持的MySQL版本。<br>一般的MySQL支持范围：MySQL &gt;=5.6 &amp;&amp; &lt;8.0  </p>
+<h3 id="CentOS安装数据库MySQL-5-7"><a href="#CentOS安装数据库MySQL-5-7" class="headerlink" title="CentOS安装数据库MySQL-5.7"></a>CentOS安装数据库MySQL-5.7</h3><p>详细参考文章：<a href="https://jz.wohunlfry.top/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/">https://jz.wohunlfry.top/2020/11/12/CentOS7%E9%80%9A%E8%BF%87yum%E5%AE%89%E8%A3%85MySQL/</a>  </p>
+<h2 id="连接SonarQube与MySQL"><a href="#连接SonarQube与MySQL" class="headerlink" title="连接SonarQube与MySQL"></a>连接SonarQube与MySQL</h2><h3 id="创建数据库sonarqube"><a href="#创建数据库sonarqube" class="headerlink" title="创建数据库sonarqube"></a>创建数据库sonarqube</h3><blockquote>
+<p>CREATE DATABASE sonarqube;  </p>
+</blockquote>
+<h3 id="修改sonar-properties配置信息"><a href="#修改sonar-properties配置信息" class="headerlink" title="修改sonar.properties配置信息"></a>修改sonar.properties配置信息</h3><p>打开文件：sonarqube-7.6/conf/sonar.properties，取消配置注释并修改  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 连接数据库的用户名</span><br><span class="line">sonar.jdbc.username&#x3D;root</span><br><span class="line"># 连接数据库的密码</span><br><span class="line">sonar.jdbc.password&#x3D;yegetaier570</span><br><span class="line"># sonar编码</span><br><span class="line">sonar.sorceEncoding&#x3D;UTF-8</span><br><span class="line"></span><br><span class="line"># sonarqube登录用户名</span><br><span class="line">sonar.login&#x3D;admin</span><br><span class="line"># sonarqube登录密码</span><br><span class="line">sonar.password&#x3D;admin</span><br><span class="line"></span><br><span class="line"># 数据库url及相关设置</span><br><span class="line">sonar.jdbc.url&#x3D;jdbc:mysql:&#x2F;&#x2F;&#123;IP&#125;:3306&#x2F;sonarqube?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf8&amp;rewriteBatchedStatements&#x3D;true&amp;useConfigs&#x3D;maxPerformance&amp;useSSL&#x3D;false</span><br><span class="line"># IP为数据库的地址</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="重启sonar，再次访问"><a href="#重启sonar，再次访问" class="headerlink" title="重启sonar，再次访问"></a>重启sonar，再次访问</h3><blockquote>
+<p>./sonar.sh restart</p>
+</blockquote>
+<h2 id="安装Sonar-Scanner"><a href="#安装Sonar-Scanner" class="headerlink" title="安装Sonar-Scanner"></a>安装Sonar-Scanner</h2><h3 id="安装包下载"><a href="#安装包下载" class="headerlink" title="安装包下载"></a>安装包下载</h3><p>地址：<a target="_blank" rel="noopener" href="https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/">https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/</a>  </p>
+<h3 id="配置Sonar-Scanner"><a href="#配置Sonar-Scanner" class="headerlink" title="配置Sonar-Scanner"></a>配置Sonar-Scanner</h3><p>将Sonar-Scanner安装包放合适位置<br>编辑文件：sonar-scanner-cli-4.6.0.2311-linux/conf/sonar-scanner.properties  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#----- Default SonarQube server</span><br><span class="line">sonar.host.url&#x3D;http:&#x2F;&#x2F;localhost:9000</span><br><span class="line">sonar.jdbc.username&#x3D;root</span><br><span class="line">sonar.jdbc.password&#x3D;yegetaier570</span><br><span class="line">sonar.jdbc.url&#x3D;jdbc:mysql:&#x2F;&#x2F;172.18.101.121:3306&#x2F;sonarqube?useUnicode&#x3D;true&amp;characterEncoding&#x3D;utf8</span><br><span class="line">＃sonar.login&#x3D;admin</span><br><span class="line">＃sonar.password&#x3D;admin</span><br><span class="line">sonar.login&#x3D;ac3238b68c831878edc8e41189fdc1a7b2d64a8a</span><br><span class="line">sonar.password&#x3D;</span><br><span class="line">#-- 如果未使用token，则使能username+password，否则使能token+空密码  </span><br><span class="line"></span><br><span class="line">#----- Default source code encoding</span><br><span class="line">sonar.sourceEncoding&#x3D;UTF-8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="在sonarqube网站创建项目"><a href="#在sonarqube网站创建项目" class="headerlink" title="在sonarqube网站创建项目"></a>在sonarqube网站创建项目</h3><p>输入项目key和项目名创建项目，并保存生成的token。  </p>
+<h3 id="在程序目录添加sonar-project-properties"><a href="#在程序目录添加sonar-project-properties" class="headerlink" title="在程序目录添加sonar-project.properties"></a>在程序目录添加sonar-project.properties</h3><p>sonar-project.properties文件放在需要审查的代码的同一目录<br>如项目目录：RT_Linux/quality<br>则sonar-project.properties放在RT_Linux/quality目录下  </p>
+<p>sonar-project.properties内容：  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># 项目的key</span><br><span class="line">sonar.projectKey&#x3D;itil:change</span><br><span class="line"># 项目的名字(可以随便写，这个名字在sonar显示的)</span><br><span class="line">sonar.projectName&#x3D;RT_Linux</span><br><span class="line"># 项目的版本</span><br><span class="line">sonar.projectVersion&#x3D;1.2</span><br><span class="line"># 需要分析的源码的目录</span><br><span class="line"># 此处使用了绝对路径</span><br><span class="line">sonar.sources&#x3D;&#x2F;home&#x2F;yegetaier&#x2F;Desktop&#x2F;RT_Linux&#x2F;quality&#x2F;</span><br><span class="line"># 这是target(如果没编译可以不写)</span><br><span class="line">sonar.java.binaries&#x3D;&#x2F;home&#x2F;yegetaier&#x2F;Desktop&#x2F;RT_Linux&#x2F;quality&#x2F;main</span><br><span class="line"># 语言</span><br><span class="line">sonar.language&#x3D;c++</span><br><span class="line"># 编码格式</span><br><span class="line">sonar.sourceEncoding&#x3D;UTF-8</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="SonarQube添加离线插件"><a href="#SonarQube添加离线插件" class="headerlink" title="SonarQube添加离线插件"></a>SonarQube添加离线插件</h2><p>SonarQube的Community版本是不支持对C语言代码进行质量分析的，Developer及以上付费版本才支持。但有一些开源的社区插件支持，比较著名的一个是sonar-cxx。  </p>
+<h3 id="插件下载"><a href="#插件下载" class="headerlink" title="插件下载"></a>插件下载</h3><p>c插件：<a target="_blank" rel="noopener" href="https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.1/sonar-c-plugin-1.3.1.1807.jar">https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.1/sonar-c-plugin-1.3.1.1807.jar</a>  </p>
+<p>c++插件：<a target="_blank" rel="noopener" href="https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.1/sonar-cxx-plugin-1.3.1.1807.jar">https://github.com/SonarOpenCommunity/sonar-cxx/releases/download/cxx-1.3.1/sonar-cxx-plugin-1.3.1.1807.jar</a>  </p>
+<h3 id="插件安装"><a href="#插件安装" class="headerlink" title="插件安装"></a>插件安装</h3><p>将下载的插件放到 sonarqube-7.6/extensions/plugins/ 下  </p>
+<h3 id="进入SonarQube的bin目录，重启SonarQube"><a href="#进入SonarQube的bin目录，重启SonarQube" class="headerlink" title="进入SonarQube的bin目录，重启SonarQube"></a>进入SonarQube的bin目录，重启SonarQube</h3><blockquote>
+<p>./sonar.sh restart  </p>
+</blockquote>
+<h3 id="设置C语言质量配置"><a href="#设置C语言质量配置" class="headerlink" title="设置C语言质量配置"></a>设置C语言质量配置</h3><p>因Sonar way为内建不可更改的质量规则，即使安装了C和C++的插件，关于C和C++的代码规则都还是0，需要新建C和C++的质量规则。<br>另外，从右侧的侧栏可以看到安装完C和C++的插件后，新增了13K的未激活的规则。  </p>
+<p><strong>在“质量管理”界面看到新增的关于C和C++的质量配置</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093208.png" alt="image">  </p>
+<p><strong>新建C语言配置</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093310.png" alt="image">  </p>
+<p><strong>“质量配置”页面，看到新建的C语言配置和已有的Sonar way配置，默认配置为Sonar way, 两个配置的规则数都为0。</strong><br><strong>先将新建的C-Profile设置为默认配置</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093456.png" alt="image">  </p>
+<p><strong>设置完成后，在“质量配置”页面可看到C语言的配置规则为C-Profile</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093546.png" alt="image">  </p>
+<p><strong>为C-Profile填加规则</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093621.png" alt="image">  </p>
+<p><strong>在弹出的”代码规则”页面，使用”批量修改”命令里面的”活动…”。</strong><br><strong>在弹出的对话框里选择新创建的C-Profile，点击“应用”。</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093722.png" alt="image"><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093738.png" alt="image">  </p>
+<p><strong>完成后，在“质量配置”页面，可看到C-Profile的规则数的变化</strong><br><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20210303093812.png" alt="image">  </p>
+<p><strong>到此C语言的质量配置已完成，可创建项目对C语言工程进行质量检查。</strong>  </p>
+<h3 id="设置C-语言质量配置"><a href="#设置C-语言质量配置" class="headerlink" title="设置C++语言质量配置"></a>设置C++语言质量配置</h3><p>流程同C语言，细节变通即可。  </p>
+<h2 id="运行Scanner"><a href="#运行Scanner" class="headerlink" title="运行Scanner"></a>运行Scanner</h2><p>终端进入程序目录：RT_Linux/quality  </p>
+<p>运行Scanner  </p>
+<blockquote>
+<p>/sonar-scanner-cli-4.6.0.2311-linux/bin/sonar-scanner<br>命令为sonar-scanner的文件位置</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">taskSpawn</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SonarQube</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/03/01/Window%E4%B8%8BCMD%E5%88%A0%E9%99%A4MySQL%E6%9C%8D%E5%8A%A1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Window下CMD删除MySQL服务</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">搭建步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85JDK"><span class="toc-number">2.</span> <span class="toc-text">安装JDK</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E8%BD%AF%E4%BB%B6%E5%8C%85%E5%88%97%E8%A1%A8"><span class="toc-number">2.1.</span> <span class="toc-text">更新软件包列表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85openJDK-8"><span class="toc-number">2.2.</span> <span class="toc-text">安装openJDK-8</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5java%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F"><span class="toc-number">2.3.</span> <span class="toc-text">检查java是否安装成功</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85SonarQube"><span class="toc-number">3.</span> <span class="toc-text">安装SonarQube</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BDSonarQube%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">3.1.</span> <span class="toc-text">下载SonarQube安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E5%AE%89%E8%A3%85%E5%8C%85"><span class="toc-number">3.2.</span> <span class="toc-text">解压安装包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Sonar"><span class="toc-number">3.3.</span> <span class="toc-text">启动Sonar</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A3%80%E6%9F%A5%E5%90%AF%E5%8A%A8%E7%BB%93%E6%9E%9C"><span class="toc-number">3.4.</span> <span class="toc-text">检查启动结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%B8%AD%E6%96%87%E6%8F%92%E4%BB%B6"><span class="toc-number">3.5.</span> <span class="toc-text">安装中文插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85MySQL"><span class="toc-number">4.</span> <span class="toc-text">安装MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8BSonarQube%E6%94%AF%E6%8C%81%E7%9A%84MySQL%E7%89%88%E6%9C%AC"><span class="toc-number">4.1.</span> <span class="toc-text">查看SonarQube支持的MySQL版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CentOS%E5%AE%89%E8%A3%85%E6%95%B0%E6%8D%AE%E5%BA%93MySQL-5-7"><span class="toc-number">4.2.</span> <span class="toc-text">CentOS安装数据库MySQL-5.7</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5SonarQube%E4%B8%8EMySQL"><span class="toc-number">5.</span> <span class="toc-text">连接SonarQube与MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93sonarqube"><span class="toc-number">5.1.</span> <span class="toc-text">创建数据库sonarqube</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9sonar-properties%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF"><span class="toc-number">5.2.</span> <span class="toc-text">修改sonar.properties配置信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%87%8D%E5%90%AFsonar%EF%BC%8C%E5%86%8D%E6%AC%A1%E8%AE%BF%E9%97%AE"><span class="toc-number">5.3.</span> <span class="toc-text">重启sonar，再次访问</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85Sonar-Scanner"><span class="toc-number">6.</span> <span class="toc-text">安装Sonar-Scanner</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%8C%85%E4%B8%8B%E8%BD%BD"><span class="toc-number">6.1.</span> <span class="toc-text">安装包下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AESonar-Scanner"><span class="toc-number">6.2.</span> <span class="toc-text">配置Sonar-Scanner</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8sonarqube%E7%BD%91%E7%AB%99%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">6.3.</span> <span class="toc-text">在sonarqube网站创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E7%A8%8B%E5%BA%8F%E7%9B%AE%E5%BD%95%E6%B7%BB%E5%8A%A0sonar-project-properties"><span class="toc-number">6.4.</span> <span class="toc-text">在程序目录添加sonar-project.properties</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SonarQube%E6%B7%BB%E5%8A%A0%E7%A6%BB%E7%BA%BF%E6%8F%92%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">SonarQube添加离线插件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">7.1.</span> <span class="toc-text">插件下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-number">7.2.</span> <span class="toc-text">插件安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5SonarQube%E7%9A%84bin%E7%9B%AE%E5%BD%95%EF%BC%8C%E9%87%8D%E5%90%AFSonarQube"><span class="toc-number">7.3.</span> <span class="toc-text">进入SonarQube的bin目录，重启SonarQube</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEC%E8%AF%AD%E8%A8%80%E8%B4%A8%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">7.4.</span> <span class="toc-text">设置C语言质量配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AEC-%E8%AF%AD%E8%A8%80%E8%B4%A8%E9%87%8F%E9%85%8D%E7%BD%AE"><span class="toc-number">7.5.</span> <span class="toc-text">设置C++语言质量配置</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8CScanner"><span class="toc-number">8.</span> <span class="toc-text">运行Scanner</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -221,9 +361,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
