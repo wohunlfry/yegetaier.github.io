@@ -16,7 +16,7 @@
 <meta property="og:description" content="Spring Boot接口API返回JSON数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-08T16:48:19.000Z">
-<meta property="article:modified_time" content="2021-03-08T17:02:38.709Z">
+<meta property="article:modified_time" content="2021-03-12T03:39:42.897Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="json">
 <meta name="twitter:card" content="summary">
@@ -170,9 +170,9 @@
         <p>Spring Boot接口API返回JSON数据  </p>
 <a id="more"></a>
 
-<h2 id="Spring-Boot框架默认的方式"><a href="#Spring-Boot框架默认的方式" class="headerlink" title="Spring Boot框架默认的方式"></a>Spring Boot框架默认的方式</h2><p>缺点：JSON数据根据Model生成，无法增加code、msg等属性。<br>详细参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zmx729618/article/details/80915548">https://blog.csdn.net/zmx729618/article/details/80915548</a>  </p>
+<h2 id="Spring-Boot框架默认的方式-ResponseBody"><a href="#Spring-Boot框架默认的方式-ResponseBody" class="headerlink" title="Spring Boot框架默认的方式@ResponseBody"></a>Spring Boot框架默认的方式@ResponseBody</h2><p>缺点：JSON数据根据Model生成，无法增加code、msg等属性。<br>详细参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zmx729618/article/details/80915548">https://blog.csdn.net/zmx729618/article/details/80915548</a>  </p>
 <h2 id="Spring-Boot使用FastJson解析JSON数据"><a href="#Spring-Boot使用FastJson解析JSON数据" class="headerlink" title="Spring Boot使用FastJson解析JSON数据"></a>Spring Boot使用FastJson解析JSON数据</h2><h3 id="Gradle引入fastjson"><a href="#Gradle引入fastjson" class="headerlink" title="Gradle引入fastjson"></a>Gradle引入fastjson</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; https:&#x2F;&#x2F;mvnrepository.com&#x2F;artifact&#x2F;com.alibaba&#x2F;fastjson</span><br><span class="line">implementation group: &#39;com.alibaba&#39;, name: &#39;fastjson&#39;, version: &#39;1.2.73&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<h3 id="Service层解析数据为JSON字符串（关键代码）"><a href="#Service层解析数据为JSON字符串（关键代码）" class="headerlink" title="Service层解析数据为JSON字符串（关键代码）"></a>Service层解析数据为JSON字符串（关键代码）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Object userObject &#x3D; JSON.toJSON(userVo);</span><br><span class="line"></span><br><span class="line">JSONObject jsonObject &#x3D; new JSONObject();</span><br><span class="line"></span><br><span class="line">jsonObject.put(&quot;code&quot;, code);</span><br><span class="line">jsonObject.put(&quot;data&quot;, userObject);</span><br><span class="line"></span><br><span class="line">return jsonObject.toJSONString();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="Service层解析数据为JSON字符串（关键代码）"><a href="#Service层解析数据为JSON字符串（关键代码）" class="headerlink" title="Service层解析数据为JSON字符串（关键代码）"></a>Service层解析数据为JSON字符串（关键代码）</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Object userObject &#x3D; JSON.toJSON(userVo);</span><br><span class="line">&#x2F;&#x2F; Object userObject &#x3D; JSON.toJSON(List&lt;userVo&gt;);</span><br><span class="line">&#x2F;&#x2F; Object userObject &#x3D; JSON.toJSON(Map&lt;String, Object&gt;);</span><br><span class="line">&#x2F;&#x2F; Object userObject &#x3D; JSON.toJSON(List&lt;Map&lt;String, Object&gt;&gt;);</span><br><span class="line"></span><br><span class="line">JSONObject jsonObject &#x3D; new JSONObject();</span><br><span class="line"></span><br><span class="line">jsonObject.put(&quot;code&quot;, code);</span><br><span class="line">jsonObject.put(&quot;data&quot;, userObject);</span><br><span class="line"></span><br><span class="line">return jsonObject.toJSONString();</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
       
 
@@ -205,6 +205,15 @@
   
 <nav id="article-nav">
   
+    <a href="/2021/03/12/SpringBoot%E7%AB%AF%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringBoot端口请求参数处理
+        
+      </div>
+    </a>
+  
   
     <a href="/2021/03/08/SpringBoot-MySQL-MyBatis%E6%90%AD%E5%BB%BA/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">SpringBoot+MySQL+MyBatis搭建</div>
@@ -234,7 +243,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot%E6%A1%86%E6%9E%B6%E9%BB%98%E8%AE%A4%E7%9A%84%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot框架默认的方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot%E4%BD%BF%E7%94%A8FastJson%E8%A7%A3%E6%9E%90JSON%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot使用FastJson解析JSON数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle%E5%BC%95%E5%85%A5fastjson"><span class="toc-number">2.1.</span> <span class="toc-text">Gradle引入fastjson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service%E5%B1%82%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE%E4%B8%BAJSON%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">Service层解析数据为JSON字符串（关键代码）</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot%E6%A1%86%E6%9E%B6%E9%BB%98%E8%AE%A4%E7%9A%84%E6%96%B9%E5%BC%8F-ResponseBody"><span class="toc-number">1.</span> <span class="toc-text">Spring Boot框架默认的方式@ResponseBody</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-Boot%E4%BD%BF%E7%94%A8FastJson%E8%A7%A3%E6%9E%90JSON%E6%95%B0%E6%8D%AE"><span class="toc-number">2.</span> <span class="toc-text">Spring Boot使用FastJson解析JSON数据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gradle%E5%BC%95%E5%85%A5fastjson"><span class="toc-number">2.1.</span> <span class="toc-text">Gradle引入fastjson</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Service%E5%B1%82%E8%A7%A3%E6%9E%90%E6%95%B0%E6%8D%AE%E4%B8%BAJSON%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88%E5%85%B3%E9%94%AE%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">Service层解析数据为JSON字符串（关键代码）</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>

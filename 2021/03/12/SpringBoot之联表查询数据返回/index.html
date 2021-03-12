@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Archives | 随机漫步的丸子</title>
+  <title>SpringBoot之联表查询数据返回 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/archives/index.html">
+  <meta name="description" content="Spring Boot处理联表查询的数据返回">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot之联表查询数据返回">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/03/12/SpringBoot%E4%B9%8B%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="Spring Boot处理联表查询的数据返回">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-12T03:07:31.000Z">
+<meta property="article:modified_time" content="2021-03-12T03:33:09.488Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="Spring Boot">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -145,36 +147,53 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-SpringBoot之联表查询数据返回" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      SpringBoot之联表查询数据返回
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/SpringBoot%E4%B9%8B%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E/" class="archive-article-date">
+
+        
+        <a href="/2021/03/12/SpringBoot%E4%B9%8B%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E/" class="archive-article-date">
   	<time datetime="2021-03-12T03:07:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/SpringBoot%E4%B9%8B%E8%81%94%E8%A1%A8%E6%9F%A5%E8%AF%A2%E6%95%B0%E6%8D%AE%E8%BF%94%E5%9B%9E/">SpringBoot之联表查询数据返回</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Spring Boot处理联表查询的数据返回  </p>
+<a id="more"></a>
 
-        <div class="article-info info-on-right">
-          
+<h2 id="通过Vo实现"><a href="#通过Vo实现" class="headerlink" title="通过Vo实现"></a>通过Vo实现</h2><p>新建Vo实体，存储联表查询返回的数据  </p>
+<h3 id="Vo实体，UserFeedback-java"><a href="#Vo实体，UserFeedback-java" class="headerlink" title="Vo实体，UserFeedback.java"></a>Vo实体，UserFeedback.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.model;</span><br><span class="line"></span><br><span class="line">public class UserFeedback &#123;</span><br><span class="line"></span><br><span class="line">    private String openId;</span><br><span class="line">    private String penName;</span><br><span class="line">    private String headPortrait;</span><br><span class="line">    private String signature;</span><br><span class="line">    private int integral;</span><br><span class="line">    private String title;</span><br><span class="line">    private Boolean freezeWhether;</span><br><span class="line">    private long feedbackId;</span><br><span class="line">    private String feedbackContent;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getOpenId() &#123;</span><br><span class="line">        return openId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setOpenId(String openId) &#123;</span><br><span class="line">        this.openId &#x3D; openId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getPenName() &#123;</span><br><span class="line">        return penName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setPenName(String penName) &#123;</span><br><span class="line">        this.penName &#x3D; penName;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getHeadPortrait() &#123;</span><br><span class="line">        return headPortrait;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setHeadPortrait(String headPortrait) &#123;</span><br><span class="line">        this.headPortrait &#x3D; headPortrait;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getSignature() &#123;</span><br><span class="line">        return signature;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setSignature(String signature) &#123;</span><br><span class="line">        this.signature &#x3D; signature;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public int getIntegral() &#123;</span><br><span class="line">        return integral;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setIntegral(int integral) &#123;</span><br><span class="line">        this.integral &#x3D; integral;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getTitle() &#123;</span><br><span class="line">        return title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setTitle(String title) &#123;</span><br><span class="line">        this.title &#x3D; title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public Boolean getFreezeWhether() &#123;</span><br><span class="line">        return freezeWhether;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFreezeWhether(Boolean freezeWhether) &#123;</span><br><span class="line">        this.freezeWhether &#x3D; freezeWhether;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public long getFeedbackId() &#123;</span><br><span class="line">        return feedbackId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFeedbackId(long feedbackId) &#123;</span><br><span class="line">        this.feedbackId &#x3D; feedbackId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public String getFeedbackContent() &#123;</span><br><span class="line">        return feedbackContent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void setFeedbackContent(String feedbackContent) &#123;</span><br><span class="line">        this.feedbackContent &#x3D; feedbackContent;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Mapper查询：FeedbackMapper-java"><a href="#Mapper查询：FeedbackMapper-java" class="headerlink" title="Mapper查询：FeedbackMapper.java"></a>Mapper查询：FeedbackMapper.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.mapper;</span><br><span class="line"></span><br><span class="line">import com.clh.literature.model.UserFeedback;</span><br><span class="line">import org.apache.ibatis.annotations.Mapper;</span><br><span class="line">import org.apache.ibatis.annotations.Result;</span><br><span class="line">import org.apache.ibatis.annotations.Select;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">@Mapper</span><br><span class="line">public interface FeedbackMapper &#123;</span><br><span class="line"></span><br><span class="line">    @Select(&quot;SELECT * FROM feedback NATURAL JOIN user ORDER BY feedback_id DESC;&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;feedback_id&quot;, property &#x3D; &quot;feedbackId&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;feedback_content&quot;, property &#x3D; &quot;feedbackContent&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;open_id&quot;, property &#x3D; &quot;openId&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;pen_name&quot;, property &#x3D; &quot;penName&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;head_portrait&quot;, property &#x3D; &quot;headPortrait&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;freeze_whether&quot;, property &#x3D; &quot;freezeWhether&quot;)</span><br><span class="line">    List&lt;UserFeedback&gt; getAllFeedback();</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="common层：JsonApi-java"><a href="#common层：JsonApi-java" class="headerlink" title="common层：JsonApi.java"></a>common层：JsonApi.java</h3><figure class="highlight plain"><figcaption><span>com.clh.literature.common;</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSONObject;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class JsonApi &#123;</span><br><span class="line">    public String toJson(int code, Object data)&#123;</span><br><span class="line">        JSONObject jsonObject &#x3D; new JSONObject();</span><br><span class="line"></span><br><span class="line">        jsonObject.put(&quot;code&quot;, code);</span><br><span class="line">        jsonObject.put(&quot;data&quot;, data);</span><br><span class="line"></span><br><span class="line">        return jsonObject.toJSONString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="服务层：FeedbackService-java"><a href="#服务层：FeedbackService-java" class="headerlink" title="服务层：FeedbackService.java"></a>服务层：FeedbackService.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.service;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.clh.literature.common.JsonApi;</span><br><span class="line">import com.clh.literature.mapper.FeedbackMapper;</span><br><span class="line">import com.clh.literature.model.Feedback;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class FeedbackService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private JsonApi jsonApi;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private FeedbackMapper feedbackMapper;</span><br><span class="line"></span><br><span class="line">    public String getAllFeedback()&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            Object UserFeedbackObject &#x3D; JSON.toJSON(feedbackMapper.getAllFeedback());</span><br><span class="line">            return jsonApi.toJson(1, UserFeedbackObject);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            return jsonApi.toJson(0, null);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="控制层：FeedbackController-java"><a href="#控制层：FeedbackController-java" class="headerlink" title="控制层：FeedbackController.java"></a>控制层：FeedbackController.java</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.controller;</span><br><span class="line"></span><br><span class="line">import com.clh.literature.service.FeedbackService;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.GetMapping;</span><br><span class="line">import org.springframework.web.bind.annotation.RestController;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class FeedbackController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private FeedbackService feedbackService;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 获取所有的用户反馈数据+用户数据</span><br><span class="line">    @GetMapping(&quot;&#x2F;feedback&quot;)</span><br><span class="line">    public String getAllFeedback()&#123;</span><br><span class="line">        return feedbackService.getAllFeedback();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="通过Map实现"><a href="#通过Map实现" class="headerlink" title="通过Map实现"></a>通过Map实现</h2><p>Map存储联表查询返回的数据<br>(JsonApi.java同上)  </p>
+<h3 id="Mapper层示例"><a href="#Mapper层示例" class="headerlink" title="Mapper层示例"></a>Mapper层示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.mapper;</span><br><span class="line"></span><br><span class="line">import org.apache.ibatis.annotations.*;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line">import java.util.Map;</span><br><span class="line"></span><br><span class="line">@Mapper</span><br><span class="line">public interface AttentionMapper &#123;</span><br><span class="line"></span><br><span class="line">    @Select(&quot;SELECT * FROM attention, user WHERE attention.open_id &#x3D; user.open_id AND attention.open_id_active &#x3D; #&#123;openIdActive&#125;;&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;open_id&quot;, property &#x3D; &quot;openId&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;pen_name&quot;, property &#x3D; &quot;penName&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;head_portrait&quot;, property &#x3D; &quot;headPortrait&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;freeze_whether&quot;, property &#x3D; &quot;freezeWhether&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;attention_id&quot;, property &#x3D; &quot;attentionId&quot;)</span><br><span class="line">    @Result(column &#x3D; &quot;open_id_active&quot;, property &#x3D; &quot;openIdActive&quot;)</span><br><span class="line">    List&lt;Map&lt;String, Object&gt;&gt; getAllAttentionUser(String openIdActive);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="服务层示例"><a href="#服务层示例" class="headerlink" title="服务层示例"></a>服务层示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.service;</span><br><span class="line"></span><br><span class="line">import com.alibaba.fastjson.JSON;</span><br><span class="line">import com.clh.literature.common.JsonApi;</span><br><span class="line">import com.clh.literature.mapper.AttentionMapper;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class AttentionService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private JsonApi jsonApi;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AttentionMapper attentionMapper;</span><br><span class="line"></span><br><span class="line">    public String getAllAttentionUser(String openIdActive)&#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            Object attentionObject &#x3D; JSON.toJSON(attentionMapper.getAllAttentionUser(openIdActive));</span><br><span class="line">            return jsonApi.toJson(1, attentionObject);</span><br><span class="line">        &#125;catch (Exception e)&#123;</span><br><span class="line">            return jsonApi.toJson(0, null);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="控制层示例"><a href="#控制层示例" class="headerlink" title="控制层示例"></a>控制层示例</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">package com.clh.literature.controller;</span><br><span class="line"></span><br><span class="line">import com.clh.literature.service.AttentionService;</span><br><span class="line">import org.apache.ibatis.annotations.Select;</span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.web.bind.annotation.*;</span><br><span class="line"></span><br><span class="line">@RestController</span><br><span class="line">public class AttentionController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private AttentionService attentionService;</span><br><span class="line"></span><br><span class="line">    @GetMapping(&quot;&#x2F;attention&#x2F;&#123;openIdActive&#125;&quot;)</span><br><span class="line">    public String getAllAttentionUser(@PathVariable String openIdActive)&#123;</span><br><span class="line">        return attentionService.getAllAttentionUser(openIdActive);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -186,364 +205,67 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/12/SpringBoot%E7%AB%AF%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/" class="archive-article-date">
-  	<time datetime="2021-03-12T02:33:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-12</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/12/SpringBoot%E7%AB%AF%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SpringBoot端口请求参数处理</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/12/SpringBoot%E7%AB%AF%E5%8F%A3%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0%E5%A4%84%E7%90%86/">SpringBoot端口请求参数处理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Vo%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.</span> <span class="toc-text">通过Vo实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Vo%E5%AE%9E%E4%BD%93%EF%BC%8CUserFeedback-java"><span class="toc-number">1.1.</span> <span class="toc-text">Vo实体，UserFeedback.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapper%E6%9F%A5%E8%AF%A2%EF%BC%9AFeedbackMapper-java"><span class="toc-number">1.2.</span> <span class="toc-text">Mapper查询：FeedbackMapper.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#common%E5%B1%82%EF%BC%9AJsonApi-java"><span class="toc-number">1.3.</span> <span class="toc-text">common层：JsonApi.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82%EF%BC%9AFeedbackService-java"><span class="toc-number">1.4.</span> <span class="toc-text">服务层：FeedbackService.java</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%B1%82%EF%BC%9AFeedbackController-java"><span class="toc-number">1.5.</span> <span class="toc-text">控制层：FeedbackController.java</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87Map%E5%AE%9E%E7%8E%B0"><span class="toc-number">2.</span> <span class="toc-text">通过Map实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapper%E5%B1%82%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.1.</span> <span class="toc-text">Mapper层示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%B1%82%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.2.</span> <span class="toc-text">服务层示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%B1%82%E7%A4%BA%E4%BE%8B"><span class="toc-number">2.3.</span> <span class="toc-text">控制层示例</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/09/SpringBoot%E8%BF%94%E5%9B%9Ejson%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2021-03-08T16:48:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-09</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/09/SpringBoot%E8%BF%94%E5%9B%9Ejson%E6%95%B0%E6%8D%AE/">SpringBoot返回json数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">json</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/08/SpringBoot-MySQL-MyBatis%E6%90%AD%E5%BB%BA/" class="archive-article-date">
-  	<time datetime="2021-03-08T12:15:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/08/SpringBoot-MySQL-MyBatis%E6%90%AD%E5%BB%BA/">SpringBoot+MySQL+MyBatis搭建</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring Boot</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/02/Linux%E6%90%AD%E5%BB%BAsonarqube-sonarScanner/" class="archive-article-date">
-  	<time datetime="2021-03-02T08:29:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/02/Linux%E6%90%AD%E5%BB%BAsonarqube-sonarScanner/">Linux搭建sonarqube+sonarScanner</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">SonarQube</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/03/01/Window%E4%B8%8BCMD%E5%88%A0%E9%99%A4MySQL%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2021-03-01T08:36:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/03/01/Window%E4%B8%8BCMD%E5%88%A0%E9%99%A4MySQL%E6%9C%8D%E5%8A%A1/">Window下CMD删除MySQL服务</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/28/Linux%E8%A7%A3%E5%86%B3socket%E4%B8%8Bsend%E5%87%BD%E6%95%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/" class="archive-article-date">
-  	<time datetime="2021-02-28T02:28:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/28/Linux%E8%A7%A3%E5%86%B3socket%E4%B8%8Bsend%E5%87%BD%E6%95%B0%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/">Linux解决socket下send函数异常问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">socket</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/04/Deepin%E4%B8%8BVScode%E8%B0%83%E8%AF%95C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
-  	<time datetime="2021-02-04T08:30:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/04/Deepin%E4%B8%8BVScode%E8%B0%83%E8%AF%95C%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE/">Deepin下VScode调试C语言项目</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">gdb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/04/Qt%E8%AF%BB%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-02-04T05:03:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/04/Qt%E8%AF%BB%E5%86%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6/">Qt读写配置文件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/02/03/Deepin%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2021-02-03T06:09:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/02/03/Deepin%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/">Deepin虚拟机安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Deepin</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -567,8 +289,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
