@@ -6,18 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>随机漫步的丸子</title>
+  <title>C++实现Ice基本通信实例 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/index.html">
+  <meta name="description" content="C++实现Ice基本通信实例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++实现Ice基本通信实例">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="C++实现Ice基本通信实例">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202109241034066.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008232737.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233407.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233514.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233603.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233734.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008234406.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008234554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233734.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008235905.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008235956.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009001318.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009002441.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009002524.png">
+<meta property="article:published_time" content="2021-09-28T08:56:07.000Z">
+<meta property="article:modified_time" content="2021-10-08T16:56:41.647Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="Ice">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202109241034066.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -151,16 +168,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-C-实现Ice基本通信实例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C-实现Ice基本通信实例" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/">C++实现Ice基本通信实例</a>
+    <h1 class="article-title" itemprop="name">
+      C++实现Ice基本通信实例
     </h1>
   
 
@@ -174,9 +189,63 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>C++实现Ice基本通信实例</p>
-        
-          <a class="article-more-a" href="/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/#more">more >></a>
-        
+<a id="more"></a>
+
+<h2 id="Ice简介"><a href="#Ice简介" class="headerlink" title="Ice简介"></a>Ice简介</h2><p>Ice是ZeroC的开源通信产品，是一个面向对象的中间件，全程为：The Internet Communications Engine。其作为一款优秀的RPC工具，不仅性能强劲，而且支持多平台多语言开发，即服务端和客户端使用到的开发语言可以是不同的。Ice让我们能够以最小的代价去构建分布式应用，只需要专注业务逻辑即可，底层的通讯逻辑完全由ICE帮我们封装实现。<br>另一方面，Ice也算是一款老牌RPC框架，其已经有十多年的沉淀，不仅支持服务器端的RPC调用，也支持移动设备，使得开发起来更为方便。其客户端与服务端的架构如下：</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202109241034066.png" alt="image"></p>
+<p>该架构图显示应用之间使用Ice作为中间件平台，客户端及服务的的应用都是由应用代码即Ice的库代码混合组成的，且两者使用的开发语言甚至都不同。上述代理是根据Slice定义的ice文件实现，它提供了一个向下调用的接口，提供了数据的序列化与反序列化。Ice的核心部分提供了客户端与服务端的网络连接等核心通信功能，以及其他的网络通信功能的实现及可能问题的处理。</p>
+<h2 id="VS新建项目"><a href="#VS新建项目" class="headerlink" title="VS新建项目"></a>VS新建项目</h2><p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008232737.png" alt="image"></p>
+<h2 id="VS项目安装Ice"><a href="#VS项目安装Ice" class="headerlink" title="VS项目安装Ice"></a>VS项目安装Ice</h2><p>用于 Visual Studio 2017 (v141) 的 Ice C++ SDK。<br>网址：<a target="_blank" rel="noopener" href="https://www.nuget.org/packages/zeroc.ice.v141">https://www.nuget.org/packages/zeroc.ice.v141</a><br><strong>注意</strong>：VS版本与Ice版本的对应关系。</p>
+<p>在VS的程序包管理器控制台命令行安装</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233407.png" alt="image"></p>
+<p>官网查看命令行</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233514.png" alt="image"></p>
+<p>安装命令：</p>
+<blockquote>
+<p>Install-Package zeroc.ice.v141 -Version 3.7.6</p>
+</blockquote>
+<p>执行安装</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233603.png" alt="image"></p>
+<p>安装后位置</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233734.png" alt="image"></p>
+<h2 id="VS项目安装Ice-Builder-for-MSBuild"><a href="#VS项目安装Ice-Builder-for-MSBuild" class="headerlink" title="VS项目安装Ice Builder for MSBuild"></a>VS项目安装Ice Builder for MSBuild</h2><p>为在 MSBuild 项目中编译 Slice 源文件（.ice 文件）提供支持。<br>网址：<a target="_blank" rel="noopener" href="https://www.nuget.org/packages/zeroc.icebuilder.msbuild">https://www.nuget.org/packages/zeroc.icebuilder.msbuild</a></p>
+<p>在VS的程序包管理器控制台命令行安装，查看安装命令。</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008234406.png" alt="image"></p>
+<p>安装命令：</p>
+<blockquote>
+<p>Install-Package zeroc.icebuilder.msbuild -Version 5.0.7</p>
+</blockquote>
+<p>执行安装</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008234554.png" alt="image"></p>
+<p>安装后位置</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008233734.png" alt="image"></p>
+<h2 id="VS安装Ice-Builder-for-Visual-Studio"><a href="#VS安装Ice-Builder-for-Visual-Studio" class="headerlink" title="VS安装Ice Builder for Visual Studio"></a>VS安装Ice Builder for Visual Studio</h2><p>Ice Builder 管理将 Slice (.ice) 文件编译为 C++ 和 C#。Ice Builder for Visual Studio 是一个 Visual Studio 扩展，它为您的 C++ 和 C# 项目配置 Ice Builder for MSBuild，所有这些都在 Visual Studio IDE 中。 它充当 Ice Builder for MSBuild 的前端：所有构建时处理都由 Ice Builder for MSBuild 执行。<br>网址：<a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=ZeroCInc.IceBuilder">https://marketplace.visualstudio.com/items?itemName=ZeroCInc.IceBuilder</a></p>
+<p>双击IceBuilder.vsix文件运行安装。</p>
+<h2 id="编写slice中间件"><a href="#编写slice中间件" class="headerlink" title="编写slice中间件"></a>编写slice中间件</h2><p>在筛选器Slice Files新建slice中间件文件Printer.ice</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Copyright (c) ZeroC, Inc. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> once</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> Demo</span><br><span class="line">&#123;</span><br><span class="line">	interface Printer</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="function"><span class="keyword">void</span> <span class="title">printString</span><span class="params">(<span class="built_in">string</span> s)</span></span>;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="编译slice生成通用文件"><a href="#编译slice生成通用文件" class="headerlink" title="编译slice生成通用文件"></a>编译slice生成通用文件</h2><p>在VS的程序包管理器控制台进入到Printer.ice所在路径，执行命令生成通用文件。<br>执行命令：</p>
+<blockquote>
+<p>slice2cpp Printer.ice</p>
+</blockquote>
+<p>生成c++中间通用头文件和源文件。<br>添加通用文件到VS项目。</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008235905.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211008235956.png" alt="image"></p>
+<h2 id="IceServer实现"><a href="#IceServer实现" class="headerlink" title="IceServer实现"></a>IceServer实现</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Ice/Ice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Printer.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Demo;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterI</span> :</span> <span class="keyword">public</span> Printer</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">printString</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">const</span> Ice::Current&amp;)</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrinterI::printString</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">const</span> Ice::Current&amp;)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="function">Ice::CommunicatorHolder <span class="title">ich</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">		<span class="keyword">auto</span> adapter = ich-&gt;createObjectAdapterWithEndpoints(<span class="string">&quot;SimplePrinterAdapter&quot;</span>, <span class="string">&quot;default -p 10000&quot;</span>);</span><br><span class="line">		<span class="keyword">auto</span> servant = make_shared&lt;PrinterI&gt;();</span><br><span class="line">		adapter-&gt;add(servant, Ice::stringToIdentity(<span class="string">&quot;SimplePrinter&quot;</span>));</span><br><span class="line">		adapter-&gt;activate();</span><br><span class="line">		ich-&gt;waitForShutdown();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception&amp; e) &#123;</span><br><span class="line">		<span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="更改Printer-cpp"><a href="#更改Printer-cpp" class="headerlink" title="更改Printer.cpp"></a>更改Printer.cpp</h2><blockquote>
+<p>#include &lt;Printer.h&gt;<br>更改为<br>#include “Printer.h”</p>
+</blockquote>
+<h2 id="IceClient实现"><a href="#IceClient实现" class="headerlink" title="IceClient实现"></a>IceClient实现</h2><p>新建项目，安装项目依赖如上，只安装ice和Ice Builder for MSBuild。<br>可直接使用IceServer生成的通用中间文件，copy到项目目录，并添加到项目，即可。</p>
+<p>客户端code：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Ice/Ice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Printer.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdexcept&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Demo;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="function">Ice::CommunicatorHolder <span class="title">ich</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">		<span class="keyword">auto</span> base = ich-&gt;stringToProxy(<span class="string">&quot;SimplePrinter:default -p 10000&quot;</span>);</span><br><span class="line">		<span class="keyword">auto</span> printer = Ice::checkedCast&lt;PrinterPrx&gt;(base);</span><br><span class="line">		<span class="keyword">if</span> (!printer) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="built_in">std</span>::runtime_error(<span class="string">&quot;Invalid proxy&quot;</span>);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		printer-&gt;printString(<span class="string">&quot;Hello World!&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception&amp; e) &#123;</span><br><span class="line">		<span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><p>先运行IceServer项目，然后运行IceClient项目。效果如下：</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009001318.png" alt="image"></p>
+<h2 id="运行失败某解决方案"><a href="#运行失败某解决方案" class="headerlink" title="运行失败某解决方案"></a>运行失败某解决方案</h2><p>若项目运行失败，修改项目配置管理器平台为活动(win32)。</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009002441.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/20211009002524.png" alt="image"></p>
+
       
 
       
@@ -198,16 +267,24 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2021/09/24/Spring%E8%B0%83%E7%94%A8dll%E7%9A%84%E5%AE%9E%E7%8E%B0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring调用dll的实现</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -222,701 +299,32 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring调用dll的实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/24/Spring%E8%B0%83%E7%94%A8dll%E7%9A%84%E5%AE%9E%E7%8E%B0/">Spring调用dll的实现</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/24/Spring%E8%B0%83%E7%94%A8dll%E7%9A%84%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2021-09-24T09:24:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring调用dll的实现</p>
-        
-          <a class="article-more-a" href="/2021/09/24/Spring%E8%B0%83%E7%94%A8dll%E7%9A%84%E5%AE%9E%E7%8E%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">dll</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/24/Spring%E8%B0%83%E7%94%A8dll%E7%9A%84%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ice%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Ice简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS%E6%96%B0%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-number">2.</span> <span class="toc-text">VS新建项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85Ice"><span class="toc-number">3.</span> <span class="toc-text">VS项目安装Ice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS%E9%A1%B9%E7%9B%AE%E5%AE%89%E8%A3%85Ice-Builder-for-MSBuild"><span class="toc-number">4.</span> <span class="toc-text">VS项目安装Ice Builder for MSBuild</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#VS%E5%AE%89%E8%A3%85Ice-Builder-for-Visual-Studio"><span class="toc-number">5.</span> <span class="toc-text">VS安装Ice Builder for Visual Studio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99slice%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">编写slice中间件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E8%AF%91slice%E7%94%9F%E6%88%90%E9%80%9A%E7%94%A8%E6%96%87%E4%BB%B6"><span class="toc-number">7.</span> <span class="toc-text">编译slice生成通用文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IceServer%E5%AE%9E%E7%8E%B0"><span class="toc-number">8.</span> <span class="toc-text">IceServer实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%94%B9Printer-cpp"><span class="toc-number">9.</span> <span class="toc-text">更改Printer.cpp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IceClient%E5%AE%9E%E7%8E%B0"><span class="toc-number">10.</span> <span class="toc-text">IceClient实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C"><span class="toc-number">11.</span> <span class="toc-text">运行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E5%A4%B1%E8%B4%A5%E6%9F%90%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">12.</span> <span class="toc-text">运行失败某解决方案</span></a></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
-
-  
-    <article id="post-Spring实现XMLRPC客户端-服务端模拟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0XMLRPC%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/">Spring实现XMLRPC客户端-服务端模拟</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0XMLRPC%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/" class="archive-article-date">
-  	<time datetime="2021-09-24T08:22:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring实现XMLRPC客户端-服务端模拟</p>
-        
-          <a class="article-more-a" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0XMLRPC%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">XMLRPC</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0XMLRPC%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring实现Ice客户端-服务端模拟" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/">Spring实现Ice客户端-服务端模拟</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/" class="archive-article-date">
-  	<time datetime="2021-09-24T02:31:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring实现Ice客户端-服务端模拟</p>
-        
-          <a class="article-more-a" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Ice</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring创建系统启动任务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/Spring%E5%88%9B%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/">Spring创建系统启动任务</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/Spring%E5%88%9B%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2021-09-19T09:11:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring创建系统启动任务</p>
-        
-          <a class="article-more-a" href="/2021/09/19/Spring%E5%88%9B%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/Spring%E5%88%9B%E5%BB%BA%E7%B3%BB%E7%BB%9F%E5%90%AF%E5%8A%A8%E4%BB%BB%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Spring内网项目导入gradle依赖" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/Spring%E5%86%85%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5gradle%E4%BE%9D%E8%B5%96/">Spring内网项目导入gradle依赖</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/Spring%E5%86%85%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5gradle%E4%BE%9D%E8%B5%96/" class="archive-article-date">
-  	<time datetime="2021-09-19T08:49:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Spring内网项目导入gradle依赖</p>
-        
-          <a class="article-more-a" href="/2021/09/19/Spring%E5%86%85%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5gradle%E4%BE%9D%E8%B5%96/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/Spring%E5%86%85%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%AF%BC%E5%85%A5gradle%E4%BE%9D%E8%B5%96/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Qt打包运行程序exe" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/Qt%E6%89%93%E5%8C%85%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8Fexe/">Qt打包运行程序exe</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/Qt%E6%89%93%E5%8C%85%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8Fexe/" class="archive-article-date">
-  	<time datetime="2021-09-19T08:48:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Qt打包运行程序exe</p>
-        
-          <a class="article-more-a" href="/2021/09/19/Qt%E6%89%93%E5%8C%85%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8Fexe/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Qt</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/Qt%E6%89%93%E5%8C%85%E8%BF%90%E8%A1%8C%E7%A8%8B%E5%BA%8Fexe/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git拉取gitlab多分支资源" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/git%E6%8B%89%E5%8F%96gitlab%E5%A4%9A%E5%88%86%E6%94%AF%E8%B5%84%E6%BA%90/">git拉取gitlab多分支资源</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/git%E6%8B%89%E5%8F%96gitlab%E5%A4%9A%E5%88%86%E6%94%AF%E8%B5%84%E6%BA%90/" class="archive-article-date">
-  	<time datetime="2021-09-19T08:47:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>git拉取gitlab多分支资源</p>
-        
-          <a class="article-more-a" href="/2021/09/19/git%E6%8B%89%E5%8F%96gitlab%E5%A4%9A%E5%88%86%E6%94%AF%E8%B5%84%E6%BA%90/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/git%E6%8B%89%E5%8F%96gitlab%E5%A4%9A%E5%88%86%E6%94%AF%E8%B5%84%E6%BA%90/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-gitlab修改管理员密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/gitlab%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/">gitlab修改管理员密码</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/gitlab%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2021-09-19T08:46:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>gitlab修改管理员密码</p>
-        
-          <a class="article-more-a" href="/2021/09/19/gitlab%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">gitlab</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/gitlab%E4%BF%AE%E6%94%B9%E7%AE%A1%E7%90%86%E5%91%98%E5%AF%86%E7%A0%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VUe项目内网运行环境配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/19/VUe%E9%A1%B9%E7%9B%AE%E5%86%85%E7%BD%91%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">VUe项目内网运行环境配置</a>
-    </h1>
-  
-
-        
-        <a href="/2021/09/19/VUe%E9%A1%B9%E7%9B%AE%E5%86%85%E7%BD%91%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-  	<time datetime="2021-09-19T08:45:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-19</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>VUe项目内网运行环境配置</p>
-        
-          <a class="article-more-a" href="/2021/09/19/VUe%E9%A1%B9%E7%9B%AE%E5%86%85%E7%BD%91%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/19/VUe%E9%A1%B9%E7%9B%AE%E5%86%85%E7%BD%91%E8%BF%90%E8%A1%8C%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
   
   
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
+  
+
+  
+
+  
+
   
 
 
@@ -939,8 +347,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
