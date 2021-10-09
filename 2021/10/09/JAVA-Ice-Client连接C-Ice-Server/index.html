@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Archives | 随机漫步的丸子</title>
+  <title>JAVA-Ice-Client连接C++-Ice-Server | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随机漫步的丸子">
-<meta property="og:url" content="https://jz.wohunlfry.top/archives/page/9/index.html">
+  <meta name="description" content="JAVA-Ice-Client连接C++-Ice-Server，并实现基本功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA-Ice-Client连接C++-Ice-Server">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/10/09/JAVA-Ice-Client%E8%BF%9E%E6%8E%A5C-Ice-Server/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="JAVA-Ice-Client连接C++-Ice-Server，并实现基本功能。">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-09T06:51:31.000Z">
+<meta property="article:modified_time" content="2021-10-09T08:47:59.931Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="Ice">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
@@ -151,405 +153,117 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JAVA-Ice-Client连接C-Ice-Server" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA-Ice-Client连接C++-Ice-Server
+    </h1>
+  
+
+        
+        <a href="/2021/10/09/JAVA-Ice-Client%E8%BF%9E%E6%8E%A5C-Ice-Server/" class="archive-article-date">
+  	<time datetime="2021-10-09T06:51:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-09</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>JAVA-Ice-Client连接C++-Ice-Server，并实现基本功能。</p>
+<a id="more"></a>
+
+<h2 id="Ice编译器安装"><a href="#Ice编译器安装" class="headerlink" title="Ice编译器安装"></a>Ice编译器安装</h2><p>用于编译中间件slice文件，JAVA与C++的Ice版本需要统一。</p>
+<h2 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h2><p>项目搭建参考文章</p>
+<p>JAVA-Ice项目搭建：<a href="https://jz.wohunlfry.top/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/#more">https://jz.wohunlfry.top/2021/09/24/Spring%E5%AE%9E%E7%8E%B0Ice%E5%AE%A2%E6%88%B7%E7%AB%AF-%E6%9C%8D%E5%8A%A1%E7%AB%AF%E6%A8%A1%E6%8B%9F/#more</a><br>C++-Ice项目搭建：<br><a href="https://jz.wohunlfry.top/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/#more">https://jz.wohunlfry.top/2021/09/28/C-%E5%AE%9E%E7%8E%B0Ice%E5%9F%BA%E6%9C%AC%E9%80%9A%E4%BF%A1%E5%AE%9E%E4%BE%8B/#more</a></p>
+<h2 id="中间件Printer-ice"><a href="#中间件Printer-ice" class="headerlink" title="中间件Printer.ice"></a>中间件Printer.ice</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#pragma once</span></span><br><span class="line"></span><br><span class="line">module Demo</span><br><span class="line">&#123;</span><br><span class="line">	interface Printer</span><br><span class="line">		&#123;</span><br><span class="line">			void printString(string s);</span><br><span class="line">		&#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="IceServer-cpp"><a href="#IceServer-cpp" class="headerlink" title="IceServer.cpp"></a>IceServer.cpp</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Ice/Ice.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;Printer.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> Demo;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PrinterI</span> :</span> <span class="keyword">public</span> Printer</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">public</span>:</span><br><span class="line">		<span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">printString</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">const</span> Ice::Current&amp;)</span> <span class="keyword">override</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">PrinterI::printString</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">const</span> Ice::Current&amp;)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="built_in">cout</span> &lt;&lt; s &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		<span class="function">Ice::CommunicatorHolder <span class="title">ich</span><span class="params">(argc, argv)</span></span>;</span><br><span class="line">		<span class="keyword">auto</span> adapter = ich-&gt;createObjectAdapterWithEndpoints(<span class="string">&quot;SimplePrinterAdapter&quot;</span>, <span class="string">&quot;default -p 8888&quot;</span>);</span><br><span class="line">		<span class="keyword">auto</span> servant = make_shared&lt;PrinterI&gt;();</span><br><span class="line">		adapter-&gt;add(servant, Ice::stringToIdentity(<span class="string">&quot;SimplePrinter&quot;</span>));</span><br><span class="line">		adapter-&gt;activate();</span><br><span class="line">		ich-&gt;waitForShutdown();</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">catch</span> (<span class="keyword">const</span> <span class="built_in">std</span>::exception&amp; e) &#123;</span><br><span class="line">		<span class="built_in">cerr</span> &lt;&lt; e.what() &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="IceClient-java"><a href="#IceClient-java" class="headerlink" title="IceClient.java"></a>IceClient.java</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.cec.ice.iceClient.client;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.cec.ice.iceClient.slice2java.PrinterPrx;</span><br><span class="line"><span class="keyword">import</span> com.zeroc.Ice.Communicator;</span><br><span class="line"><span class="keyword">import</span> com.zeroc.Ice.ObjectPrx;</span><br><span class="line"><span class="keyword">import</span> com.zeroc.Ice.Util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        Communicator communicator = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">// 如服务端一样初始化Communicator对象</span></span><br><span class="line">            communicator = Util.initialize(args);</span><br><span class="line">            <span class="comment">// 传入远程服务接口的名称、网络协议、IP和端口，创建一个代理对象</span></span><br><span class="line">            ObjectPrx prx = communicator.stringToProxy(<span class="string">&quot;SimplePrinter:default -p 8888&quot;</span>);</span><br><span class="line">            <span class="comment">// 通过slice脚本生成的类（以Prx结尾），向下转型获取到具体的客户端代理类</span></span><br><span class="line">            PrinterPrx printerPrx = PrinterPrx.checkedCast(prx);</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">null</span> != printerPrx) &#123;</span><br><span class="line">                <span class="comment">// 在调用方法时此处也可以额外传参到服务端，服务端在Current对象的ctx属性中可以取到</span></span><br><span class="line">                String params = <span class="string">&quot;Hello!!&quot;</span>;</span><br><span class="line">                printerPrx.printString(params);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (communicator != <span class="keyword">null</span>) &#123;</span><br><span class="line">                communicator.destroy();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2021-01-26T02:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/">VxWorks-Tornado安装</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Tornado</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Ice</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-19T10:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/10/09/C-%E5%AE%9E%E7%8E%B0xmlRPC%E7%AE%80%E5%8D%95%E5%AE%9E%E4%BE%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++实现xmlRPC简单实例</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/">three.js增加点击事件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ice%E7%BC%96%E8%AF%91%E5%99%A8%E5%AE%89%E8%A3%85"><span class="toc-number">1.</span> <span class="toc-text">Ice编译器安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-number">2.</span> <span class="toc-text">项目搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6Printer-ice"><span class="toc-number">3.</span> <span class="toc-text">中间件Printer.ice</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IceServer-cpp"><span class="toc-number">4.</span> <span class="toc-text">IceServer.cpp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IceClient-java"><span class="toc-number">5.</span> <span class="toc-text">IceClient.java</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-01-19T06:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/">npm-install-g-S-D详解</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-01-18T08:04:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/">Blender导出three.js模型，three.js引入其模型</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Blender  three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-18T07:17:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/">three.js主要组件</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/16/three-js%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92%E7%9A%84%E6%9C%BA%E6%9F%9C/" class="archive-article-date">
-  	<time datetime="2021-01-16T13:42:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/16/three-js%E5%BB%BA%E7%AB%8B%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E4%BA%A4%E4%BA%92%E7%9A%84%E6%9C%BA%E6%9F%9C/">three.js建立一个简单交互的机柜</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/16/WPS%E6%98%BE%E7%A4%BA%E6%B3%B0%E8%AF%AD/" class="archive-article-date">
-  	<time datetime="2021-01-15T16:30:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/16/WPS%E6%98%BE%E7%A4%BA%E6%B3%B0%E8%AF%AD/">WPS显示泰语</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">WPS</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/16/Vue%E6%B7%BB%E5%8A%A0tween-js%E7%BC%93%E5%8A%A8%E6%8E%A7%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-15T16:01:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-16</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/16/Vue%E6%B7%BB%E5%8A%A0tween-js%E7%BC%93%E5%8A%A8%E6%8E%A7%E4%BB%B6/">Vue添加tween.js缓动控件</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/15/vue-cli%E5%AE%89%E8%A3%85three-js%E6%89%A9%E5%B1%95%E6%8E%A7%E4%BB%B6orbitControls-js/" class="archive-article-date">
-  	<time datetime="2021-01-15T09:15:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/15/vue-cli%E5%AE%89%E8%A3%85three-js%E6%89%A9%E5%B1%95%E6%8E%A7%E4%BB%B6orbitControls-js/">vue-cli安装three.js扩展控件orbitControls.js</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/01/14/Vue%E5%BC%95%E5%85%A5three-js%E5%AE%9E%E7%8E%B03D%E5%8A%A8%E7%94%BB%E5%9C%BA%E6%99%AF/" class="archive-article-date">
-  	<time datetime="2021-01-14T10:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/01/14/Vue%E5%BC%95%E5%85%A5three-js%E5%AE%9E%E7%8E%B03D%E5%8A%A8%E7%94%BB%E5%9C%BA%E6%99%AF/">Vue引入three.js实现3D动画场景</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/8/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/archives/page/10/">10</a><a class="page-number" href="/archives/page/11/">11</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/14/">14</a><a class="extend next" rel="next" href="/archives/page/10/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +287,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
