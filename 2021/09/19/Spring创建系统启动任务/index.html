@@ -16,7 +16,7 @@
 <meta property="og:description" content="Spring创建系统启动任务">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-19T09:11:45.000Z">
-<meta property="article:modified_time" content="2021-09-19T09:16:14.880Z">
+<meta property="article:modified_time" content="2021-10-20T10:44:12.211Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -185,6 +185,8 @@
 <h2 id="注解-PostConstruct"><a href="#注解-PostConstruct" class="headerlink" title="注解@PostConstruct"></a>注解@PostConstruct</h2><p>构造函数之后执行</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Component</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Xxxxx</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化本类后执行此方法，在构造函数(默认)之后执行</span></span><br><span class="line">    <span class="meta">@PostConstruct</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">xxxx</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">      ......</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="更多方法"><a href="#更多方法" class="headerlink" title="更多方法"></a>更多方法</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/lenve/p/10709123.html">https://www.cnblogs.com/lenve/p/10709123.html</a></p>
+
       
 
       
@@ -254,7 +256,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0InitializingBean%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">实现InitializingBean接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0CommandLineRunner%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">实现CommandLineRunner接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-PostConstruct"><span class="toc-number">3.</span> <span class="toc-text">注解@PostConstruct</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0InitializingBean%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.</span> <span class="toc-text">实现InitializingBean接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0CommandLineRunner%E6%8E%A5%E5%8F%A3"><span class="toc-number">2.</span> <span class="toc-text">实现CommandLineRunner接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-PostConstruct"><span class="toc-number">3.</span> <span class="toc-text">注解@PostConstruct</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">更多方法</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -723,6 +725,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字节流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">yml</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
               </li>
             
             <div class="clearfix"></div>
