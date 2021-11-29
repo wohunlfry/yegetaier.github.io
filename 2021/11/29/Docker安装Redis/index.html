@@ -16,7 +16,7 @@
 <meta property="og:description" content="Docker安装Redis">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-11-29T02:47:50.000Z">
-<meta property="article:modified_time" content="2021-11-29T03:12:57.144Z">
+<meta property="article:modified_time" content="2021-11-29T05:55:45.501Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
@@ -178,7 +178,7 @@
 
 <h2 id="查看可用的-Redis-版本"><a href="#查看可用的-Redis-版本" class="headerlink" title="查看可用的 Redis 版本"></a>查看可用的 Redis 版本</h2><p>Redis 镜像库地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis?tab=tags">https://hub.docker.com/_/redis?tab=tags</a><br>可以通过 Sort by 查看其他版本的 Redis，默认是最新版本 <strong>redis:latest</strong>。</p>
 <p>还可以用 <strong>docker search redis</strong> 命令来查看可用版本。</p>
-<h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取官方的最新版本的镜像</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -itd --name redis -p 6379:6379 -d redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># redis-cli 连接测试</span></span><br><span class="line">docker <span class="built_in">exec</span> -it redis /bin/bash</span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line">ctrl + C</span><br><span class="line">ctrl + D</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置Redis自启动</span></span><br><span class="line">docker update redis --restart=always</span><br></pre></td></tr></table></figure>
+<h2 id="Redis安装"><a href="#Redis安装" class="headerlink" title="Redis安装"></a>Redis安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取官方的最新版本的镜像</span></span><br><span class="line">docker pull redis:latest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看本地镜像</span></span><br><span class="line">docker images</span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行容器</span></span><br><span class="line">docker run -itd --name redis-user -p 6379:6379 -d redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># redis-cli 连接测试</span></span><br><span class="line">docker <span class="built_in">exec</span> -it redis-user /bin/bash</span><br><span class="line">redis-cli</span><br><span class="line"><span class="built_in">set</span> <span class="built_in">test</span> 1</span><br><span class="line"><span class="comment"># 退出</span></span><br><span class="line">ctrl + C</span><br><span class="line">ctrl + D</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置Redis自启动</span></span><br><span class="line">docker update redis-user --restart=always</span><br></pre></td></tr></table></figure>
 
       
 
@@ -842,6 +842,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Nacos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Prometheus-Grafana</a>
               </li>
             
             <div class="clearfix"></div>
