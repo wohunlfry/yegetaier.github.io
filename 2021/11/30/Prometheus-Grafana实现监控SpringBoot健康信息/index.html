@@ -6,24 +6,31 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Docker搭建Prometheus-Grafana | 随机漫步的丸子</title>
+  <title>Prometheus-Grafana实现监控SpringBoot健康信息 | 随机漫步的丸子</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Docker搭建Prometheus-Grafana">
+  <meta name="description" content="Prometheus-Grafana实现监控SpringBoot健康信息">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker搭建Prometheus-Grafana">
-<meta property="og:url" content="https://jz.wohunlfry.top/2021/11/29/Docker%E6%90%AD%E5%BB%BAPrometheus-Grafana/index.html">
+<meta property="og:title" content="Prometheus-Grafana实现监控SpringBoot健康信息">
+<meta property="og:url" content="https://jz.wohunlfry.top/2021/11/30/Prometheus-Grafana%E5%AE%9E%E7%8E%B0%E7%9B%91%E6%8E%A7SpringBoot%E5%81%A5%E5%BA%B7%E4%BF%A1%E6%81%AF/index.html">
 <meta property="og:site_name" content="随机漫步的丸子">
-<meta property="og:description" content="Docker搭建Prometheus-Grafana">
+<meta property="og:description" content="Prometheus-Grafana实现监控SpringBoot健康信息">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111191426068.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111291914379.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111300958648.png">
-<meta property="article:published_time" content="2021-11-29T06:09:56.000Z">
-<meta property="article:modified_time" content="2021-11-30T01:59:23.644Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301421613.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301454636.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301506038.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301544758.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301601747.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301601608.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301605888.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301609192.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301611815.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301614850.png">
+<meta property="article:published_time" content="2021-11-30T06:03:46.000Z">
+<meta property="article:modified_time" content="2021-11-30T08:20:34.867Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="Prometheus-Grafana">
+<meta property="article:tag" content="SpringBoot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111191426068.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301421613.png">
   
     <link rel="alternative" href="/atom.xml" title="随机漫步的丸子" type="application/atom+xml">
   
@@ -157,104 +164,72 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Docker搭建Prometheus-Grafana" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Prometheus-Grafana实现监控SpringBoot健康信息" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Docker搭建Prometheus-Grafana
+      Prometheus-Grafana实现监控SpringBoot健康信息
     </h1>
   
 
         
-        <a href="/2021/11/29/Docker%E6%90%AD%E5%BB%BAPrometheus-Grafana/" class="archive-article-date">
-  	<time datetime="2021-11-29T06:09:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
+        <a href="/2021/11/30/Prometheus-Grafana%E5%AE%9E%E7%8E%B0%E7%9B%91%E6%8E%A7SpringBoot%E5%81%A5%E5%BA%B7%E4%BF%A1%E6%81%AF/" class="archive-article-date">
+  	<time datetime="2021-11-30T06:03:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Docker搭建Prometheus-Grafana</p>
+        <p>Prometheus-Grafana实现监控SpringBoot健康信息</p>
 <a id="more"></a>
 
-<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>Prometheus是一套开源的监控&amp;报警&amp;时间序列数据库的组合，起始是由SoundCloud公司开发的。目前，许多公司和组织都采用了 Prometheus 作为监控告警工具。Prometheus 的开发者和用户社区非常活跃，它现在是一个独立的开源项目，可以独立于任何公司进行维护。</p>
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ul>
-<li>由指标名称和键/值对标签标识的时间序列数据组成的多维数据模型。</li>
-<li>强大的查询语言 PromQL。</li>
-<li>不依赖分布式存储，单个服务节点具有自治能力。</li>
-<li>时间序列数据是服务端通过 HTTP 协议主动拉取获得的。</li>
-<li>可以通过中间网关来推送时间序列数据。</li>
-<li>可以通过静态配置文件或服务发现来获取监控目标。</li>
-<li>支持多种类型的图表和仪表盘。</li>
-</ul>
-<h3 id="组件"><a href="#组件" class="headerlink" title="组件"></a>组件</h3><ul>
-<li>Prometheus Server 作为服务端，用来存储时间序列数据。</li>
-<li>客户端库用来检测应用程序代码。</li>
-<li>用于支持临时任务的推送网关。</li>
-<li>Exporter 用来监控 HAProxy，StatsD，Graphite 等特殊的监控目标，并向 Prometheus 提供标准格式的监控样本数据。</li>
-<li>alartmanager 用来处理告警。</li>
-<li>其他各种周边工具。</li>
-</ul>
-<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111191426068.png" alt="image"></p>
-<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><p>Prometheus 适用于记录文本格式的时间序列，它既适用于以机器为中心的监控，也适用于高度动态的面向服务架构的监控。在微服务的世界中，它对多维数据收集和查询的支持有特殊优势。Prometheus 是专为提高系统可靠性而设计的，它可以在断电期间快速诊断问题，每个 Prometheus Server 都是相互独立的，不依赖于网络存储或其他远程服务。当基础架构出现故障时，你可以通过 Prometheus 快速定位故障点，而且不会消耗大量的基础架构资源。<br>但是，因为 Prometheus 收集的数据不够详细完整，所以在百分之百准确度的场景下，例如按请求数量计费， Prometheus 可能不太适用。</p>
-<h3 id="node-exporter镜像来源"><a href="#node-exporter镜像来源" class="headerlink" title="node-exporter镜像来源"></a>node-exporter镜像来源</h3><p>node_exporter – 用于机器系统数据收集<br>监控本机，只需要一个exporter</p>
-<p>node-exporter 镜像库地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/r/prom/node-exporter/tags">https://hub.docker.com/r/prom/node-exporter/tags</a><br>可以通过 Sort by 查看其他版本的 node-exporter，默认是最新版本 <strong>prom/node-exporter:latest</strong>。</p>
-<p>还可以用 <strong>docker search node-exporter</strong> 命令来查看可用版本。</p>
-<h3 id="获取node-exporter镜像"><a href="#获取node-exporter镜像" class="headerlink" title="获取node-exporter镜像"></a>获取node-exporter镜像</h3><blockquote>
-<p>docker pull prom/node-exporter:latest</p>
-<p># 查看镜像<br>docker images</p>
-</blockquote>
-<h3 id="启动node-exporter容器"><a href="#启动node-exporter容器" class="headerlink" title="启动node-exporter容器"></a>启动node-exporter容器</h3><p>node_exporter设计用于监控主机系统。不建议将其部署为Docker容器，因为它需要访问主机系统。请注意，您要监视的任何非根安装点都需要绑定到容器中。如果启动容器以进行主机监视，请指定<code>path.rootfs</code>参数。此参数必须与host root的bind-mount中的路径匹配。node_exporter将<code>path.rootfs</code>用作访问主机文件系统的前缀。</p>
-<blockquote>
-<p>docker run -d –name node_exporter <br>    –restart=always <br>    –net=”host” –pid=”host” <br>    -v “/proc:/host/proc:ro” <br>    -v “/sys:/host/sys:ro” <br>    -v “/:/rootfs:ro” <br>    prom/node-exporter <br>    –path.procfs=/host/proc <br>    –path.rootfs=/rootfs <br>    –path.sysfs=/host/sys <br>    –collector.filesystem.ignored-mount-points=’^/(sys|proc|dev|host|etc)($$|/)’</p>
-</blockquote>
-<h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><p>访问url： <a target="_blank" rel="noopener" href="http://ip:9100/metrics%EF%BC%8CIP%E4%B8%BAnode_exporter%E6%89%80%E5%9C%A8%E6%9C%BA%E5%AD%90IP%E3%80%82">http://IP:9100/metrics，IP为node_exporter所在机子IP。</a></p>
-<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111291914379.png" alt="image"></p>
-<h3 id="Prometheus镜像来源"><a href="#Prometheus镜像来源" class="headerlink" title="Prometheus镜像来源"></a>Prometheus镜像来源</h3><p>Prometheus 镜像库地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/r/prom/prometheus/tags">https://hub.docker.com/r/prom/prometheus/tags</a><br>可以通过 Sort by 查看其他版本的 Prometheus，默认是最新版本 <strong>prom/prometheus:latest</strong>。</p>
-<p>还可以用 <strong>docker search prometheus</strong> 命令来查看可用版本。</p>
-<h3 id="获取Prometheus镜像"><a href="#获取Prometheus镜像" class="headerlink" title="获取Prometheus镜像"></a>获取Prometheus镜像</h3><blockquote>
-<p>docker pull prom/prometheus:latest</p>
-<p># 查看镜像<br>docker images</p>
-</blockquote>
-<h3 id="新建Prometheus配置文件prometheus-yml"><a href="#新建Prometheus配置文件prometheus-yml" class="headerlink" title="新建Prometheus配置文件prometheus.yml"></a>新建Prometheus配置文件prometheus.yml</h3><blockquote>
-<p>mkdir -p /usr/local/docker/prometheus<br>cd /usr/local/docker/prometheus<br>vi prometheus.yml</p>
-</blockquote>
-<p><strong>prometheus.yml内容</strong></p>
-<p>192.168.198.200是本机地址，注意修改IP地址。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">scrape_interval:</span>     <span class="string">60s</span></span><br><span class="line">  <span class="attr">evaluation_interval:</span> <span class="string">60s</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">prometheus</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9090&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">prometheus</span></span><br><span class="line"> </span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">linux</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9100&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">localhost</span></span><br></pre></td></tr></table></figure>
+<h2 id="gradle依赖"><a href="#gradle依赖" class="headerlink" title="gradle依赖"></a>gradle依赖</h2><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator</span></span><br><span class="line">implementation <span class="attr">group:</span> <span class="string">&#x27;org.springframework.boot&#x27;</span>, <span class="attr">name:</span> <span class="string">&#x27;spring-boot-starter-actuator&#x27;</span>, <span class="attr">version:</span> <span class="string">&#x27;2.5.5&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://mvnrepository.com/artifact/io.micrometer/micrometer-registry-prometheus</span></span><br><span class="line">implementation <span class="attr">group:</span> <span class="string">&#x27;io.micrometer&#x27;</span>, <span class="attr">name:</span> <span class="string">&#x27;micrometer-registry-prometheus&#x27;</span>, <span class="attr">version:</span> <span class="string">&#x27;1.7.4&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// https://mvnrepository.com/artifact/io.micrometer/micrometer-core</span></span><br><span class="line">implementation <span class="attr">group:</span> <span class="string">&#x27;io.micrometer&#x27;</span>, <span class="attr">name:</span> <span class="string">&#x27;micrometer-core&#x27;</span>, <span class="attr">version:</span> <span class="string">&#x27;1.7.4&#x27;</span></span><br></pre></td></tr></table></figure>
 
-<h3 id="启动Prometheus容器"><a href="#启动Prometheus容器" class="headerlink" title="启动Prometheus容器"></a>启动Prometheus容器</h3><blockquote>
-<p>docker run -d –name prometheus <br>  -p 9090:9090 <br>  -v /usr/local/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  <br>  prom/prometheus</p>
-<p># 自启动<br>docker update prometheus –restart=always</p>
+<h2 id="开放prometheus的端点"><a href="#开放prometheus的端点" class="headerlink" title="开放prometheus的端点"></a>开放prometheus的端点</h2><p>在<code>application.properties</code>中编辑如下配置</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">management.endpoints.web.exposure.include</span>=<span class="string">prometheus,health,info</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置与grafana集成所需的bean"><a href="#配置与grafana集成所需的bean" class="headerlink" title="配置与grafana集成所需的bean"></a>配置与grafana集成所需的bean</h2><p>GrafanaConfig</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> io.micrometer.core.instrument.MeterRegistry;</span><br><span class="line"><span class="keyword">import</span> org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Bean;</span><br><span class="line"><span class="keyword">import</span> org.springframework.context.annotation.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GrafanaConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 配置这个bean，实现和grafana集成。</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function">MeterRegistryCustomizer&lt;MeterRegistry&gt; <span class="title">metricsCommonTags</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> registry -&gt; registry.config().commonTags(<span class="string">&quot;application&quot;</span>, <span class="string">&quot;test&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动spring-boot应用"><a href="#启动spring-boot应用" class="headerlink" title="启动spring-boot应用"></a>启动spring-boot应用</h2><p>当启动完毕后，访问如下地址，查看是否有对应的信息输出：</p>
+<blockquote>
+<p>curl -G <a target="_blank" rel="noopener" href="http://localhost:8080/actuator/prometheus">http://localhost:8080/actuator/prometheus</a></p>
 </blockquote>
-<h3 id="测试-1"><a href="#测试-1" class="headerlink" title="测试"></a>测试</h3><p>访问url：<a target="_blank" rel="noopener" href="http://192.168.198.200:9090/graph">http://192.168.198.200:9090/graph</a></p>
-<p>访问targets：<a target="_blank" rel="noopener" href="http://192.168.198.200:9090/targets">http://192.168.198.200:9090/targets</a></p>
-<h2 id="Grafana"><a href="#Grafana" class="headerlink" title="Grafana"></a>Grafana</h2><h3 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h3><p>Grafana 是一个跨平台的开源的度量分析和可视化工具，主要用于查询并可视化展示采集的数据。<br>Grafana 提供了丰富的可视化展示方式，包括快速灵活的客户端图表，拥有不同方式的可视化指标和日志的面板插件以及丰富的仪表盘插件，包括热图、折线图、图表等。</p>
-<h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><ul>
-<li>Grafana 拥有快速灵活的客户端图表，面板插件有许多不同方式的可视化指标和日志，官方库中具有丰富的仪表盘插件，比如热图、折线图、图表等多种展示方式，让我们复杂的数据展示的美观而优雅。</li>
-<li>Grafana 支持许多不同的时间序列数据（数据源）存储后端。每个数据源都有一个特定查询编辑器。官方支持以下数据源：Graphite、infloxdb、opensdb、prometheus、elasticsearch、cloudwatch。每个数据源的查询语言和功能明显不同。你可以将来自多个数据源的数据组合到一个仪表板上，但每个面板都要绑定到属于特定组织的特定数据源。</li>
-<li>Grafana 中的警报允许您将规则附加到仪表板面板上。保存仪表板时，Gravana 会将警报规则提取到单独的警报规则存储中，并安排它们进行评估。报警消息还能通过钉钉、邮箱等推送至移动端。但目前 Grafana 只支持 graph 面板的报警。</li>
-<li>Grafana 使用来自不同数据源的丰富事件注释图表，鼠标悬停在事件上会显示完整的事件元数据和标记。</li>
-<li>Grafana 使用 Ad-hoc 过滤器允许动态创建新的键/值过滤器，这些过滤器会自动应用于使用该数据源的所有查询。</li>
-</ul>
-<h3 id="Grafana镜像来源"><a href="#Grafana镜像来源" class="headerlink" title="Grafana镜像来源"></a>Grafana镜像来源</h3><p>Grafana 镜像库地址：<a target="_blank" rel="noopener" href="https://hub.docker.com/r/grafana/grafana/tags">https://hub.docker.com/r/grafana/grafana/tags</a><br>可以通过 Sort by 查看其他版本的 Grafana，默认是最新版本 <strong>grafana/grafana:latest</strong>。</p>
-<p>还可以用 <strong>docker search grafana</strong> 命令来查看可用版本。</p>
-<h3 id="获取Grafana镜像"><a href="#获取Grafana镜像" class="headerlink" title="获取Grafana镜像"></a>获取Grafana镜像</h3><blockquote>
-<p>docker pull grafana/grafana:latest</p>
-<p># 查看镜像<br>docker images</p>
-</blockquote>
-<h3 id="创建grafana-storage目录，用来存储数据"><a href="#创建grafana-storage目录，用来存储数据" class="headerlink" title="创建grafana-storage目录，用来存储数据"></a>创建grafana-storage目录，用来存储数据</h3><blockquote>
-<p>mkdir /usr/local/docker/grafana-storage<br>chmod 777 -R /usr/local/docker/grafana-storage</p>
-</blockquote>
-<h3 id="启动Grafana容器"><a href="#启动Grafana容器" class="headerlink" title="启动Grafana容器"></a>启动Grafana容器</h3><blockquote>
-<p>docker run -d <br>  –restart=always <br>  -p 3000:3000 <br>  –name=grafana <br>  -v /usr/local/docker/grafana-storage:/var/lib/grafana <br>  grafana/grafana</p>
-</blockquote>
-<h3 id="测试-2"><a href="#测试-2" class="headerlink" title="测试"></a>测试</h3><p>访问url：<a target="_blank" rel="noopener" href="http://192.168.198.200:3000/">http://192.168.198.200:3000/</a></p>
-<p>默认先跳转到登录页面，默认的用户名和密码都是admin</p>
-<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111300958648.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301421613.png" alt="image"></p>
+<h2 id="Prometheus增加job"><a href="#Prometheus增加job" class="headerlink" title="Prometheus增加job"></a>Prometheus增加job</h2><p>编辑 <code>/usr/local/docker/prometheus/prometheus.yml</code> 文件配置<br>/usr/local/docker/prometheus/prometheus.yml为Prometheus配置文件路径</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">spring</span></span><br><span class="line">  <span class="attr">metrics_path:</span> <span class="string">&#x27;/actuator/prometheus&#x27;</span></span><br><span class="line">  <span class="attr">static_configs:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:8085&#x27;</span>]</span><br><span class="line">      <span class="attr">labels:</span></span><br><span class="line">        <span class="attr">instance:</span> <span class="string">spring:8085</span></span><br></pre></td></tr></table></figure>
+
+<p>指定一个job，这个job会去指定的地址获取监控数据。<br>在targets指定SpringBoot项目的actutator监控地址，192.168.198.200对应的是SpringBoot容器的hostname，8085是SpringBoot容器对外访问端口。</p>
+<p>重启Prometheus：<strong>docker restart prometheus</strong></p>
+<p>访问URL：<a target="_blank" rel="noopener" href="http://192.168.198.200:9090/targets">http://192.168.198.200:9090/targets</a></p>
+<p>可看到，Prometheus已经监控到Springboot提供的数据。</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301454636.png" alt="image"></p>
+<h2 id="Grafana添加Spring数据源"><a href="#Grafana添加Spring数据源" class="headerlink" title="Grafana添加Spring数据源"></a>Grafana添加Spring数据源</h2><p>创建一个 Prometheus 的数据源。</p>
+<p>导入 dashboard：JVM (Micrometer) 模板。</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301506038.png" alt="image"></p>
+<h2 id="报警信息配置"><a href="#报警信息配置" class="headerlink" title="报警信息配置"></a>报警信息配置</h2><p>以qq邮箱为例，首先必须开启<code>smtp</code>许可，并获取<code>安全码</code>用于之后的<code>密码</code>设置。<br>开启IMAP/SMTP服务<br><a target="_blank" rel="noopener" href="https://www.ujcms.com/documentation/351.html">QQ邮箱的smtp开启设置</a></p>
+<p>在docker启动容器时设置环境变量来配置邮件服务。</p>
+<p>GF_SMTP_USER：邮箱用户名<br>GF_SMTP_PASSWORD：邮箱SMTP服务授权码<br>GF_SMTP_SKIP_VERIFY：邮箱安全验证<br>GF_SMTP_FROM_ADDRESS：邮件发送地址</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--restart=always \</span><br><span class="line">-p 3000:3000 \</span><br><span class="line">--name grafana \</span><br><span class="line">-v /usr/local/docker/grafana-storage:/var/lib/grafana \</span><br><span class="line">--env GF_SMTP_ENABLED=true \</span><br><span class="line">--env GF_SMTP_HOST=smtp.qq.com:465 \</span><br><span class="line">--env GF_SMTP_USER=1844157977@qq.com \</span><br><span class="line">--env GF_SMTP_PASSWORD=mmrhmdqzmaxldcic \</span><br><span class="line">--env GF_SMTP_SKIP_VERIFY=true \</span><br><span class="line">--env GF_SMTP_FROM_ADDRESS=1844157977@qq.com \</span><br><span class="line">grafana/grafana</span><br></pre></td></tr></table></figure>
+
+<p>Grafana中设置报警邮箱</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301544758.png" alt="image"></p>
+<p>创建Alert</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301601747.png" alt="image"></p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301601608.png" alt="image"></p>
+<p>Alert配置参数说明</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301605888.png" alt="image"></p>
+<p>设置阈值</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301609192.png" alt="image"></p>
+<p>设置发送服务及内容</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301611815.png" alt="image"></p>
+<p>点击<code>Test Rule</code>进行测试</p>
+<p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111301614850.png" alt="image"></p>
+<p>Alert报警服务配置完成。</p>
 
       
 
@@ -268,7 +243,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Prometheus-Grafana</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SpringBoot</a>
         		</li>
       		
 		</ul>
@@ -288,8 +263,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2021/11/29/Docker%E5%AE%89%E8%A3%85RocketMQ/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Docker安装RocketMQ</div>
+    <a href="/2021/11/30/Prometheus-Grafana-nodeExporter%E5%AE%9E%E7%8E%B0%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%8F%AF%E8%A7%86%E5%8C%96%E7%9B%91%E6%8E%A7%E9%85%8D%E7%BD%AE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Prometheus-Grafana-nodeExporter实现服务器可视化监控配置</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -316,7 +291,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Prometheus"><span class="toc-number">1.</span> <span class="toc-text">Prometheus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8A%BF"><span class="toc-number">1.2.</span> <span class="toc-text">优势</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6"><span class="toc-number">1.3.</span> <span class="toc-text">组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9E%B6%E6%9E%84"><span class="toc-number">1.4.</span> <span class="toc-text">架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.5.</span> <span class="toc-text">适用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#node-exporter%E9%95%9C%E5%83%8F%E6%9D%A5%E6%BA%90"><span class="toc-number">1.6.</span> <span class="toc-text">node-exporter镜像来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96node-exporter%E9%95%9C%E5%83%8F"><span class="toc-number">1.7.</span> <span class="toc-text">获取node-exporter镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8node-exporter%E5%AE%B9%E5%99%A8"><span class="toc-number">1.8.</span> <span class="toc-text">启动node-exporter容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95"><span class="toc-number">1.9.</span> <span class="toc-text">测试</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Prometheus%E9%95%9C%E5%83%8F%E6%9D%A5%E6%BA%90"><span class="toc-number">1.10.</span> <span class="toc-text">Prometheus镜像来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Prometheus%E9%95%9C%E5%83%8F"><span class="toc-number">1.11.</span> <span class="toc-text">获取Prometheus镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BAPrometheus%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6prometheus-yml"><span class="toc-number">1.12.</span> <span class="toc-text">新建Prometheus配置文件prometheus.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Prometheus%E5%AE%B9%E5%99%A8"><span class="toc-number">1.13.</span> <span class="toc-text">启动Prometheus容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-1"><span class="toc-number">1.14.</span> <span class="toc-text">测试</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grafana"><span class="toc-number">2.</span> <span class="toc-text">Grafana</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="toc-number">2.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">2.2.</span> <span class="toc-text">特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Grafana%E9%95%9C%E5%83%8F%E6%9D%A5%E6%BA%90"><span class="toc-number">2.3.</span> <span class="toc-text">Grafana镜像来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96Grafana%E9%95%9C%E5%83%8F"><span class="toc-number">2.4.</span> <span class="toc-text">获取Grafana镜像</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAgrafana-storage%E7%9B%AE%E5%BD%95%EF%BC%8C%E7%94%A8%E6%9D%A5%E5%AD%98%E5%82%A8%E6%95%B0%E6%8D%AE"><span class="toc-number">2.5.</span> <span class="toc-text">创建grafana-storage目录，用来存储数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8Grafana%E5%AE%B9%E5%99%A8"><span class="toc-number">2.6.</span> <span class="toc-text">启动Grafana容器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95-2"><span class="toc-number">2.7.</span> <span class="toc-text">测试</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle%E4%BE%9D%E8%B5%96"><span class="toc-number">1.</span> <span class="toc-text">gradle依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BEprometheus%E7%9A%84%E7%AB%AF%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">开放prometheus的端点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%B8%8Egrafana%E9%9B%86%E6%88%90%E6%89%80%E9%9C%80%E7%9A%84bean"><span class="toc-number">3.</span> <span class="toc-text">配置与grafana集成所需的bean</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8spring-boot%E5%BA%94%E7%94%A8"><span class="toc-number">4.</span> <span class="toc-text">启动spring-boot应用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prometheus%E5%A2%9E%E5%8A%A0job"><span class="toc-number">5.</span> <span class="toc-text">Prometheus增加job</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Grafana%E6%B7%BB%E5%8A%A0Spring%E6%95%B0%E6%8D%AE%E6%BA%90"><span class="toc-number">6.</span> <span class="toc-text">Grafana添加Spring数据源</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%A5%E8%AD%A6%E4%BF%A1%E6%81%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">7.</span> <span class="toc-text">报警信息配置</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -904,7 +879,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Prometheus-Grafana</a>
+                <a href="javascript:void(0)" class="js-tag color2">Prometheus-Grafana-nodeExporter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">可视化监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
               </li>
             
             <div class="clearfix"></div>
