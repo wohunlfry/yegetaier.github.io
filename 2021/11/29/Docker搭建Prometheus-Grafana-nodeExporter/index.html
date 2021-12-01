@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111191426068.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111300958648.png">
 <meta property="article:published_time" content="2021-11-29T06:09:56.000Z">
-<meta property="article:modified_time" content="2021-11-30T07:26:57.071Z">
+<meta property="article:modified_time" content="2021-12-01T10:29:58.236Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Prometheus-Grafana-nodeExporter">
 <meta name="twitter:card" content="summary">
@@ -227,7 +227,7 @@
 </blockquote>
 <p><strong>prometheus.yml内容</strong></p>
 <p>192.168.198.200是本机地址，注意修改IP地址。</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">scrape_interval:</span>     <span class="string">60s</span></span><br><span class="line">  <span class="attr">evaluation_interval:</span> <span class="string">60s</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">prometheus</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9090&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">prometheus</span></span><br><span class="line"> </span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">linux</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9100&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">localhost</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">global:</span></span><br><span class="line">  <span class="attr">scrape_interval:</span>     <span class="string">60s</span></span><br><span class="line">  <span class="attr">evaluation_interval:</span> <span class="string">60s</span></span><br><span class="line"> </span><br><span class="line"><span class="attr">scrape_configs:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">prometheus</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9090&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">prometheus</span></span><br><span class="line"> </span><br><span class="line">  <span class="bullet">-</span> <span class="attr">job_name:</span> <span class="string">system</span></span><br><span class="line">    <span class="attr">static_configs:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">targets:</span> [<span class="string">&#x27;192.168.198.200:9100&#x27;</span>]</span><br><span class="line">        <span class="attr">labels:</span></span><br><span class="line">          <span class="attr">instance:</span> <span class="string">system</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="启动Prometheus容器"><a href="#启动Prometheus容器" class="headerlink" title="启动Prometheus容器"></a>启动Prometheus容器</h3><blockquote>
 <p>docker run -d –name prometheus <br>  -p 9090:9090 <br>  -v /usr/local/docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  <br>  prom/prometheus</p>
@@ -925,6 +925,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
               </li>
             
             <div class="clearfix"></div>
