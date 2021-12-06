@@ -16,7 +16,7 @@
 <meta property="og:description" content="Spring内网项目导入gradle依赖">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-19T08:49:06.000Z">
-<meta property="article:modified_time" content="2021-09-19T09:55:13.956Z">
+<meta property="article:modified_time" content="2021-12-06T10:30:34.432Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="Spring">
 <meta name="twitter:card" content="summary">
@@ -176,9 +176,9 @@
         <p>Spring内网项目导入gradle依赖</p>
 <a id="more"></a>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">项目拷贝外网，build.gradle添加依赖，综合</span><br><span class="line">拷贝外网repository仓库到内网</span><br><span class="line">替换内网原来的repository仓库</span><br><span class="line"></span><br><span class="line"><span class="comment">## 加载单独的jar包不可用，缺少Sources资源</span></span><br></pre></td></tr></table></figure>
+<h2 id="Gradle方式"><a href="#Gradle方式" class="headerlink" title="Gradle方式"></a>Gradle方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">项目（gradle部分）拷贝外网，build.gradle添加依赖，综合</span><br><span class="line">拷贝外网repository仓库到内网</span><br><span class="line">替换内网原来的repository仓库</span><br><span class="line"><span class="comment">## 加载单独的jar包不可用，缺少Sources资源</span></span><br></pre></td></tr></table></figure>
 
-
+<h2 id="Maven方式"><a href="#Maven方式" class="headerlink" title="Maven方式"></a>Maven方式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">内网Gradle项目需要的依赖在外网通过Maven方式下载</span><br><span class="line">只拷贝Maven仓库中需要的依赖文件夹至内网Maven仓库</span><br><span class="line">内网Gradle综合，通过Maven仓库依赖生成新的Gradle依赖并自动添加到Gradle仓库</span><br></pre></td></tr></table></figure>
       
 
       
@@ -248,7 +248,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Gradle%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">Gradle方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Maven%E6%96%B9%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">Maven方式</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -857,6 +857,18 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">提取学号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
               </li>
             
             <div class="clearfix"></div>
