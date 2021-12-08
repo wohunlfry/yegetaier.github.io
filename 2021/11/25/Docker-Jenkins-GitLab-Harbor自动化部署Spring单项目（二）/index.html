@@ -36,7 +36,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111252036942.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111252037644.png">
 <meta property="article:published_time" content="2021-11-25T12:03:07.000Z">
-<meta property="article:modified_time" content="2021-11-25T12:38:52.910Z">
+<meta property="article:modified_time" content="2021-12-08T08:54:21.765Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="自动化部署">
 <meta name="twitter:card" content="summary">
@@ -229,8 +229,15 @@
 <p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111251618439.png" alt="image"></p>
 <p>如果配置成功，会在界面上方显示“Hook executed successfully:HTTP 200”。</p>
 <p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111251618261.png" alt="image"></p>
-<h2 id="Jenkins任务执行"><a href="#Jenkins任务执行" class="headerlink" title="Jenkins任务执行"></a>Jenkins任务执行</h2><h3 id="代码上传到GitLab"><a href="#代码上传到GitLab" class="headerlink" title="代码上传到GitLab"></a>代码上传到GitLab</h3><p>build.gradle增加仓库地址</p>
+<h2 id="Jenkins任务执行"><a href="#Jenkins任务执行" class="headerlink" title="Jenkins任务执行"></a>Jenkins任务执行</h2><h3 id="代码上传到GitLab"><a href="#代码上传到GitLab" class="headerlink" title="代码上传到GitLab"></a>代码上传到GitLab</h3><p><strong>如果项目在联网环境中运行，添加网络仓库地址即可</strong></p>
+<p>build.gradle增加网络仓库地址</p>
 <figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    maven &#123; url <span class="string">&#x27;https://maven.aliyun.com/repository/public/&#x27;</span> &#125;</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>如果项目在断网环境中运行，需要添加本地gradle仓库和maven仓库</strong></p>
+<p><strong>存在gradle构建项目极小部分依赖maven仓库</strong></p>
+<p><strong>使用gradle仓库通过环境变量的GRADLE_USER_HOME设置</strong></p>
+<p><strong>使用maven仓库通过~/.m2/repository设置，root账户下为/root/.m2/repository，一般用户下为/home/xxx/.m2/repository</strong></p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">repositories &#123;</span><br><span class="line">    mavenLocal()</span><br><span class="line">    mavenCentral()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>代码上传触发Jenkins任务执行。</p>
 <h3 id="构建成功"><a href="#构建成功" class="headerlink" title="构建成功"></a>构建成功</h3><p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111240929474.png" alt="image"></p>

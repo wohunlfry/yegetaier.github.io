@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111231121149.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111251956365.png">
 <meta property="article:published_time" content="2021-11-25T11:02:21.000Z">
-<meta property="article:modified_time" content="2021-12-01T10:41:15.259Z">
+<meta property="article:modified_time" content="2021-12-08T09:27:23.758Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="自动化部署">
 <meta name="twitter:card" content="summary">
@@ -384,7 +384,9 @@
 <h4 id="安装-Publish-Over-SSH"><a href="#安装-Publish-Over-SSH" class="headerlink" title="安装 Publish Over SSH"></a>安装 Publish Over SSH</h4><p>安装 Publish Over SSH，远程ssh的插件。</p>
 <p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111221017719.png" alt="image"></p>
 <p>安装完成，<strong>重启</strong>。</p>
-<h3 id="配置全局工具"><a href="#配置全局工具" class="headerlink" title="配置全局工具"></a>配置全局工具</h3><p>通过 系统管理 -&gt; 全局工具配置，进行全局工具的配置。配置构建项目需要的基本环境。</p>
+<h3 id="配置全局工具"><a href="#配置全局工具" class="headerlink" title="配置全局工具"></a>配置全局工具</h3><p><strong>Jenkins在联网环境中，勾选自动安装，直接安装全局工具到Jenkins的tools中，通过Jenkins脚本使用全局工具。</strong></p>
+<p><strong>如果Jenkins在断网环境中，手动安装本机工具，建议不配置全局工具。因为在Docker环境下，Jenkins并不能找到本机安装的工具，除非把本机安装的工具的环境添加到Jenkins的Docker运行环境中。可直接通过Publish over SSH远程登录工具，本机使用全局工具。</strong><br><strong>但，如果Jenkins安装在本机，未通过Docker容器，可配置全局工具，通过Jenkins脚本使用全局工具。</strong></p>
+<p>通过 系统管理 -&gt; 全局工具配置，进行全局工具的配置。配置构建项目需要的基本环境。</p>
 <p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111221025804.png" alt="image"></p>
 <h4 id="JDK配置"><a href="#JDK配置" class="headerlink" title="JDK配置"></a>JDK配置</h4><p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111221041177.png" alt="image"></p>
 <h4 id="Gradle配置"><a href="#Gradle配置" class="headerlink" title="Gradle配置"></a>Gradle配置</h4><p><img src="https://raw.githubusercontent.com/wohunlfry/picBed/master/202111221033291.png" alt="image"></p>
