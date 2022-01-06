@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202201061137667.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/wohunlfry/picBed/master/202201060940120.png">
 <meta property="article:published_time" content="2021-12-31T07:38:50.000Z">
-<meta property="article:modified_time" content="2022-01-06T06:08:27.377Z">
+<meta property="article:modified_time" content="2022-01-06T06:23:51.368Z">
 <meta property="article:author" content="曳戈泰尔">
 <meta property="article:tag" content="通信">
 <meta name="twitter:card" content="summary">
@@ -274,7 +274,7 @@
 <h2 id="定时同步系统"><a href="#定时同步系统" class="headerlink" title="定时同步系统"></a>定时同步系统</h2><p>数字信号是一个个码元依次按拍节传输的，因此必须有定时电路来保证正确的寸序关系，必须由同步电路来保证接收端的工作与发送端步调一致。定时同步系统控制着数字信号的可靠传输。定时同步系统失效，轻则错误增多，重则通信中断。</p>
 <h2 id="均衡器"><a href="#均衡器" class="headerlink" title="均衡器"></a>均衡器</h2><p>均衡器是用来补偿不理想的信道特性，使信号能正确无误地接收。</p>
 <h2 id="再生中继器"><a href="#再生中继器" class="headerlink" title="再生中继器"></a>再生中继器</h2><p>我们知道在长途电话传输过程中，为弥补线路的损耗，沿途要设置若干增音器。在数字通信中与此相应的是再生中继器，用来修正脉冲波形，消除干扰和畸变。</p>
-<h2 id="模采"><a href="#模采" class="headerlink" title="模采"></a>模采</h2><p>模采即模拟信号采集，通过模拟多路分配器可以将信号采集端子与不同的信号处理终端连接，从而根据信号采集端子采集的信号类型将模拟信号分配到不同的信号处理终端处理，进而通过模拟多路选择器将对应的信号处理终端输出的模拟信号选通输出到微控制单元。由此，不需要设置多个信号采集端子即可支持多个不同类型的模拟信号的采集。</p>
+<h2 id="模采"><a href="#模采" class="headerlink" title="模采"></a>模采</h2><p>模采即模拟信号采集，通过A/D转换器将模拟信号转化为数字信号。采样时采样间隔越小，信号还原的就越精确。<br>奈奎斯特-香农采样定理：采样频率要大于信号最高频率的2倍，才能无失真的保留信号的完整信息。<br>采样频率如果太低就不能正确还原真实信号；但是如果采样频率太高，会有较大的频率分辨率，同时又会有产生大量的数据。通常，在实际应用中采样频率会选择比两倍奈奎斯特频率要大一些（比如3～5倍）。</p>
 <h2 id="超外差接收机"><a href="#超外差接收机" class="headerlink" title="超外差接收机"></a>超外差接收机</h2><p>超外差接收机是利用本地产生的振荡波与输入信号混频，将输入信号频率变换为某个预先确定的频率的方法。这种方法是为了适应远程通信对高频率、弱信号接收的需要，这种接收方式的性能优于高频（直接）放大式接收。</p>
 <p>超外差接收机，通常简称为超外差，是一种类型的无线电接收器，它使用混频将一个接收到的信号转换为一个固定的中频，可以比原来更方便地处理（IF）载波频率。</p>
 <p>超外差接收器的灵敏度主要由下面几个因素决定：<br>1、射频放大器的增益<br>2、中频放大器的增益<br>3、接收机的噪声系数</p>
