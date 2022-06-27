@@ -6,17 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://jz.wohunlfry.top">
-  <title>Archives | 曳戈泰尔</title>
+  <title>Redis性能参数优化 | 曳戈泰尔</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="将更好的自己呈现给世界">
-<meta property="og:type" content="website">
-<meta property="og:title" content="曳戈泰尔">
-<meta property="og:url" content="https://jz.wohunlfry.top/archives/page/8/index.html">
+  <meta name="description" content="Redis性能参数优化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis性能参数优化">
+<meta property="og:url" content="https://jz.wohunlfry.top/2022/02/24/Redis%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="曳戈泰尔">
-<meta property="og:description" content="将更好的自己呈现给世界">
+<meta property="og:description" content="Redis性能参数优化">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-02-24T09:20:07.000Z">
+<meta property="article:modified_time" content="2022-02-24T11:34:38.705Z">
 <meta property="article:author" content="曳戈泰尔">
-<meta property="article:tag" content="程序猿,产品,运营">
+<meta property="article:tag" content="Redis">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="曳戈泰尔" type="application/atom+xml">
@@ -151,405 +153,141 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Redis性能参数优化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis性能参数优化
+    </h1>
+  
+
+        
+        <a href="/2022/02/24/Redis%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2022-02-24T09:20:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-24</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Redis性能参数优化</p>
+<a id="more"></a>
+
+<h2 id="优化方式"><a href="#优化方式" class="headerlink" title="优化方式"></a>优化方式</h2><ul>
+<li><p>系统优化</p>
+<ul>
+<li><p>echo “vm.overcommit_memory=1” &gt; /etc/sysctl.conf 0<br>表示内核将检查是否有足够的可用内存供应用进程使用；如果有足够的可用内存，内存申请允许；否则，内存申请失败，并把错误返回给应用进程。 表示内核允许分配所有的物理内存，而不管当前的内存状态如何。 表示内核允许分配超过所有物理内存和交换空间总和的内存。</p>
+</li>
+<li><p>echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled<br>禁用 NUMA 优化机制提高性能 </p>
+</li>
+<li><p>echo 1024 &gt;/proc/sys/net/core/somaxconn<br>修改限制接收新 TCP 连接侦听队列的大小，默认 128</p>
+</li>
+</ul>
+</li>
+<li><p>文件句柄优化</p>
+<p>修改 linux 系统参数<br>vim /etc/security/limits.conf 添加<br>soft　 nofile　　65535<br>hard　nofile　　65535 </p>
+</li>
+<li><p>内存优化 </p>
+<p>采用 jemalloc 内存分配器，降低内存碎片率</p>
+</li>
+<li><p>配置优化 </p>
+<p>maxmemory 7g<br>maxmemory-policy allkeys-lru<br>maxclients 0 </p>
+</li>
+</ul>
+<h2 id="配置文件说明"><a href="#配置文件说明" class="headerlink" title="配置文件说明"></a>配置文件说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">daemonize yes</span><br><span class="line"><span class="comment"># 是否以后台进程运行，默认为 no, 如果需要以后台进程运行则改为 yes</span></span><br><span class="line">pidfile /var/run/redis.pid</span><br><span class="line"><span class="comment"># 如果以后台进程运行的话，就需要指定 pid, 你可以在此自定义 redis.pid 文件的位置.</span></span><br><span class="line">port 6379</span><br><span class="line"><span class="comment"># 接受连接的端口号，如果端口是 0 则 redis 将不会监听 TCP socket 连接</span></span><br><span class="line">maxmemory 7g</span><br><span class="line"><span class="comment"># 最大可使用内存.</span></span><br><span class="line"><span class="comment"># 警告：如果你想把 Redis 视为一个真正的 DB 的话，那不要设置 &lt;maxmemory&gt;, 只有你只想把 Redis 作为 cache 或者有状态的 server（&#x27;state&#x27; server) 时才需要设置.</span></span><br><span class="line">maxmemory-policy allkeys-lru</span><br><span class="line"><span class="comment"># 内存清理策略：如果达到了 maxmemory, 你可以采取如下动作：</span></span><br><span class="line"><span class="comment"># volatile-lru -&gt; （默认策略）使用 LRU 算法来删除过期的 set</span></span><br><span class="line"><span class="comment"># allkeys-lru -&gt; 删除任何遵循 LRU 算法的 key</span></span><br><span class="line"><span class="comment"># volatile-random -&gt; 随机地删除过期 set 中的 key</span></span><br><span class="line"><span class="comment"># allkeys-&gt;random -&gt; 随机地删除一个 key</span></span><br><span class="line"><span class="comment"># volatile-ttl -&gt; 删除最近即将过期的 key（the nearest expire time (minor TTL)）</span></span><br><span class="line"><span class="comment"># noeviction -&gt; 根本不过期，写操作直接报错</span></span><br><span class="line">maxmemory-samples 2</span><br><span class="line"><span class="comment"># 对于处理 redis 内存来说，LRU 和 minor TTL 算法不是精确的，而是近似的（估计的）算法。所以我们会检查某些样本 #来达到内存检查的目的。默认的样本数是 3.</span></span><br><span class="line">maxclients 0</span><br><span class="line"><span class="comment"># 设置最大连接数。默认没有限制，&#x27;0&#x27; 意味着不限制.</span></span><br><span class="line">tcp-backlog 511</span><br><span class="line"><span class="comment"># 在高并发的环境中，为避免慢客户端的连接问题，需要设置一个高速后台日志.</span></span><br><span class="line">timeout 0</span><br><span class="line"><span class="comment"># 连接超时时间，单位秒.0 是不超时.</span></span><br><span class="line">tcp-keepalive 0</span><br><span class="line"><span class="comment"># 在 Linux 上，指定值（秒）用于发送 ACKs 的时间。注意关闭连接需要双倍的时间。默认为 0.</span></span><br><span class="line">loglevel notice</span><br><span class="line"><span class="comment"># 日志级别，默认是 verbose（详细）.</span></span><br><span class="line">logfile <span class="string">&quot;./6379/6379.log&quot;</span></span><br><span class="line"><span class="comment"># 指定 log 文件的名字，默认是 stdout.stdout 会让 redis 把日志输出到标准输出。但是如果使用 stdout 而又以后台进程的方式运行 redis, 则日志会输出到 /dev/null.</span></span><br><span class="line">databases 16</span><br><span class="line"><span class="comment"># 设置 数据库数目。默认的数据库是 DB 0. 可以通过 SELECT &lt;dbid&gt; 来选择一个数据库，dbid 是 [0,&#x27;databases&#x27;-1] 的数字.</span></span><br><span class="line"><span class="comment">#save 900 1</span></span><br><span class="line"><span class="comment">#save 300 10</span></span><br><span class="line"><span class="comment">#save 60 10000</span></span><br><span class="line"><span class="comment"># 以上面的例子来说明：</span></span><br><span class="line"><span class="comment"># 过了 900 秒并且有 1 个 key 发生了改变 就会触发 save 动作</span></span><br><span class="line"><span class="comment"># 过了 300 秒并且有 10 个 key 发生了改变 就会触发 save 动作</span></span><br><span class="line"><span class="comment"># 过了 60 秒并且至少有 10000 个 key 发生了改变 也会触发 save 动作</span></span><br><span class="line"><span class="comment"># 注意：如果你不想让 redis 自动保存数据，那就把下面的配置注释掉！</span></span><br><span class="line">stop-writes-on-bgsave-error yes</span><br><span class="line"><span class="comment"># 后台存储错误停止写.</span></span><br><span class="line">rdbcompression yes</span><br><span class="line"><span class="comment"># 存储至本地数据库时（持久化到 rdb 文件）是否压缩数据，默认为 yes</span></span><br><span class="line">rdbchecksum yes</span><br><span class="line"><span class="comment">#RDB 文件的是否直接偶像 chcksum.</span></span><br><span class="line">dbfilename dump.rdb</span><br><span class="line"><span class="comment"># 保存 dump 数据的文件名.</span></span><br><span class="line">dir ./6379</span><br><span class="line"><span class="comment"># 数据存放目录.</span></span><br><span class="line">slave-serve-stale-data yes</span><br><span class="line"><span class="comment"># 当 slave 丢失与 master 的连接时，或者 slave 仍然在于 master 进行数据同步时（还没有与 master 保持一致）,slave 可以有两种方式来响应客户端请求：</span></span><br><span class="line"><span class="comment"># 如果 slave-serve-stale-data 设置成 &#x27;yes&#x27; (the default) slave 会仍然响应客户端请求，此时可能会有问题.</span></span><br><span class="line"><span class="comment"># 如果 slave-serve-stale data 设置成 &#x27;no&#x27;slave 会返回 &quot;SYNC with master in progress&quot; 这样的错误信息。但 INFO 和 SLAVEOF 命令除外.</span></span><br><span class="line">slave-read-only yes</span><br><span class="line"><span class="comment"># 配置 slave 实例是否接受写。写 slave 对存储短暂数据（在同 master 数据同步后可以很容易地被删除）是有用的，但未配置的情况下，客户端写可能会发送问题。从 Redis2.6 后，默认 slave 为 read-only.</span></span><br><span class="line">repl-diskless-sync no</span><br><span class="line">repl-diskless-sync-delay 5</span><br><span class="line">repl-disable-tcp-nodelay no</span><br><span class="line"><span class="comment">#&quot;yes&quot;,Redis 将使用一个较小的数字 TCP 数据包和更少的带宽将数据发送到 slave , 但是这可能导致数据发送到 slave 端会有延迟，如果是 Linux kernel 的默认配置，会达到 40 毫秒.</span></span><br><span class="line"><span class="comment">#&quot;no&quot;, 则发送数据到 slave 端的延迟会降低，但将使用更多的带宽用于复制.</span></span><br><span class="line">slave-priority 100</span><br><span class="line"><span class="comment">#slave 的优先级是一个整数展示在 Redis 的 Info 输出中。如果 master 不再正常工作了，哨兵将用它来选择一个 slave 提升为 master.</span></span><br><span class="line"><span class="comment"># 优先级数字小的 salve 会优先考虑提升为 master, 所以例如有三个 slave 优先级分别为 10,100,25, 哨兵将挑选优先级最小数字为 10 的 slave.</span></span><br><span class="line"><span class="comment">#0 作为一个特殊的优先级，标识这个 slave 不能作为 master, 所以一个优先级为 0 的 slave 永远不会被哨兵挑选提升为 master.</span></span><br><span class="line"><span class="comment"># 默认优先级为 100.</span></span><br><span class="line">appendonly no</span><br><span class="line"><span class="comment"># 默认情况下，Redis 是异步的把数据导出到磁盘上。这种模式在很多应用里已经足够好，但 Redis 进程出问题或断电时可能造成一段时间的写操作丢失 (这取决于配置的 save 指令).</span></span><br><span class="line"><span class="comment">#AOF 是一种提供了更可靠的替代持久化模式，例如使用默认的数据写入文件策略（参见后面的配置）</span></span><br><span class="line"><span class="comment"># 在遇到像服务器断电或单写情况下 Redis 自身进程出问题但操作系统仍正常运行等突发事件时，Redis 能只丢失 1 秒的写操作.</span></span><br><span class="line"><span class="comment">#AOF 和 RDB 持久化能同时启动并且不会有问题.</span></span><br><span class="line"><span class="comment"># 如果 AOF 开启，那么在启动时 Redis 将加载 AOF 文件，它更能保证数据的可靠性.</span></span><br><span class="line">appendfilename <span class="string">&quot;appendonly.aof&quot;</span></span><br><span class="line"><span class="comment"># 纯累加文件名字（默认：&quot;appendonly.aof&quot;）</span></span><br><span class="line">appendfsync everysec</span><br><span class="line"><span class="comment"># 调用 fsync () 函数通知操作系统立刻向硬盘写数据.</span></span><br><span class="line"><span class="comment">#no: 不 fsync, 只是通知 OS 可以 flush 数据了，具体是否 flush 取决于 OS. 性能更好.</span></span><br><span class="line"><span class="comment">#always: 每次写入 append only 日志文件后都会 fsync. 性能差，但很安全.</span></span><br><span class="line"><span class="comment">#everysec: 没间隔 1 秒进行一次 fsync, 折中.</span></span><br><span class="line">no-appendfsync-on-rewrite no</span><br><span class="line"><span class="comment"># 如果把这个设置成 &quot;yes&quot; 带来了延迟问题，就保持 &quot;no&quot;, 这是保存持久数据的最安全的方式.</span></span><br><span class="line">auto-aof-rewrite-percentage 100</span><br><span class="line">auto-aof-rewrite-min-size 64mb</span><br><span class="line">aof-load-truncated yes</span><br><span class="line"><span class="comment"># 自动重写 AOF 文件</span></span><br><span class="line"><span class="comment"># 如果 AOF 日志文件增大到指定百分比，Redis 能够通过 BGREWRITEAOF 自动重写 AOF 日志文件.</span></span><br><span class="line"><span class="comment"># 工作原理：Redis 记住上次重写时 AOF 文件的大小（如果重启后还没有写操作，就直接用启动时的 AOF 大小）</span></span><br><span class="line"><span class="comment"># 这个基准大小和当前大小做比较。如果当前大小超过指定比例，就会触发重写操作。你还需要指定被重写日志的最小尺寸，这样避免了达到指定百分比但尺寸仍然很小的情况还要重写.</span></span><br><span class="line"><span class="comment"># 指定百分比为 0 会禁用 AOF 自动重写特性.</span></span><br><span class="line">lua-time-limit 5000</span><br><span class="line"><span class="comment">#Lua 脚本的最大执行时间，毫秒为单位</span></span><br><span class="line"><span class="comment"># 如果达到了最大的执行时间，Redis 将要记录在达到最大允许时间之后一个脚本仍然在执行，并且将开始对查询进行错误响应.</span></span><br><span class="line"><span class="comment"># 当一个长时间运行的脚本超过了最大执行时间，只有 SCRIPT KILL 和 SHUTDOWN NOSAVE 两个命令可用。第一个可以用于停止一个还没有调用写命名的脚本。第二个是关闭服务器唯一方式，当写命令已经通过脚本开始执行，并且用户不想等到脚本的自然 终止.</span></span><br><span class="line"><span class="comment"># 设置成 0 或者负值表示不限制执行时间并且没有任何警告</span></span><br><span class="line">slowlog-log-slower-than 10000</span><br><span class="line"><span class="comment"># 上面的时间单位是微秒，所以 1000000 就是 1 秒。注意，负数时间会禁用慢查询日志，而 0 则会强制记录所有命令.</span></span><br><span class="line">slowlog-max-len 128</span><br><span class="line"><span class="comment"># 这个长度没有限制。只是要主要会消耗内存。你可以通过 SLOWLOG RESET 来回收内存.</span></span><br><span class="line">latency-monitor-threshold 0</span><br><span class="line">notify-keyspace-events <span class="string">&quot;&quot;</span></span><br><span class="line"><span class="comment"># 事件通知，默认空字符串意思是禁用通知.</span></span><br><span class="line"><span class="comment"># 当事件发生时，Redis 可以通知 Pub/Sub 客户端.</span></span><br><span class="line"><span class="comment"># 可以在下表中选择 Redis 要通知的事件类型。事件类型由单个字符来标识：</span></span><br><span class="line"><span class="comment"># K   Keyspace 事件，以 _keyspace@&lt;db&gt;_ 的前缀方式发布</span></span><br><span class="line"><span class="comment"># E   Keyevent 事件，以 _keysevent@&lt;db&gt;_ 的前缀方式发布</span></span><br><span class="line"><span class="comment"># g   通用事件（不指定类型）, 像 DEL, EXPIRE, RENAME, …</span></span><br><span class="line"><span class="comment"># $   String 命令</span></span><br><span class="line"><span class="comment"># s   Set 命令</span></span><br><span class="line"><span class="comment"># h   Hash 命令</span></span><br><span class="line"><span class="comment"># z   有序集合命令</span></span><br><span class="line"><span class="comment"># x   过期事件（每次 key 过期时生成）</span></span><br><span class="line"><span class="comment"># e   清除事件（当 key 在内存被清除时生成）</span></span><br><span class="line"><span class="comment"># A   g$lshzxe 的别称，因此 ”AKE” 意味着所有的事件</span></span><br><span class="line">hash-max-ziplist-entries 512</span><br><span class="line">hash-max-ziplist-value 64</span><br><span class="line"><span class="comment"># 当 hash 中包含超过指定元素个数并且最大的元素没有超过临界时，</span></span><br><span class="line"><span class="comment">#hash 将以一种特殊的编码方式（大大减少内存使用）来存储，这里可以设置这两个临界值</span></span><br><span class="line"><span class="comment">#Redis Hash 对应 Value 内部实际就是一个 HashMap , 实际这里会有 2 种不同实现，</span></span><br><span class="line"><span class="comment"># 这个 Hash 的成员比较少时 Redis 为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的 HashMap 结构，对应的 valueredisObject 的 encoding 为 zipmap,</span></span><br><span class="line"><span class="comment"># 当成员数量增大时会自动转成真正的 HashMap, 此时 encoding 为 ht .</span></span><br><span class="line">list-max-ziplist-entries 512</span><br><span class="line">list-max-ziplist-value 64</span><br><span class="line"><span class="comment"># 和 Hash 一样，多个小的 list 以特定的方式编码来节省空间.</span></span><br><span class="line"><span class="comment">#list 数据类型节点值大小小于多少字节会采用紧凑存储格式.</span></span><br><span class="line">set-max-intset-entries 512</span><br><span class="line"><span class="comment">#set 数据类型内部数据如果全部是数值型，且包含多少节点以下会采用紧凑格式存储.</span></span><br><span class="line">zset-max-ziplist-entries 128</span><br><span class="line">zset-max-ziplist-value 64</span><br><span class="line"><span class="comment"># 和 hashe 和 list 一样，排序的 set 在指定的长度内以指定编码方式存储以节省空间</span></span><br><span class="line"><span class="comment">#zsort 数据类型节点值大小小于多少字节会采用紧凑存储格式.</span></span><br><span class="line">hll-sparse-max-bytes 3000</span><br><span class="line">activerehashing yes</span><br><span class="line"><span class="comment">#redis 将在每 100 毫秒时使用 1 毫秒的 CPU 时间来对 redis 的 hash 表进行重新 hash, 可以降低内存的使用。当你的使用场景中，有非常严格的实时性需 要，不能够接受 Redis 时不时的对请求有 2 毫秒的延迟的话，把这项配置为 no. 如果没有这么严格的实时性要求，可以设置为 yes, 以便能够尽可能快的释放内存.</span></span><br><span class="line">client-output-buffer-limit normal 0 0 0</span><br><span class="line">client-output-buffer-limit slave 256mb 64mb 60</span><br><span class="line">client-output-buffer-limit pubsub 32mb 8mb 60</span><br><span class="line"><span class="comment">#Redis 调用内部函数来执行许多后台任务，如关闭客户端超时的连接，清除过期的 Key , 等等.</span></span><br><span class="line"><span class="comment"># 不是所有的任务都以相同的频率执行，但 Redis 依照指定的 “hz” 值来执行检查任务.</span></span><br><span class="line"><span class="comment"># 默认情况下，&quot;hz&quot; 的被设定为 10 .</span></span><br><span class="line"><span class="comment"># 提高该值将在 Redis 空闲时使用更多的 CPU 时，但同时当有多个 key 同时到期会使 Redis 的反应更灵敏，以及超时可以更精确地处理.</span></span><br><span class="line"><span class="comment"># 范围是 1 到 500 之间，但是值超过 100 通常不是一个好主意.</span></span><br><span class="line"><span class="comment"># 大多数用户应该使用 10 这个预设值，只有在非常低的延迟的情况下有必要提高最大到 100 .</span></span><br><span class="line">hz 10</span><br><span class="line">aof-rewrite-incremental-fsync yes</span><br><span class="line"><span class="comment"># 当一个子节点重写 AOF 文件时，如果启用上面的选项，则文件每生成 32M 数据进行同步.</span></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/29/Docker%E5%AE%89%E8%A3%85MySQL/" class="archive-article-date">
-  	<time datetime="2021-11-29T02:42:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/29/Docker%E5%AE%89%E8%A3%85MySQL/">Docker安装MySQL</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/python%E6%8F%90%E5%8F%96Excel%E9%83%A8%E5%88%86%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2021-11-28T15:55:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2022/02/24/RabbitMQ%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          RabbitMQ性能参数优化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2022/02/24/MySQL%E6%80%A7%E8%83%BD%E5%8F%82%E6%95%B0%E4%BC%98%E5%8C%96/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL性能参数优化</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/python%E6%8F%90%E5%8F%96Excel%E9%83%A8%E5%88%86%E5%AD%97%E6%AE%B5%E6%95%B0%E6%8D%AE/">python提取Excel部分字段数据</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Excel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E6%96%B9%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">优化方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text">配置文件说明</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+        
+    </div>
+</aside>
+
+
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/python%E6%8F%90%E5%8F%96%E4%B8%A4Excel%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE/" class="archive-article-date">
-  	<time datetime="2021-11-28T15:30:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/python%E6%8F%90%E5%8F%96%E4%B8%A4Excel%E7%9B%B8%E5%90%8C%E6%95%B0%E6%8D%AE/">python提取两Excel相同数据</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Excel</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95/" class="archive-article-date">
-  	<time datetime="2021-11-28T14:57:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%8E%88%E6%9D%83%E7%99%BB%E5%BD%95/">Spring实现微信授权登录</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">OAuth</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0HTTP%E8%AF%B7%E6%B1%82/" class="archive-article-date">
-  	<time datetime="2021-11-28T14:48:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0HTTP%E8%AF%B7%E6%B1%82/">Spring实现HTTP请求</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTTP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89Response%E7%B1%BB/" class="archive-article-date">
-  	<time datetime="2021-11-28T14:33:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/Spring%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%AE%9A%E4%B9%89Response%E7%B1%BB/">Spring实现自定义Response类</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Response</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/28/Vue%E5%AE%9E%E7%8E%B0url%E5%88%B0%E4%BA%8C%E7%BB%B4%E7%A0%81/" class="archive-article-date">
-  	<time datetime="2021-11-28T08:10:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/28/Vue%E5%AE%9E%E7%8E%B0url%E5%88%B0%E4%BA%8C%E7%BB%B4%E7%A0%81/">Vue实现url到二维码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">二维码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/27/Spring%E5%AE%9E%E7%8E%B0Swagger2%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" class="archive-article-date">
-  	<time datetime="2021-11-27T14:24:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/27/Spring%E5%AE%9E%E7%8E%B0Swagger2%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/">Spring实现Swagger2接口文档</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Swagger</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/27/Spring%E4%B8%ADRequestBody%E5%92%8CRequestParam%E7%9A%84%E5%8C%BA%E5%88%AB/" class="archive-article-date">
-  	<time datetime="2021-11-27T12:06:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/27/Spring%E4%B8%ADRequestBody%E5%92%8CRequestParam%E7%9A%84%E5%8C%BA%E5%88%AB/">Spring中RequestBody和RequestParam的区别</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Spring</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/27/Spring%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3/" class="archive-article-date">
-  	<time datetime="2021-11-27T11:46:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-27</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/27/Spring%E5%AE%9E%E7%8E%B0%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%8E%A5%E5%8F%A3/">Spring实现文件上传接口</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">文件上传</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/7/">&amp;laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/6/">6</a><a class="page-number" href="/archives/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/page/9/">9</a><a class="page-number" href="/archives/page/10/">10</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/26/">26</a><a class="extend next" rel="next" href="/archives/page/9/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -573,8 +311,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
