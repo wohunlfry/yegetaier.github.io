@@ -71,7 +71,7 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
+    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">其他站点</a>
     			
             
     			
@@ -153,29 +153,29 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Qt实现TCP通信" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-多线程实现顺序运行" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/29/Qt%E5%AE%9E%E7%8E%B0TCP%E9%80%9A%E4%BF%A1/">Qt实现TCP通信</a>
+      <a class="article-title" href="/2022/07/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E9%A1%BA%E5%BA%8F%E8%BF%90%E8%A1%8C/">多线程实现顺序运行</a>
     </h1>
   
 
         
-        <a href="/2021/01/29/Qt%E5%AE%9E%E7%8E%B0TCP%E9%80%9A%E4%BF%A1/" class="archive-article-date">
-  	<time datetime="2021-01-29T05:20:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-29</time>
+        <a href="/2022/07/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E9%A1%BA%E5%BA%8F%E8%BF%90%E8%A1%8C/" class="archive-article-date">
+  	<time datetime="2022-07-24T14:58:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Qt实现简单的TCP通信：TCP客户端与TCP服务端的简单交互  </p>
+        <p>多线程实现顺序运行</p>
         
-          <a class="article-more-a" href="/2021/01/29/Qt%E5%AE%9E%E7%8E%B0TCP%E9%80%9A%E4%BF%A1/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E9%A1%BA%E5%BA%8F%E8%BF%90%E8%A1%8C/#more">more >></a>
         
       
 
@@ -189,7 +189,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TCP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Thread</a>
         		</li>
       		
 		</ul>
@@ -199,7 +199,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/29/Qt%E5%AE%9E%E7%8E%B0TCP%E9%80%9A%E4%BF%A1/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/24/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AE%9E%E7%8E%B0%E9%A1%BA%E5%BA%8F%E8%BF%90%E8%A1%8C/">展开全文 >></a>
         </p>
       
 
@@ -229,29 +229,32 @@
 
 
   
-    <article id="post-反弹shell" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MySQL使用全文索引" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/27/%E5%8F%8D%E5%BC%B9shell/">反弹shell</a>
+      <a class="article-title" href="/2022/07/24/MySQL%E4%BD%BF%E7%94%A8%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95/">MySQL使用全文索引</a>
     </h1>
   
 
         
-        <a href="/2021/01/27/%E5%8F%8D%E5%BC%B9shell/" class="archive-article-date">
-  	<time datetime="2021-01-27T09:02:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+        <a href="/2022/07/24/MySQL%E4%BD%BF%E7%94%A8%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95/" class="archive-article-date">
+  	<time datetime="2022-07-24T14:33:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>反弹shell（reverse shell）：控制端监听在某TCP/UDP端口，被控端发起请求到该端口，并将其命令行的输入输出转到控制端。<br>reverse shell与telnet，ssh等标准shell对应，本质上是网络概念的客户端与服务端的角色反转。  </p>
+        <h2 id="需求产生"><a href="#需求产生" class="headerlink" title="需求产生"></a>需求产生</h2><p>InnoDB 在模糊查询数据时使用 “%xx” 会导致索引失效，但有时需求就是如此，类似这样的需求还有很多，例如，搜索引擎需要根基用户数据的关键字进行全文查找，电子商务网站需要根据用户的查询条件，在可能需要在商品的详细介绍中进行查找，这些都不是B+树索引能很好完成的工作。 </p>
+<p>通过数值比较，范围过滤等就可以完成绝大多数我们需要的查询了。但是，如果希望通过关键字的匹配来进行查询过滤，那么就需要基于相似度的查询，而不是原来的精确数值比较，全文索引就是为这种场景设计的。</p>
+<p>全文索引（Full-Text Search）是将存储于数据库中的整本书或整篇文章中的任意信息查找出来的技术。它可以根据需要获得全文中有关章、节、段、句、词等信息，也可以进行各种统计和分析。</p>
+<p>在早期的 MySQL 中，InnoDB 并不支持全文检索技术，从 MySQL 5.6 开始，InnoDB 开始支持全文检索。</p>
         
-          <a class="article-more-a" href="/2021/01/27/%E5%8F%8D%E5%BC%B9shell/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/24/MySQL%E4%BD%BF%E7%94%A8%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95/#more">more >></a>
         
       
 
@@ -265,7 +268,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">全文索引</a>
         		</li>
       		
 		</ul>
@@ -275,7 +278,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/27/%E5%8F%8D%E5%BC%B9shell/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/24/MySQL%E4%BD%BF%E7%94%A8%E5%85%A8%E6%96%87%E7%B4%A2%E5%BC%95/">展开全文 >></a>
         </p>
       
 
@@ -305,29 +308,31 @@
 
 
   
-    <article id="post-java实现TCP-Server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Deferred实现异步调用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0TCP-Server/">java实现TCP-Server</a>
+      <a class="article-title" href="/2022/07/24/Deferred%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8/">Deferred实现异步调用</a>
     </h1>
   
 
         
-        <a href="/2021/01/27/java%E5%AE%9E%E7%8E%B0TCP-Server/" class="archive-article-date">
-  	<time datetime="2021-01-27T08:45:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+        <a href="/2022/07/24/Deferred%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-07-24T04:36:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Java实现TCP服务端并通信。  </p>
+        <h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>生产中，往往会遇到这样的情景，controller 中调用的方法很多都是和第三方有关的，例如 JMS，定时任务，队列等，拿 JMS 来说，比如 controller 里面的服务需要从 JMS 中拿到返回值，才能给客户端返回，而从 JMS 拿值这个过程也是异步的，这个时候，我们就可以通过 Deferred 来实现整个的异步调用。</p>
+<p>如果只使用 Async 方式，虽然开启了异步处理方式，但是拿不到返回结果。</p>
+<p>而 Deferred 方式，不仅通过 Async 开启了异步线程，而且还能获取到异步处理结果，一定程度提高了系统的吞吐量。</p>
         
-          <a class="article-more-a" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0TCP-Server/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/24/Deferred%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8/#more">more >></a>
         
       
 
@@ -341,7 +346,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">TCP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Deferred</a>
         		</li>
       		
 		</ul>
@@ -351,7 +356,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0TCP-Server/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/24/Deferred%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E8%B0%83%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -381,29 +386,29 @@
 
 
   
-    <article id="post-java实现SSH客户端" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-SpringBoot修改容器为Undertow" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0SSH%E5%AE%A2%E6%88%B7%E7%AB%AF/">java实现SSH客户端</a>
+      <a class="article-title" href="/2022/07/24/SpringBoot%E4%BF%AE%E6%94%B9%E5%AE%B9%E5%99%A8%E4%B8%BAUndertow/">SpringBoot修改容器为Undertow</a>
     </h1>
   
 
         
-        <a href="/2021/01/27/java%E5%AE%9E%E7%8E%B0SSH%E5%AE%A2%E6%88%B7%E7%AB%AF/" class="archive-article-date">
-  	<time datetime="2021-01-27T08:29:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
+        <a href="/2022/07/24/SpringBoot%E4%BF%AE%E6%94%B9%E5%AE%B9%E5%99%A8%E4%B8%BAUndertow/" class="archive-article-date">
+  	<time datetime="2022-07-24T04:09:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-24</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>java实现SSH客户端，并连接SSH服务端进行命令交互。  </p>
+        <p>在高并发系统中，Tomcat 相对来说比较弱。在相同的机器配置下，模拟相等的请求数，Undertow 在性能和内存使用方面都是最优的。并且 Undertow 新版本默认使用持久连接，这将会进一步提高它的并发吞吐能力。所以，如果是高并发的业务系统，Undertow 是最佳选择。</p>
         
-          <a class="article-more-a" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0SSH%E5%AE%A2%E6%88%B7%E7%AB%AF/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/24/SpringBoot%E4%BF%AE%E6%94%B9%E5%AE%B9%E5%99%A8%E4%B8%BAUndertow/#more">more >></a>
         
       
 
@@ -417,7 +422,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">SSH</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Undertow</a>
         		</li>
       		
 		</ul>
@@ -427,7 +432,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/27/java%E5%AE%9E%E7%8E%B0SSH%E5%AE%A2%E6%88%B7%E7%AB%AF/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/24/SpringBoot%E4%BF%AE%E6%94%B9%E5%AE%B9%E5%99%A8%E4%B8%BAUndertow/">展开全文 >></a>
         </p>
       
 
@@ -457,29 +462,30 @@
 
 
   
-    <article id="post-保存网页为PDF文件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-CompletableFutures使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/26/%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E4%B8%BAPDF%E6%96%87%E4%BB%B6/">保存网页为PDF文件</a>
+      <a class="article-title" href="/2022/07/23/CompletableFutures%E4%BD%BF%E7%94%A8/">CompletableFutures使用</a>
     </h1>
   
 
         
-        <a href="/2021/01/26/%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E4%B8%BAPDF%E6%96%87%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-26T02:47:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+        <a href="/2022/07/23/CompletableFutures%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-07-23T08:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>将网页的内容保存为本地的PDF文件  </p>
+        <h2 id="非阻塞异步编程"><a href="#非阻塞异步编程" class="headerlink" title="非阻塞异步编程"></a>非阻塞异步编程</h2><p>所谓非阻塞异步编程方法，简单地说，就是不用等待返回结果的多线程的回调方法的封装。相比于阻塞式异步回调方法，非阻塞异步编程方法使用一个监听器，这样在使用回调的过程中，就能够自动感知到调用结果，从而实现了高并发的调用方法。</p>
+<p>使用阻塞式调用，会有大量的时间耗费在等待之中。Java 开发语 Java1.8 之后 ，提供了非阻塞的回调处理方法，它封装在CompletableFuture 类中。CompletableFuture 提供了非常强大的程序扩展能力可以帮助我们简化异步编程的复杂性，并通过非阻塞的回调方式处理调用结果。 CompletableFuture 不但提供了非阻塞的异步调用的方法，还可以将处理结果进行转换和结合使用。</p>
         
-          <a class="article-more-a" href="/2021/01/26/%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E4%B8%BAPDF%E6%96%87%E4%BB%B6/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/23/CompletableFutures%E4%BD%BF%E7%94%A8/#more">more >></a>
         
       
 
@@ -493,7 +499,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PDF</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CompletableFutures</a>
         		</li>
       		
 		</ul>
@@ -503,7 +509,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/26/%E4%BF%9D%E5%AD%98%E7%BD%91%E9%A1%B5%E4%B8%BAPDF%E6%96%87%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/CompletableFutures%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -533,30 +539,34 @@
 
 
   
-    <article id="post-VxWorks-Tornado安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-模拟生产环境的测试方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/">VxWorks-Tornado安装</a>
+      <a class="article-title" href="/2022/07/23/%E6%A8%A1%E6%8B%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88/">模拟生产环境的测试方案</a>
     </h1>
   
 
         
-        <a href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2021-01-26T02:37:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
+        <a href="/2022/07/23/%E6%A8%A1%E6%8B%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2022-07-23T08:24:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>VxWorks集成开发环境Tornado安装  </p>
-        
-          <a class="article-more-a" href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/#more">more >></a>
-        
+        <p>环境：前端Vue + 后端SpringBoot，前端Nginx站点部署，后端SpringBoot内置Tomcat部署 + Nginx转发。</p>
+<p>复刻生产环境测试方案：</p>
+<p>在生产环境，多开两个Nginx站点，一个用于前端，以后用于后端转发；多开一个Tomcat运行后端。</p>
+<p>这个环境中，前端和后端的程序完全同生产环境，其他环境也一致，<strong>除应用端口不同 + 访问域名不同</strong>。</p>
+<p>测试环境产品测试通过后，首选到复刻的生产环境再走一遍流程，检查配置同步遗漏等问题。通过后，再真正部署到生产环境。</p>
+<p>如果能保证后端增加功能不影响现有功能，也可以只使用一个后端，复刻一个最新功能的前端走一遍流程。</p>
+<p>或者两台服务器，两个环境切换也行。</p>
+
       
 
       
@@ -569,7 +579,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Tornado</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">测试</a>
         		</li>
       		
 		</ul>
@@ -579,7 +589,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/26/VxWorks-Tornado%E5%AE%89%E8%A3%85/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/%E6%A8%A1%E6%8B%9F%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%B5%8B%E8%AF%95%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -609,29 +619,29 @@
 
 
   
-    <article id="post-three-js增加点击事件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-常见的短信验证码防刷策略" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/">three.js增加点击事件</a>
+      <a class="article-title" href="/2022/07/23/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E9%98%B2%E5%88%B7%E7%AD%96%E7%95%A5/">常见的短信验证码防刷策略</a>
     </h1>
   
 
         
-        <a href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-19T10:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
+        <a href="/2022/07/23/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E9%98%B2%E5%88%B7%E7%AD%96%E7%95%A5/" class="archive-article-date">
+  	<time datetime="2022-07-23T08:19:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>three.js增加点击事件  </p>
+        <p>短信验证码作为重要的身份验证工具，因其操作简便、安全性高、时效性强等优点已被开发人员广泛使用。但因其获取便利、限制较少容易被不法分子利用进行短信轰炸，恶意刷掉大量短信费用，给公司或个人造成大量的金钱损失，造成这种情况原因主要是在产品实际设计过程中，有些产品人员因为对技术实现不太了解，防范意识薄弱，简单或直接忽略对短信验证码进行限制，这才造成短信接口恶意被不法分子利用。</p>
         
-          <a class="article-more-a" href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/23/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E9%98%B2%E5%88%B7%E7%AD%96%E7%95%A5/#more">more >></a>
         
       
 
@@ -645,7 +655,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">验证码</a>
         		</li>
       		
 		</ul>
@@ -655,7 +665,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/19/three-js%E5%A2%9E%E5%8A%A0%E7%82%B9%E5%87%BB%E4%BA%8B%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/%E5%B8%B8%E8%A7%81%E7%9A%84%E7%9F%AD%E4%BF%A1%E9%AA%8C%E8%AF%81%E7%A0%81%E9%98%B2%E5%88%B7%E7%AD%96%E7%95%A5/">展开全文 >></a>
         </p>
       
 
@@ -685,29 +695,29 @@
 
 
   
-    <article id="post-npm-install-g-S-D详解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Optional使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/">npm-install-g-S-D详解</a>
+      <a class="article-title" href="/2022/07/23/Optional%E4%BD%BF%E7%94%A8/">Optional使用</a>
     </h1>
   
 
         
-        <a href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
-  	<time datetime="2021-01-19T06:53:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
+        <a href="/2022/07/23/Optional%E4%BD%BF%E7%94%A8/" class="archive-article-date">
+  	<time datetime="2022-07-23T04:50:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>详解npm install XXX, npm install XXX -g, npm install xxx –save, npm install XXX –save-dev  </p>
+        <h2 id="认识-Optional"><a href="#认识-Optional" class="headerlink" title="认识 Optional"></a>认识 Optional</h2><p>简单来说，Opitonal类就是Java提供的为了解决大家平时判断对象是否为空用 会用 null!=obj 这样的方式存在的判断，从而令人头疼导致NPE（<code>Null Pointer Exception</code> 空指针异常），同时Optional的存在可以让代码更加简单，可读性跟高，代码写起来更高效.</p>
         
-          <a class="article-more-a" href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/23/Optional%E4%BD%BF%E7%94%A8/#more">more >></a>
         
       
 
@@ -721,7 +731,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">npm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Optional</a>
         		</li>
       		
 		</ul>
@@ -731,7 +741,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/19/npm-install-g-S-D%E8%AF%A6%E8%A7%A3/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/Optional%E4%BD%BF%E7%94%A8/">展开全文 >></a>
         </p>
       
 
@@ -761,29 +771,32 @@
 
 
   
-    <article id="post-Blender导出three-js模型，three-js导入其模型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-获取IP属地" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/">Blender导出three.js模型，three.js引入其模型</a>
+      <a class="article-title" href="/2022/07/23/%E8%8E%B7%E5%8F%96IP%E5%B1%9E%E5%9C%B0/">获取IP属地</a>
     </h1>
   
 
         
-        <a href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2021-01-18T08:04:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
+        <a href="/2022/07/23/%E8%8E%B7%E5%8F%96IP%E5%B1%9E%E5%9C%B0/" class="archive-article-date">
+  	<time datetime="2022-07-23T04:08:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Blender导出three.js模型.GLB或.GLTF数据，three.js引入其模型.GLB或.GLTF数据。<br>建议使用glTF（GL传输格式）  </p>
+        <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ul>
+<li>通过 <code>HttpServletRequest</code> 对象，获取用户的 IP 地址</li>
+<li>通过 IP 地址，获取对应的省份、城市</li>
+</ul>
         
-          <a class="article-more-a" href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/23/%E8%8E%B7%E5%8F%96IP%E5%B1%9E%E5%9C%B0/#more">more >></a>
         
       
 
@@ -797,7 +810,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Blender  three.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">ip2region</a>
         		</li>
       		
 		</ul>
@@ -807,7 +820,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/18/Blender%E5%AF%BC%E5%87%BAthree-js%E6%A8%A1%E5%9E%8B%EF%BC%8Cthree-js%E5%AF%BC%E5%85%A5%E5%85%B6%E6%A8%A1%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/%E8%8E%B7%E5%8F%96IP%E5%B1%9E%E5%9C%B0/">展开全文 >></a>
         </p>
       
 
@@ -837,29 +850,29 @@
 
 
   
-    <article id="post-three-js主要组件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Web实时消息推送方案" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/">three.js主要组件</a>
+      <a class="article-title" href="/2022/07/23/Web%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E6%96%B9%E6%A1%88/">Web实时消息推送方案</a>
     </h1>
   
 
         
-        <a href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/" class="archive-article-date">
-  	<time datetime="2021-01-18T07:17:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
+        <a href="/2022/07/23/Web%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E6%96%B9%E6%A1%88/" class="archive-article-date">
+  	<time datetime="2022-07-23T03:02:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>three.js基础组件：场景、相机、渲染器<br>主要组件：控制器、几何体、材质、灯光、纹理、外部3D模型  </p>
+        <p>Web实时消息推送方案</p>
         
-          <a class="article-more-a" href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/#more">more >></a>
+          <a class="article-more-a" href="/2022/07/23/Web%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E6%96%B9%E6%A1%88/#more">more >></a>
         
       
 
@@ -873,7 +886,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">three.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">消息推送</a>
         		</li>
       		
 		</ul>
@@ -883,7 +896,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/01/18/three-js%E4%B8%BB%E8%A6%81%E7%BB%84%E4%BB%B6/">展开全文 >></a>
+          <a class="article-more-a" href="/2022/07/23/Web%E5%AE%9E%E6%97%B6%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81%E6%96%B9%E6%A1%88/">展开全文 >></a>
         </p>
       
 
@@ -915,7 +928,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/19/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/26/">26</a><a class="extend next" rel="next" href="/page/21/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/19/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/21/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -927,7 +940,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2022 曳戈泰尔
+    		&copy; 2023 曳戈泰尔
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -985,7 +998,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">其他站点</a></li>
       
         
       
@@ -1010,6 +1023,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SHA256</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">AI换脸</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">VITS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">APM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Anaconda</a>
               </li>
              
@@ -1018,11 +1047,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ArrayList</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Bean</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">BigDecimal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Blender  three.js</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Ice</a>
+                <a href="javascript:void(0)" class="js-tag color3">API开放接口</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1030,7 +1071,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+                <a href="javascript:void(0)" class="js-tag color4">Ice</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1038,11 +1079,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">BeanUtils</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
+                <a href="javascript:void(0)" class="js-tag color2">Tomcat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Caffeine</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1050,11 +1095,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+                <a href="javascript:void(0)" class="js-tag color2">Docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">jdk</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JDK</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1066,15 +1119,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">PostgreSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">geany</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,7 +1127,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">FastDFS</a>
+                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">geany</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">CentOS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1090,7 +1143,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">kafka</a>
+                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">FastDFS</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1098,11 +1155,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Node</a>
+                <a href="javascript:void(0)" class="js-tag color4">CompletableFutures</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">CompletableFuture</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CountDownLatch</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">queue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Conflux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">DefaultIdentifierGenerator</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,6 +1184,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Deepin</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Deferred</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1130,7 +1207,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Prometheus-Grafana-nodeExporter</a>
+                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">docker日志</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Docker部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Drools</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1138,11 +1227,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">docker-compose</a>
+                <a href="javascript:void(0)" class="js-tag color4">持有者作为调用者</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Error</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ES</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">签名上链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">FISCO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Prometheus-Grafana-nodeExporter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">FISCO开放平台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">解析input</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ForkJoinPool</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">GateWay</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Git</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1154,11 +1279,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
+                <a href="javascript:void(0)" class="js-tag color2">Gradle</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1166,7 +1287,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Hexo GitHub-Pages</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">HttpUtil</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1174,7 +1307,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
+                <a href="javascript:void(0)" class="js-tag color5">Gson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">热部署</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HttpClientUtil</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">搜索</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Stream</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">foreach</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Graphics2D</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Synchronized</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">循环</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Integer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1182,11 +1351,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Excel</a>
+                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">MD5</a>
+                <a href="javascript:void(0)" class="js-tag color1">Excel</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1194,11 +1363,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">NowTime</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">MD5</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">字节流</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">NowTime</a>
+                <a href="javascript:void(0)" class="js-tag color4">手机号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">支付宝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Object</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">行政区划</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">序列化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1206,11 +1399,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
+                <a href="javascript:void(0)" class="js-tag color3">枚举</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Jenkins</a>
+                <a href="javascript:void(0)" class="js-tag color3">限流</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">配置文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">规则执行器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">cmd</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1218,7 +1423,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">JAVE2</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程池</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">分治</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JMH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Jenkins</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Java调用AI输入输出</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Kindle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Knif4j</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1230,10 +1471,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Ansible</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">SonarQube</a>
               </li>
              
@@ -1242,7 +1479,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Ansible</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">IP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">socket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">List排序</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">MQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">MapStruct</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1254,7 +1511,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">nacos</a>
+                <a href="javascript:void(0)" class="js-tag color3">MyBatis</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">跳板机</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">event</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">trigger</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">全文索引</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扣费 线程安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MybatisPlus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">LambdaQueryWrapper</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1262,7 +1547,35 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Explain</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">私人助理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nacos</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Nexus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">WebSocket</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">OSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OkHttpClient</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">OA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,15 +1587,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Optional</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SpringBoot</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Pycharm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">TSV</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,11 +1599,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">文件夹遍历</a>
+                <a href="javascript:void(0)" class="js-tag color4">TSV</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">性能指标</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">json</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Pycharm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">文件夹遍历</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1306,11 +1627,87 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">QueryWrapper</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Quartz</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RSA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">RateLimiter</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Redisson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">阻塞等待锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ZSET</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">incr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">频率限制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SAE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">RESTful API</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SCP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">RuoYi</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SM3</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SKU</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">SQL前n天</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Shell脚本自动化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Sleuth</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1322,11 +1719,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Solidity</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">gateway</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">build.gradle</a>
+                <a href="javascript:void(0)" class="js-tag color1">Batch</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1334,15 +1735,107 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">build.gradle</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Schedule</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环重试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Undertow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">多筛选</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IPFS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Jasypt</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">logback</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">加解密</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">幂等性</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Result</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">log</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Mail</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">滑块</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Druid</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">knife4j</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Full Lite</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">权限</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">跨域访问</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Bean</a>
+                <a href="javascript:void(0)" class="js-tag color3">starter</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
+                <a href="javascript:void(0)" class="js-tag color3">防刷</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">XSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Event</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">多数据库</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Scheduled</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1354,23 +1847,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">log</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">AOP</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">CurrentUser</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JWT</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1382,10 +1863,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">OSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Openfeign</a>
               </li>
              
@@ -1394,19 +1871,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Swagger</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Shiro</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">XMLRPC</a>
+                <a href="javascript:void(0)" class="js-tag color3">Swagger</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
+                <a href="javascript:void(0)" class="js-tag color2">XMLRPC</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1422,15 +1895,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件下载</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">验证码登录</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Response</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Exception</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件下载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1454,15 +1931,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">StopWatch</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">String</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Transactional</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">ThreadLocal</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">TLS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">RabbitMQ</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">VPN</a>
+                <a href="javascript:void(0)" class="js-tag color3">挂载</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1470,7 +1959,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+                <a href="javascript:void(0)" class="js-tag color4">VPN</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1478,11 +1967,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VScode</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">VS</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">ECDSA</a>
+                <a href="javascript:void(0)" class="js-tag color1">Valid</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1491,6 +1984,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">three.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">ECDSA</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1518,11 +2015,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">WeBase</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">JavaScript</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">COOKIE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">消息推送</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1534,7 +2039,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">XStream</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">appId appKey</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">printStackTrace</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">gitlab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">excel2word</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1546,11 +2071,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">isNull isEmpty isBlank</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">mybatisplus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">SSH</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+                <a href="javascript:void(0)" class="js-tag color3">nohup日志</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1558,11 +2091,31 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">提取学号</a>
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PDF</a>
+                <a href="javascript:void(0)" class="js-tag color3">图片</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nginx</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">url</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">xml</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">去背景</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">提取学号</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1570,11 +2123,183 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">xxl-job</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">并发</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">接口</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">一致性HASH</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">责任链</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">两层请求体</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">二次支付</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">个人支付</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">代理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MERGE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">保存MultipartFile</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PDF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">链间数据迁移</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">鉴权</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">证书生成</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">单例</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">压测</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">发布Jar</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sms</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">升级代理合约</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">支付</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">图片转PDF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">拍平JSON</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">SSO</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">property</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内容安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">循环分页</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">crontab</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">日志清理</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">实名</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">绩效</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">歌词识别</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">component初始化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">抽奖</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">数据脱敏</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">验证码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">网络攻防</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">慢排查</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Native支付</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">裁剪字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">WebView</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1590,7 +2315,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">局部刷新</a>
+                <a href="javascript:void(0)" class="js-tag color5">图片裁剪</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1598,7 +2323,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">图片裁剪</a>
+                <a href="javascript:void(0)" class="js-tag color5">局部刷新</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1614,7 +2339,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">globalData</a>
+                <a href="javascript:void(0)" class="js-tag color2">openId</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1622,7 +2347,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">globalData</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">url传值</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Feign</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">懒加载</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">订阅消息</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1630,7 +2371,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">提取txt 提取word</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">回调</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">支付超时</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Assert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">乐观锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">服务器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">监控</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">运维</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">方案</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Enum</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,7 +2419,55 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">死锁</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">兑换码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">订单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">余额扣减</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">sku gson</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">电商</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">短信验证码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">伏羲PDF</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">秒杀</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">后台</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">不可破解key</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">排查</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">线程安全 Map List</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1646,11 +2475,47 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CRUD拆分的宽表</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">ip2region</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">行政</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">读书笔记</a>
+                <a href="javascript:void(0)" class="js-tag color3">文件校验FileSize</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">ParameterMap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">EventBus</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">微信手机号</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">购买掉单</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">resources</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">音频时长</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">IDCardUtils</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1658,7 +2523,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Forest</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">邀请</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">过滤器 拦截器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">通信</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Retry</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">人脸融合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">时间差</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">短信</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">集合</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">长安链</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1710,7 +2611,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>中微子</a>
+              <a href="https://chain.yegetaier.top" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>区块链</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="http://gpt.yegetaier.top" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GPT</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://gitee.com/yegetaier" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>gitee1</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://gitee.com/hugotel" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>gitee2</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://github.com/wohunlfry" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>github</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="#" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Other</a>
             </li>
           
         </ul>
